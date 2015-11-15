@@ -1,20 +1,20 @@
 # Schema Information
 
-## reposts
+## Reposts
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 track_id    | integer   | not null, foreign key (references tracks), indexed
 reposter_id | integer   | not null, foreign key (references users), indexed
 
-## likes
+## Likes
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 track_id    | integer   | not null, foreign key (references tracks), indexed
 liker_id    | integer   | not null, foreign key (references users), indexed
 
-## comments
+## Comments
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
@@ -22,7 +22,7 @@ body        | text      | not null
 track_id    | integer   | not null, indexed
 author_id   | integer   | not null, indexed
 
-## tracks
+## Tracks
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
@@ -34,14 +34,14 @@ description | text      |
 plays       | integer   | default is 0
 artist_id   | integer   | not null, foreign key (references users), indexed
 
-## follows
+## Follows
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 follower_id | integer   | not null, foreign key (references users), indexed
 following_id| integer   | not null, foreign key (references users), indexed
 
-## users
+## Users
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
