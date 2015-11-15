@@ -11,17 +11,15 @@ and React.js. RainWav allows users to:
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
-index, new, CREATE, show VIEW, EDIT, update, DELETE
 - [ ] Create an account
 - [ ] Log in / Log out
 - [ ] Follow / Unfollow Users
 - [ ] Upload Tracks (hosted by AWS S3)
 - [ ] Play Tracks
-- [ ] Favorite Tracks
+- [ ] Like Tracks
 - [ ] Repost Tracks
 - [ ] Leave Comments
 - [ ] View a feed of new tracks from Followees
-- [ ] Search for Tracks / Users
 
 ## Design Docs
 * [View Wireframes][view]
@@ -32,16 +30,16 @@ index, new, CREATE, show VIEW, EDIT, update, DELETE
 
 ## Implementation Timeline
 
-### Phase 1: User Authentication, User Model and JSON API (1.5 days)
+### Phase 1: User Authentication, User Model and JSON API (~1.5 days)
 
-In Phase 1, I will begin by implementing user signup and authentication (using
-BCrypt). There will be a basic landing page after signup that will contain the
-container for the application's root React component. I will begin by setting
-up the JSON APIs for Tracks.
+In Phase 1, I will begin by implementing user signup/login and authentication (using
+BCrypt). There will be a basic landing page after signup/login that will contain the
+container for the application's root React component. I will also make a Follow
+model to set up user's follower/following associations.
 
 [Details][phase-one]
 
-### Phase 2: Flux Architecture and Note CRUD (2.5 days)
+### Phase 2: Flux Architecture and Track CRUD (2.5 days)
 
 Phase 2 is focused on setting up Flux, the React Router, and the React view
 structure for the main application. After the basic Flux architecture has been
@@ -88,11 +86,12 @@ Phase 6 I will add styling flourishes and make modals out of some elements (like
 the NotebookForm).
 
 ### Bonus Features (TBD)
+- [ ] User/Track Search
+- [ ] Waveform Visualizer
+- [ ] Facebook Authentication
 - [ ] Prettify transitions
-- [ ] Use javascript library for cleaner tag selection
-- [ ] Changelogs for Notes
-- [ ] Pagination / infinite scroll for Notes Index
-- [ ] Multiple sessions
+- [ ] Infinite Scroll for Tracks Index
+- [ ] Notifications
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md
