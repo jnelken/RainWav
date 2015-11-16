@@ -1,39 +1,36 @@
-# Phase 3: Notebooks and Tags (2 days)
+# Phase 3: Follows and Reposts, Sidebar Component (2 days)
 
 ## Rails
 ### Models
-* Notebook
-* Tag
-* Tagging
+* Follow
+* Repost
 
 ### Controllers
-* Api::NotebooksController (create, destroy, index, show, update)
+* Api::FollowsController (create, destroy)
+* Api::RepostsController (create, destroy, index)
 
 ### Views
-* notebooks/index.json.jbuilder
-* notebooks/show.json.jbuilder
-* tags/show.json.jbuilder
 
 ## Flux
 ### Views (React Components)
-* NotebooksIndex
-  - NotebookIndexItem
-* NotebookForm
-* SearchIndex
+SideBar
 
 ### Stores
-* Notebook
+* Followers
+* Followings
 
 ### Actions
-* ApiActions.receiveAllNotebooks
-* ApiActions.receiveSingleNotebook
-* ApiActions.deleteNotebook
+* ApiActions.receiveFollowers
+* ApiActions.receiveFollowings
+* ApiActions.receiveReposts
+* ApiActions.toggleFollow
+* ApiActions.toggleRepost
 
 ### ApiUtil
-* ApiUtil.fetchAllNotebooks
-* ApiUtil.fetchSingleNotebook
-* ApiUtil.createNotebook
-* ApiUtil.editNotebook
-* ApiUtil.destroyNotebook
+* ApiUtil.fetchFollowers
+* ApiUtil.fetchFollowings
+* ApiUtil.fetchReposts
+* ApiUtil.editFollow
+* ApiUtil.editRepost
 
 ## Gems/Libraries

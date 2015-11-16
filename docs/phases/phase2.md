@@ -1,35 +1,42 @@
-# Phase 2: Flux Architecture and Note CRUD (2 days)
+# Phase 2: Phase 2: Flux Architecture and Track CRUD (~3 days)
 
 ## Rails
 ### Models
 
 ### Controllers
+Api::UsersController (show)
 
 ### Views
+* tracks/index.json.jbuilder
+* tracks/show.json.jbuilder
+* users/show.json.jbuilder
 
 ## Flux
 ### Views (React Components)
-* NotesIndex
-  - NotesIndexItem
-* NoteForm
+* UserShow
+  - TracksIndex
+    - TracksIndexItem
+* TrackShow
+* TrackForm
 
 ### Stores
-* Note
+* Track
+* User
 
 ### Actions
-* ApiActions.receiveAllNotes
-* ApiActions.receiveSingleNote
-* ApiActions.deleteNote
+* ApiActions.receiveTracks
+* ApiActions.receiveOneTrack
+* ApiActions.deleteTrack
 
 ### ApiUtil
-* ApiUtil.fetchAllNotes
-* ApiUtil.fetchSingleNote
-* ApiUtil.createNote
-* ApiUtil.editNote
-* ApiUtil.destroyNote
+* ApiUtil.fetchTracks
+* ApiUtil.fetchOneTrack
+* ApiUtil.createTrack
+* ApiUtil.editTrack
+* ApiUtil.destroyTrack
 
 ## Gems/Libraries
 * React
 * Flux
-* Flux Dispatcher /Eventemitter
+* Flux Dispatcher / Eventemitter
 * JSX Transformer

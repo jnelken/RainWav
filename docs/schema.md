@@ -7,18 +7,12 @@ id          | integer   | not null, primary key
 track_id    | integer   | not null, foreign key (references tracks), indexed
 reposter_id | integer   | not null, foreign key (references users), indexed
 
-## Likes
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-track_id    | integer   | not null, foreign key (references tracks), indexed
-liker_id    | integer   | not null, foreign key (references users), indexed
-
 ## Comments
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 body        | text      | not null
+timestamp   | integer   | not null, default: 0
 track_id    | integer   | not null, indexed
 author_id   | integer   | not null, indexed
 
@@ -29,7 +23,7 @@ id          | integer   | not null, primary key
 title       | string    | not null
 audio       | string    | not null
 genre       | string    | not null
-image_url   | string    | 
+image_url   | string    |
 description | text      |
 plays       | integer   | default is 0
 artist_id   | integer   | not null, foreign key (references users), indexed

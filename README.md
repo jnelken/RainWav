@@ -14,9 +14,8 @@ and React.js. RainWav allows users to:
 - [ ] Create an account
 - [ ] Log in / Log out
 - [ ] Follow / Unfollow Users
-- [ ] Upload Tracks (hosted by AWS S3)
 - [ ] Play Tracks
-- [ ] Like Tracks
+- [ ] Upload Tracks
 - [ ] Repost Tracks
 - [ ] Leave Comments
 - [ ] View a feed of new tracks from Followees
@@ -30,11 +29,13 @@ and React.js. RainWav allows users to:
 
 ## Implementation Timeline
 
-### Phase 1: User Authentication and models (~1 day)
+### Phase 1: User Authentication / model, Track model, API (~2 days)
 
 In Phase 1, I will begin by implementing user signup/login and authentication (using
 BCrypt). There will be a basic landing page after signup/login that will contain the
-container for the application's root React component.
+container for the application's root React component. Then I will start developing
+the Track model and API Controller to being sending json, as well as look for a
+file hosting service to store the uploaded tracks.
 
 [Details][phase-one]
 
@@ -44,50 +45,51 @@ Phase 2 is focused on setting up Flux, the React Router, and the React view
 structure for the main application. After the basic Flux architecture has been
 set up, a Track store will be implemented and a set of actions corresponding to
 the needed CRUD functionality created. Once this is done, I will create React
-views for the User's `TrackIndex`, `TrackItem` and `TrackForm`. This will include
-the search for a third party hosting service such as Amazon to store all the
-tracks. Tracks can be created, played, edited and destroyed in the browser. Lastly,
-while constructing the views I will start writing some rudimentary CSS for styling.
+views for the User's `TracksIndex`, `TracksIndexItem`, and `TrackForm`.
+Tracks can be created, played, edited and destroyed in the browser. After
+constructing the views, I will start adding some rudimentary styling with CSS.
 
 [Details][phase-two]
 
-### Phase 3: Follows, Likes and Reposts (2 days)
+### Phase 3: Follows and Reposts, Sidebar Component (~2 days)
 
-Phase 3 adds organization to the Notes. Notes belong to a Notebook, which has
-its own `Index` view. Create JSON API for Notebooks. Notes can also now be
-tagged with multiple tags. Users can bring up notes in a separate `SearchIndex`
-view by searching for their tags. Once the tag search is implemented, I will
-extend this to a fuzzy search through every Note's content.
+Phase 3 adds some social features for users. Users can click buttons to follow
+a user or repost a track. Reposts will show up on their profile page mixed in
+with their original tracks. the number of followers will appear on their sidebar,
+as well as the number of people they are following.
 
 [Details][phase-three]
 
-### Phase 4: Allow Complex Styling in Notes (1 day)
+### Phase 4: Comments Component (~1 day)
 
-Using quill.js, allow for complex styling of notes.
+Phase 5 adds the ability to comment on tracks using an embedded form through
+a new React Component. Users can leave comments on Tracks while the audio is still
+playing without interruption, and they will appear immediately underneath the
+current track being played. This can be done from the TrackIndexItem view, or the
+TrackShow view. The comments keep track of where they are in playback. I aim
+to have the comment avatars displayed along the track timeline if all goes well.
 
 [Details][phase-four]
 
-### Phase 5: Reminders and Garbage Collection (1 day)
+### Phase 5: Stream and NavBar (~1 day)
 
-Phase 5 introduces two new features. First, users can set reminders on notes
-which will at the time they are set for prompt the user to review and edit the
-given note. In addition, I will implement a feature that asks users to review
-notes once they reach a certain age and ask whether they should be kept,
-archived, or deleted.
+Phase 5 introduces the Stream -- a collection of tracks from your followees that
+acts as the root page for the website. This will be the user's source for new music.
+I will check my layout is properly set and if time allows, add Waveform Visualization.
 
 [Details][phase-five]
 
-### Phase 6: Styling Cleanup and Seeding (1 day)
+### Phase 6: Styling Cleanup and Seeding (~1 day)
 
-Bootstrap will have been used to keep things organized up until now, but in
+Only the most important styles have been written before this point, but in
 Phase 6 I will add styling flourishes and make modals out of some elements (like
-the NotebookForm).
+the TrackForm).
 
 ### Bonus Features (TBD)
 - [ ] User/Track Search
-- [ ] Notifications
 - [ ] Infinite Scroll
-- [ ] Waveform Visualizer
+- [ ] Likes
+- [ ] Notifications
 - [ ] Prettify transitions
 - [ ] Facebook Authentication
 

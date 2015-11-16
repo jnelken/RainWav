@@ -1,18 +1,19 @@
-# Phase 1: User Authentication, Note Model and JSON API
+# Phase 1: User Authentication / model, Track model, API (~2 days)
 
 ## Rails
 ### Models
 * User
-* Follow
+* Track
 
 ### Controllers
 * UsersController (create, new)
-* SessionsController (create, new, destroy)
-* FollowsController (create, destroy)
+* SessionsController (create, new, show, destroy)
+* Api::TracksController (index, destroy, create, new, update, edit, show)
 
 ### Views
 * users/new.html.erb
 * session/new.html.erb
+
 
 ## Flux
 ### Views (React Components)
