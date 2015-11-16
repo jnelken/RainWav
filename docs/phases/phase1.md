@@ -3,12 +3,12 @@
 ## Rails
 ### Models
 * User
-* Note
+* Track
 
 ### Controllers
 * UsersController (create, new)
 * SessionsController (create, new, destroy)
-* Api::NotesController (create, destroy, index, show, update)
+* Api::TracksController (create, destroy, index, show, update)
 
 ### Views
 * users/new.html.erb

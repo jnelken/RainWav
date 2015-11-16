@@ -29,5 +29,7 @@
 * ApiUtil.destroyNote
 
 ## Gems/Libraries
-* Flux Dispatcher
-* Twitter Bootstrap
+* React
+* Flux
+* Flux Dispatcher /Eventemitter
+* JSX Transformer

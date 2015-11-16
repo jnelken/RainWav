@@ -30,31 +30,28 @@ and React.js. RainWav allows users to:
 
 ## Implementation Timeline
 
-### Phase 1: User Authentication, User, Follow, Track Models (~2 days)
+### Phase 1: User Authentication and models (~1 day)
 
 In Phase 1, I will begin by implementing user signup/login and authentication (using
 BCrypt). There will be a basic landing page after signup/login that will contain the
-container for the application's root React component. I will also test
-follower/following associations. Next will be to implement an upload form for tracks
-using a third party hosting server to store the files.
+container for the application's root React component.
 
 [Details][phase-one]
 
-### Phase 2: Flux Architecture and Track CRUD (2.5 days)
+### Phase 2: Flux Architecture and Track CRUD (~3 days)
 
 Phase 2 is focused on setting up Flux, the React Router, and the React view
 structure for the main application. After the basic Flux architecture has been
 set up, a Track store will be implemented and a set of actions corresponding to
 the needed CRUD functionality created. Once this is done, I will create React
-views for the Users `TrackIndex`, `TrackItem` and `TrackForm`. At the end of Phase 2,
-Notes can be created, read, edited and destroyed in the browser. Notes should
-save to the database when the form loses focus or is left idle after editing.
-Lastly, while constructing the views I will start using basic bootstrap for
-styling.
+views for the User's `TrackIndex`, `TrackItem` and `TrackForm`. This will include
+the search for a third party hosting service such as Amazon to store all the
+tracks. Tracks can be created, played, edited and destroyed in the browser. Lastly,
+while constructing the views I will start writing some rudimentary CSS for styling.
 
 [Details][phase-two]
 
-### Phase 3: Notebooks and Tags (2 days)
+### Phase 3: Follows, Likes and Reposts (2 days)
 
 Phase 3 adds organization to the Notes. Notes belong to a Notebook, which has
 its own `Index` view. Create JSON API for Notebooks. Notes can also now be
