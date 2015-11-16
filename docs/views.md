@@ -7,7 +7,7 @@
 ![new-session]
 
 ## TrackForm
-![notes]
+![track-form]
 
 ## Stream (TracksIndex)
 ![stream]
