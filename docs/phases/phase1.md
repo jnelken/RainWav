@@ -3,18 +3,16 @@
 ## Rails
 ### Models
 * User
-* Track
+* Follow
 
 ### Controllers
 * UsersController (create, new)
 * SessionsController (create, new, destroy)
-* Api::TracksController (create, destroy, index, show, update)
+* FollowsController (create, destroy)
 
 ### Views
 * users/new.html.erb
 * session/new.html.erb
-* notes/index.json.jbuilder
-* notes/show.json.jbuilder
 
 ## Flux
 ### Views (React Components)
