@@ -30,12 +30,13 @@ and React.js. RainWav allows users to:
 
 ## Implementation Timeline
 
-### Phase 1: User Authentication, User Model and JSON API (~1.5 days)
+### Phase 1: User Authentication, User, Follow, Track Models (~2 days)
 
 In Phase 1, I will begin by implementing user signup/login and authentication (using
 BCrypt). There will be a basic landing page after signup/login that will contain the
-container for the application's root React component. I will also make a Follow
-model to set up user's follower/following associations.
+container for the application's root React component. I will also test
+follower/following associations. Next will be to implement an upload form for tracks
+using a third party hosting server to store the files.
 
 [Details][phase-one]
 
@@ -45,7 +46,7 @@ Phase 2 is focused on setting up Flux, the React Router, and the React view
 structure for the main application. After the basic Flux architecture has been
 set up, a Track store will be implemented and a set of actions corresponding to
 the needed CRUD functionality created. Once this is done, I will create React
-views for the Notes `Index`, `IndexItem` and `Form`. At the end of Phase 2,
+views for the Users `TrackIndex`, `TrackItem` and `TrackForm`. At the end of Phase 2,
 Notes can be created, read, edited and destroyed in the browser. Notes should
 save to the database when the form loses focus or is left idle after editing.
 Lastly, while constructing the views I will start using basic bootstrap for
@@ -87,11 +88,11 @@ the NotebookForm).
 
 ### Bonus Features (TBD)
 - [ ] User/Track Search
-- [ ] Waveform Visualizer
-- [ ] Facebook Authentication
-- [ ] Prettify transitions
-- [ ] Infinite Scroll for Tracks Index
 - [ ] Notifications
+- [ ] Infinite Scroll
+- [ ] Waveform Visualizer
+- [ ] Prettify transitions
+- [ ] Facebook Authentication
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md
