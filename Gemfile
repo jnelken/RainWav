@@ -26,7 +26,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'react-rails', '~> 1.3.0'
 gem 'flux-rails-assets', '~> 2.1.0'
 gem 'newrelic_rpm'
-
+gem 'rails_12factor'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
