@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     end
 
     if @user.save
+      sign_in(@user)
       flash.now[:notice] = ["Success!"]
       render :index
     else
