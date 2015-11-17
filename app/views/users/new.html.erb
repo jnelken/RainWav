@@ -1,0 +1,22 @@
+<h2>Create Account</h2>
+<form action="/users" method="POST">
+  <input
+  type="hidden"
+  name="authenticity_token"
+  value="<%= form_authenticity_token %>">
+
+<label>Choose a username
+  <input type="text" id="user[:username]">
+</label>
+<label>What's your email address?
+  <input type="text" id="user[:email]">
+</label>
+
+<label class="password">
+  Choose a password
+  <input type="password" id="user[:password]">
+  Re-type password
+  <input type="password" id="user[:retype_password]">
+</label>
+<button>Sign Up</button>
+</form>
