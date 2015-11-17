@@ -18,7 +18,7 @@ $(function () {
 
   var routes = (
     <Route path="/" component={App}>
-      <IndexRoute />    
+      <IndexRoute component={TracksIndex}/>    
     </Route>
   );
 

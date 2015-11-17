@@ -1,13 +1,12 @@
 ApiUtil = {
   fetchTracks: function () {
-        debugger
     $.ajax({
       url: 'api/tracks',
-      method: 'GET',
+      type: 'GET',
       dataType: 'json',
       success: function (data) {
         ApiActions.receiveAll(data);
       }
     });
-  }
+  },
 };
