@@ -7,7 +7,7 @@ class CreateTracks < ActiveRecord::Migration
       t.string :image_url
       t.string :description
       t.integer :plays
-      t.integer :artist_id
+      t.integer :artist_id, null: false
 
       t.timestamps null: false
     end

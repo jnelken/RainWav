@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  # root to: 'stream#index'
+  root 'static_pages#root'
 
   resources :users, only: [:index, :new, :create]
   resource :session, only: [:new, :create, :destroy]

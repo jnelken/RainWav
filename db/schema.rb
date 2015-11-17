@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20151117165637) do
     t.string   "image_url"
     t.string   "description"
     t.integer  "plays"
-    t.integer  "artist_id"
+    t.integer  "artist_id",   null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

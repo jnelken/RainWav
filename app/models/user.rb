@@ -6,7 +6,9 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 4, allow_nil: true }
   validates :email, length: { minimum: 4 }
   # validates :email, regex @
-  
+
+  has_many :tracks
+
   attr_reader :password
 
   after_initialize :ensure_session_token
