@@ -1,0 +1,24 @@
+<div class="create-account">
+<h2>Sign In</h2>
+
+  <form action="<%= sessions_url %>" method="POST">
+
+    <%= auth_token %>
+
+  <label class="email">
+    <p>Your email address</p>
+    <input type="text" name="user[email]">
+  </label>
+
+  <div class="password-fields">
+    <label class="password">
+      <p>Your password</p>
+      <input type="password" name="user[password]">
+    </label>
+
+  <div class="button">
+    <button>Sign In</button>
+  </div>
+
+  </form>
+<div>

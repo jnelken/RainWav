@@ -7,6 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<% if signed_in? %>
+  <%= current_user.username %>
+  <%= button_to "Sign Out", sessions_url, :method => :delete %>
+<% else %>
+  <%= link_to "Sign In", new_session_url %>
+  <%= link_to "Sign Up", new_user_url %>
+<% end %>
+
 <% if flash[:notice] %>
 <ul class="flash-notice">
   <% flash[:notice].each do |notice| %>
@@ -14,6 +22,9 @@
     <% end %>
 </ul>
 <% end %>
+
+
+
 
 <%= yield %>
 

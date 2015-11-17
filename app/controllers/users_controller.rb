@@ -9,14 +9,14 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if params[:user][:password] != params[:user][:retype_password]
+    unless passwords_match
       flash.now[:notice] = ["Passwords don't match. Try again"]
-      redirect_to sessions_url
+      render :new
       return
     end
 
     if @user.save
-      flash.now[:notice] = "Success!"
+      flash.now[:notice] = ["Success!"]
       render :index
     else
       flash.now[:notice] = @user.errors.full_messages
@@ -24,8 +24,14 @@ class UsersController < ApplicationController
     end
   end
 
-  def user_params
-    params.require(:user).permit(:username, :email, :password)
-  end
+  private
+
+    def user_params
+      params.require(:user).permit(:username, :email, :password)
+    end
+
+    def passwords_match
+      params[:user][:password] == params[:user][:retype_password]
+    end
 
 end

@@ -1,25 +1,35 @@
+<div class="create-account">
 <h2>Create Account</h2>
 
-<form action="<%= users_url %>" method="POST">
+  <form action="<%= users_url %>" method="POST">
 
-  <input
-  type="hidden"
-  name="authenticity_token"
-  value="<%= form_authenticity_token %>">
+    <%= auth_token %>
 
-<label>Choose a username
-  <input type="text" name="user[username]">
-</label>
+  <label class="username">
+    <p>Choose a username</p>
+    <input type="text" name="user[username]">
+  </label>
 
-<label>What's your email address?
-  <input type="text" name="user[email]">
-</label>
+  <label class="email">
+    <p>What's your email address?</p>
+    <input type="text" name="user[email]">
+  </label>
 
-<label class="password">
-  Choose a password
-  <input type="password" name="user[password]">
-  Re-type password
-  <input type="password" name="user[retype_password]">
-</label>
-<button>Sign Up</button>
-</form>
+  <div class="password-fields">
+    <label class="password">
+      <p>Choose a password</p>
+      <input type="password" name="user[password]">
+    </label>
+
+    <label class="retype-password">
+    <p>Re-type password</p>
+      <input type="password" name="user[retype_password]">
+    </label>
+  </div>
+
+  <div class="button">
+    <button>Create Account</button>
+  </div>
+
+  </form>
+<div>
