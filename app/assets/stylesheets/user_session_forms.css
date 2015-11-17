@@ -1,20 +1,22 @@
 .create-account {
   width: 400px;
   margin: 50px auto;
+  border-radius: 1px solid black;
 }
 
 h2 {
   text-align: right;
-  display: block;
   font-size: 14px;
   font-weight: normal;
+  display: block;
   color: lightgrey;
   background: black;
   padding: 10px;
 }
 
 .username input, .email input {
-  width: 398px;
+  width: 390px;
+  margin: 2px;
   /*border-radius: 5px solid grey;*/
 }
 
@@ -23,17 +25,17 @@ h2 {
 }
 .password {
   width: 190px;
-  display: block;
   float: left;
 }
  .re-type-password {
   width: 190px;
-  display: block;
   float: right;
 }
 
 .button {
   margin-top: 40px;
   float: right;
+  font-weight: 300;
+
 
 }

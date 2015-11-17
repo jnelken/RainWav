@@ -4,6 +4,7 @@ $(function () {
   var Router = ReactRouter.Router;
   var Route = ReactRouter.Route;
   var IndexRoute = ReactRouter.IndexRoute;
+
   var App = React.createClass({
     render: function () {
       return (
@@ -17,10 +18,10 @@ $(function () {
 
   var routes = (
     <Route path="/" component={App}>
-      <IndexRoute component={Stream}/>
-      <Route path="users/show" component={Profile}/>
+      <IndexRoute />    
     </Route>
   );
 
   React.render(<Router>{routes}</Router>, root);
 });
+      // <Route path="users/show" component={Profile}/>
