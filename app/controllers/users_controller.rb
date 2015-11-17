@@ -1,3 +1,5 @@
+    require 'byebug'
+
 class UsersController < ApplicationController
 
   def new
@@ -5,8 +7,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    require 'byebug'
     @user = User.new(user_params)
+
+    if params[:user][:password] != params[:user][:retype_password]
+      flash.now[:notice] = ["Passwords don't match. Try again"]
+      redirect_to sessions_url
+      return
+    end
 
     if @user.save
       flash.now[:notice] = "Success!"
@@ -18,7 +25,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :retype_password)
+    params.require(:user).permit(:username, :email, :password)
   end
 
 end

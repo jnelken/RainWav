@@ -7,8 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
-<%= flash[:notice] %>
+<% if flash[:notice] %>
+<ul class="flash-notice">
+  <% flash[:notice].each do |notice| %>
+    <li><%= notice %></li>
+    <% end %>
+</ul>
+<% end %>
+
 <%= yield %>
 
 </body>
