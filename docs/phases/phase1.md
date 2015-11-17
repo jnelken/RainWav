@@ -7,7 +7,7 @@
 
 ### Controllers
 * UsersController (create, new)
-* SessionsController (create, new, show, destroy)
+* SessionController (create, new, show, destroy)
 * Api::TracksController (index, destroy, create, new, update, edit, show)
 
 ### Views

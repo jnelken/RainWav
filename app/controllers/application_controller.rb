@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.find_by_session_token(session[:session_token])
   end
-  
+
   def signed_in?
     !!current_user
   end
@@ -19,11 +19,12 @@ class ApplicationController < ActionController::Base
     session[:session_token] = user.reset_session_token!
   end
 
-  # def sign_out
-  #   current_user.try(:reset_token!)
-  #   session[:session_token] = nil
-  # end
-  #
+  def sign_out
+    current_user.try(:reset_session_token!)
+    session[:session_token] = nil
+  end
+
+  # for Root:
   # def require_signed_in!
   #   redirect_to new_session_url unless signed_in?
   # end

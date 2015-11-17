@@ -1,9 +1,12 @@
 class User < ActiveRecord::Base
   # validates :username, :email, :password_digest :session_token, presence: true
-  validates :username, :email, :session_token, uniqueness: true
-  validates :password, length: { minimum: 8, allow_nil: true }
-  validates :username, :email, length: { minimum: 4 }
+  validates :email, :session_token, :password_digest, presence: true, uniqueness: true
+
+  #raise minimums for production
+  validates :password, length: { minimum: 4, allow_nil: true }
+  validates :email, length: { minimum: 4 }
   # validates :email, regex @
+  
   attr_reader :password
 
   after_initialize :ensure_session_token

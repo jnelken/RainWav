@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # root to: 'stream#index'
 
   resources :users, only: [:index, :new, :create]
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :session, only: [:new, :create, :destroy]
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
