@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require react
+//= require ReactRouter.min
 //= require flux
 //= require eventemitter
 //= require_tree .
