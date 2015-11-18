@@ -14,10 +14,18 @@ var TracksIndex = React.createClass({
   },
 
   render: function () {
+
+
     return (
-      <div>
-      {this.state.tracks}
-      </div>
+        <ul className="tracks-index">
+        {
+          this.state.tracks.map(function (track) {
+            return (
+                <TracksIndexItem track={track} />
+            );
+          })
+        }
+        </ul>
     );
   }
 });

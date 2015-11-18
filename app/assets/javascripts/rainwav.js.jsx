@@ -18,10 +18,13 @@ $(function () {
 
   var routes = (
     <Route path="/" component={App}>
-      <IndexRoute component={TracksIndex}/>    
+      <IndexRoute component={TracksIndex}/>
+        <Route path="users" component={UsersIndex} />
     </Route>
   );
 
   React.render(<Router>{routes}</Router>, root);
+
 });
-      // <Route path="users/show" component={Profile}/>
+      // <Route path="users/:id" component={Profile} />
+// <Route path="users/show" component={Profile}/>

@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 
     if @user
       sign_in(@user)
-      redirect_to users_url #change to stream
+      redirect_to 'root' #change to stream
     else
       flash.now[:notice] = ["Invalid username or password"]
       render :new

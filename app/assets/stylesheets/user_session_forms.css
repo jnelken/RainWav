@@ -14,17 +14,18 @@ h2 {
   padding: 10px;
 }
 
-.username input, .email input {
+.username input, .email input, .long-password input {
   width: 390px;
   margin: 2px;
   /*border-radius: 5px solid grey;*/
 }
 
 .password, .re-type-password {
-  width: 200px;
+  width: 400px;
 }
+
 .password {
-  width: 190px;
+  width: 180px;
   float: left;
 }
  .re-type-password {
@@ -36,6 +37,4 @@ h2 {
   margin-top: 40px;
   float: right;
   font-weight: 300;
-
-
 }
