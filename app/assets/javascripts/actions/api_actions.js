@@ -11,5 +11,12 @@ ApiActions = {
       actionType: UserConstants.USERS_RECEIVED,
       users: users
     });
+  },
+
+  receiveUser: function (user) {
+    AppDispatcher.dispatch({
+      actionType: UserConstants.USER_RECEIVED,
+      user: user
+    });
   }
 };

@@ -1,9 +1,20 @@
 var UsersDetail = React.createClass({
+
   getInitialState: function () {
-    return ({ user: ApiUtil.fetchUser(this.props.params.id) });
+    return ({ user: UserStore.all() });
   },
 
+ComponentDidMount: function () {
+  UserStore.addChangeListener(this._getUser);
+  ApiUtil.fetchUser(this.props.params.id);
+},
+
+_getUser: function () {
+  this.setState({ user: UserStore.all() });
+},
+
   render: function () {
+    debugger
     var user = this.state.user;
     return (
         <div className="users-detail">

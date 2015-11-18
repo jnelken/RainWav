@@ -22,9 +22,16 @@
     },
 
     dispatcherID: AppDispatcher.register(function (payload) {
-      if (payload.actionType === UserConstants.USERS_RECEIVED) {
-        resetUsers(payload.users);
-        UserStore.emit(CHANGE_EVENT);
+      switch (payload.actionType) {
+        case UserConstants.USERS_RECEIVED:
+
+          resetUsers(payload.users);
+          UserStore.emit(CHANGE_EVENT);
+          break;
+        case UserConstants.USER_RECEIVED:
+          resetUsers(payload.users);
+          UserStore.emit(CHANGE_EVENT);
+          break;
       }
     })
 

@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  # validates :username, :email, :password_digest :session_token, presence: true
   validates :email, :session_token, :password_digest, presence: true, uniqueness: true
 
   #raise minimums for production

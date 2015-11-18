@@ -27,7 +27,7 @@ ApiUtil = {
       type: 'GET',
       dataType: 'json',
       success: function (data) {
-        ApiActions.receiveAllUsers(data);
+        ApiActions.receiveUser(data);
       }
     });
   },
