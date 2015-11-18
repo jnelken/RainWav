@@ -23,13 +23,13 @@ ActiveRecord::Schema.define(version: 20151117165637) do
     t.string   "image_url"
     t.string   "description"
     t.integer  "plays"
-    t.integer  "artist_id",   null: false
+    t.integer  "user_id",     null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  add_index "tracks", ["artist_id"], name: "index_tracks_on_artist_id", using: :btree
   add_index "tracks", ["audio_url"], name: "index_tracks_on_audio_url", unique: true, using: :btree
+  add_index "tracks", ["user_id"], name: "index_tracks_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false

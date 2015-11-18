@@ -32,3 +32,4 @@ var UsersIndex = React.createClass({
     );
   }
 });
+                // <UsersDetail user={user} />

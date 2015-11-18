@@ -20,4 +20,15 @@ ApiUtil = {
       }
     });
   },
+
+  fetchUser: function (user_id) {
+    $.ajax({
+      url: 'api/users' + user_id,
+      type: 'GET',
+      dataType: 'json',
+      success: function (data) {
+        ApiActions.receiveAllUsers(data);
+      }
+    });
+  },
 };
