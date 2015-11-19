@@ -9,6 +9,8 @@ class Api::TracksController < ApplicationController
   end
 
   def show
-    @track = Track.find(params[:id])
+    @tracks = Track.all.find_by_user_id(params[:user_id])
+    @track ||= Track.find(params[:id])
+
   end
 end

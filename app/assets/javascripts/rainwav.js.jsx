@@ -20,13 +20,13 @@ $(function () {
     <Route path="/" component={App}>
       <IndexRoute component={TracksIndex}/>
       <Route path="users/:id" component={UsersDetail} />
-      <Route path=":username" component={UsersDetail} />
       <Route path="users" component={UsersIndex} />
+      <Route path=":username" component={UsersDetail} />
       <Route path="tracks/:id" component={TracksDetail} />
+      <Route path=":username/:title" component={TracksDetail} />
     </Route>
   );
 
   React.render(<Router>{routes}</Router>, root);
 
 });
-      // <Route path="/:username/:title" component={TracksDetail} />

@@ -7,7 +7,18 @@ var TracksDetail = React.createClass({
 
 componentDidMount: function () {
   TrackStore.addChangeListener(this._getTrack);
-  ApiUtil.fetchTrack(this.props.params.id);
+
+  // try to make this component read /id or username/title
+  if (this.props.params.id === undefined) {
+    var options = {
+      track: this.props.params.title,
+      artist: this.props.params.username
+    };
+
+    ApiUtil.fetchTrackUrl(options);
+  } else {
+    ApiUtil.fetchTrack(this.props.params.id);
+  }
 },
 
 _getTrack: function () {

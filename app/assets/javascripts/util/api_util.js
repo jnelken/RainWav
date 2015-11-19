@@ -21,6 +21,30 @@ ApiUtil = {
     });
   },
 
+  fetchTrackUrl: function (id, options) {
+    $.ajax({
+      url: 'api/tracks/' + id,
+      type: 'GET',
+      dataType: 'json',
+      data: options,
+      success: function (data) {
+        ApiActions.receiveTrack(data);
+      }
+    });
+  },
+
+  fetchUserTracks: function (userId) {
+    $.ajax({
+      url: 'api/tracks',
+      type: 'GET',
+      dataType: 'json',
+      data: { user_id: userId },
+      success: function (data) {
+        ApiActions.receiveUserTracks(data);
+      }
+    });
+  },
+
   fetchUsers: function () {
     $.ajax({
       url: 'api/users',
@@ -32,20 +56,9 @@ ApiUtil = {
     });
   },
 
-  fetchUser: function (user_id) {
+  fetchUser: function (userId) {
     $.ajax({
-      url: 'api/users/' + user_id,
-      type: 'GET',
-      dataType: 'json',
-      success: function (data) {
-        ApiActions.receiveUser(data);
-      }
-    });
-  },
-
-  fetchUsername: function (username) {
-    $.ajax({
-      url: 'api/users/' + username,
+      url: 'api/users/' + userId,
       type: 'GET',
       dataType: 'json',
       success: function (data) {

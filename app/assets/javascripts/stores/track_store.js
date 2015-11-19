@@ -3,6 +3,7 @@
   var CHANGE_EVENT = 'change';
   var _tracks = [];
   var _track;
+  var _userTracks = [];
   // = { track:
   //                 title: '',
   //                 audio_url: '',
@@ -17,6 +18,16 @@
     _track = track;
   };
 
+  // var setUserTracks = function (tracks) {
+  //   _userTracks = _tracks.map(function () {
+  //
+  //   });
+  //
+  //   if (tracks !== undefined) {
+  //     _userTracks = tracks;
+  //   }
+  // };
+
   root.TrackStore = $.extend({}, EventEmitter.prototype, {
 
     all: function () {
@@ -25,6 +36,19 @@
 
     show: function () {
       return _track;
+    },
+
+    // return all tracks matching user id, username
+    userTracks: function (id, username) {
+      _userTracks = _tracks.map(function (track) {
+        if (track.username === username) {
+          return track;
+        } else if (track.user_id === id) {
+          return track;
+        }
+      });
+      debugger
+      return _userTracks;
     },
 
     addChangeListener: function (callback) {

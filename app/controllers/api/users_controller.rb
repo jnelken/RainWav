@@ -1,10 +1,10 @@
 class Api::UsersController < ApplicationController
+
+  before_action :require_signed_in
+
   def index
     @users = User.all
     render 'index'
-  end
-
-  def create
   end
 
   def show

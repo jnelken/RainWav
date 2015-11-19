@@ -17,7 +17,8 @@ showDetail: function () {
               <source src={track.audio_url} type="audio/mp3" />
             </audio>
           </div>
-        <ReactRouter.Link to={"/users/" + track.user_id }>^ Go to track</ReactRouter.Link>
+        <ReactRouter.Link to={"/users/" + track.user_id }>^ Go to user</ReactRouter.Link>
+        <ReactRouter.Link to={"/tracks/" + track.id }>^ Go to track</ReactRouter.Link>
       </li>
     );
   }
