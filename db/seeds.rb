@@ -1,3 +1,7 @@
+User.destroy_all
+Track.destroy_all
+Genre.destroy_all
+
 User.create({
     email: "jnelks@gmail.com",
     password: "qwertyuiop",

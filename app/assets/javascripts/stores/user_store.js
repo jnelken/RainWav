@@ -2,15 +2,30 @@
 
   var CHANGE_EVENT = 'change';
   var _users = [];
+    var _user = { user: {
+                    'username': '',
+                    'email': '',
+                    'bio': '',
+                    'image_url': '',
+                    'cover_image_url': ''
+                }};
 
   var resetUsers = function (users) {
     _users = users;
+  };
+
+  var setUser = function (user) {
+    _user = user;
   };
 
   root.UserStore = $.extend({}, EventEmitter.prototype, {
 
     all: function () {
       return _users.slice(0);
+    },
+
+    show: function () {
+      return _user;
     },
 
     addChangeListener: function (callback) {
@@ -29,7 +44,8 @@
           UserStore.emit(CHANGE_EVENT);
           break;
         case UserConstants.USER_RECEIVED:
-          resetUsers(payload.users);
+
+          setUser(payload.user);
           UserStore.emit(CHANGE_EVENT);
           break;
       }

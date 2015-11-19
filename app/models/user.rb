@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
     @user
   end
 
+  def username=(val)
+    write_attribute(:username, val.downcase)
+  end
+  
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
