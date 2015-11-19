@@ -6,10 +6,13 @@ class Api::TracksController < ApplicationController
 
     # byebug
     unless params[:user_id].nil?
-    @tracks = @tracks.map do |track|
-       if track.user_id == params[:user_id].to_i
-         track
-       end
+      userTracks = []
+      @tracks.each do |track|
+         if track.user_id == params[:user_id].to_i
+           userTracks << track
+         end
+
+      @tracks = userTracks
       end
 
       @tracks

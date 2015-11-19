@@ -15,7 +15,7 @@ var UsersIndex = React.createClass({
 
   render: function () {
 
-
+    debugger
     return (
         <ul className="users-index">
         {
