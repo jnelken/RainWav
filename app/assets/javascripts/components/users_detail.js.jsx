@@ -2,8 +2,8 @@ var UsersDetail = React.createClass({
 
   getInitialState: function () {
     return ({
-      user: UserStore.show()
-      // tracks:
+      user: UserStore.show(),
+      tracks: TrackStore.userTracks()
     });
   },
 
@@ -31,7 +31,11 @@ _getUser: function () {
         <div className="users-detail">
           <header className="users-detail-header"><h2>Profile: {user.username}</h2></header>
           <p>{user.bio}</p>
-          {this.state.tracks}
+          <ul>
+            {this.state.tracks.map(function (track) {
+              return <TracksIndexItem track={track} />;
+            })}
+          </ul>
         </div>
     );
   }
