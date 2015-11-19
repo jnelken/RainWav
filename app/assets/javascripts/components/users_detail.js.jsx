@@ -9,23 +9,26 @@ var UsersDetail = React.createClass({
 
 componentDidMount: function () {
   UserStore.addChangeListener(this._getUser);
-
+  TrackStore.addChangeListener(this._getUserTracks);
+  
   if (this.props.params.username !== undefined) {
     ApiUtil.fetchUser(this.props.params.username);
   } else {
     ApiUtil.fetchUser(this.props.params.id);
     ApiUtil.fetchUserTracks(this.props.params.id);
   }
-
-
 },
 
 _getUser: function () {
   this.setState({ user: UserStore.show() });
+  this.setState({ tracks: TrackStore.userTracks() });
+},
+
+_getUserTracks: function () {
+  this.setState({ tracks: TrackStore.userTracks() });
 },
 
   render: function () {
-    console.log(this.state.user);
     var user = this.state.user;
     return (
         <div className="users-detail">
