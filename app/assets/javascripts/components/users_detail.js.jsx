@@ -14,7 +14,7 @@ _getUser: function () {
 },
 
   render: function () {
-    debugger
+    //debugger... the store is not picking up any users
     var user = this.state.user;
     return (
         <div className="users-detail">

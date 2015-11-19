@@ -11,18 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151117165637) do
+ActiveRecord::Schema.define(version: 20151119031323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "genres", force: :cascade do |t|
+    t.string   "genre",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "genres", ["genre"], name: "index_genres_on_genre", unique: true, using: :btree
+
   create_table "tracks", force: :cascade do |t|
     t.string   "title",       null: false
-    t.string   "genre",       null: false
     t.string   "audio_url",   null: false
-    t.string   "image_url"
+    t.string   "image"
     t.string   "description"
     t.integer  "plays"
+    t.integer  "genre_id",    null: false
     t.integer  "user_id",     null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false

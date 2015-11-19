@@ -28,7 +28,6 @@ column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 genre       | string    | not null, indexed (unique)
-track_id    | integer   | not null
 
 ## Tracks
 column name | data type | details
