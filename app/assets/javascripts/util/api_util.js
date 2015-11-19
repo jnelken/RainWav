@@ -51,6 +51,7 @@ ApiUtil = {
       type: 'GET',
       dataType: 'json',
       success: function (data) {
+        debugger
         ApiActions.receiveAllUsers(data);
       }
     });
