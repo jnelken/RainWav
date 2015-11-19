@@ -6,6 +6,13 @@ ApiActions = {
     });
   },
 
+  receiveTrack: function (track) {
+    AppDispatcher.dispatch({
+      actionType: TrackConstants.TRACK_RECEIVED,
+      track: track
+    });
+  },
+
   receiveAllUsers: function (users) {
     AppDispatcher.dispatch({
       actionType: UserConstants.USERS_RECEIVED,

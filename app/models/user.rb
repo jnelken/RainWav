@@ -4,9 +4,8 @@ class User < ActiveRecord::Base
   #raise minimums for production
   validates :password, length: { minimum: 4, allow_nil: true }
   validates :email, length: { minimum: 4 }
-  # validates :email, regex @
 
-  has_many :tracks
+  has_many :tracks, dependent: :destroy
 
   attr_reader :password
 
@@ -21,7 +20,7 @@ class User < ActiveRecord::Base
   def username=(val)
     write_attribute(:username, val.downcase)
   end
-  
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)

@@ -10,6 +10,17 @@ ApiUtil = {
     });
   },
 
+  fetchTrack: function (id) {
+    $.ajax({
+      url: 'api/tracks/' + id,
+      type: 'GET',
+      dataType: 'json',
+      success: function (data) {
+        ApiActions.receiveTrack(data);
+      }
+    });
+  },
+
   fetchUsers: function () {
     $.ajax({
       url: 'api/users',
