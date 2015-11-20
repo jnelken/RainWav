@@ -28,12 +28,10 @@ body button {
 
 .tracks-index {
   padding: 0px 30px;
-
 }
 
 #app {
   width: 1180px;
-  /*margin: 0 35,000px;*/
-  margin: 0 auto;
-  /*background: grey;*/
+  margin: 0 35,000px;
+  /*margin: 0 auto;*/
 }

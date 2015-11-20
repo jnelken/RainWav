@@ -13,15 +13,18 @@
   width: 1120px;
   background: #333333;
   li {
-    background: #333444;
-    font-size: 14px;
+    // background: #333444; nice blue!!!
     color: #ccc;
     float: left;
-    display: block;
-    padding: 10px;
-    height: 26px;
-    width: 100px;
+
+    a {
     border-right: 1px solid #111;
+      display: block;
+      font-size: 14px;
+      padding: 14px;
+      height: 18px;
+      width: 100px;
+    }
 
   }
 }
@@ -35,13 +38,14 @@ li.logo {
 }
 li.logo > a {
   background: url(https://a-v2.sndcdn.com/assets/images/header/cloud-e365a4.png) no-repeat 12px 11px;
-      display: block;
-      height: 46px;
-      width: 69px;
+  border-right: none;
+  display: block;
+  width:40px;
 }
 
-.navbar > li:hover {
+.navbar li:hover {
   color: #fff;
+  background: #111111;
 }
 
 .navbar-left li {
