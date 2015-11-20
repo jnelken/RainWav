@@ -23,9 +23,17 @@ body button {
 }
 
 #content {
+  background: #F2F2F2;
+}
+
+.tracks-index {
+  padding: 0px 30px;
+
+}
+
+#app {
   width: 1180px;
-  padding: 46px 30px;
-  margin: 39,500px;
-  background: black;
-  display: block;
+  /*margin: 0 35,000px;*/
+  margin: 0 auto;
+  /*background: grey;*/
 }

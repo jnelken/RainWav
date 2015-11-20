@@ -2,20 +2,12 @@
 <html>
 <head>
   <title>RainWav</title>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-  <%= render partial: 'navbar' %>
-<!-- <% if signed_in? %>
-  <%= current_user.username %>
-  <%= button_to "Sign Out", session_url, method: :delete %>
-<% else %>
-  <%= link_to "Create Account", new_user_url %>
-  <%= link_to "Sign In", new_session_url %>
-<% end %> -->
 
 <% if flash[:notice] %>
 <ul class="flash-notice">

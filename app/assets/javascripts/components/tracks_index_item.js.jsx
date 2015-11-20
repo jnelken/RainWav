@@ -9,8 +9,9 @@ showDetail: function () {
     var track = this.props.track;
     return (
       <li className="tracks-index-item">
-        <h2>{track.title}</h2>
-          <button className="genre">#{track.genre}</button>
+        <div className="play-button"></div>
+        <h3>{track.title}</h3>
+          <button className="genre">#{track.genre_id}</button>
           <div>
             <audio controls="controls">
               Your browser does not support the <code>audio</code> element.

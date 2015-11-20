@@ -1,11 +1,26 @@
 .tracks-index-item {
   width: 819px;
   height: 163px;
-  background: lightgrey;
+  background: white;
 }
 
-.tracks-index-item h2 {
+.tracks-index-item h3 {
+  display: inline-block;
+  font-size: 16px;
   text-align: left;
+}
+
+.play-button {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  margin: 5px;
+  line-height: 42px;
+  background-color: #f50;
+  border-radius: 50%;
+}
+.play-button::before {
+
 }
 
 .tracks-index-item .genre {

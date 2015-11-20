@@ -1,12 +1,28 @@
-<div class="navbar-container">
+<div class="navbar-container group">
   <ul class="navbar group">
-    <li class="logo">logo</li>
-    <li>Home</li>
-    <li class="searchbar">Search</li>
-    <li>Upload</li>
+    <div class="navbar-left">
+    <li class="logo">
+      <a href="#"><img src=" <%= asset_path("logo.png")%>"</a>
+      <a href="#">logo</a>
+    </li>
+
+    <li>
+      Home
+    </li>
+  </div>
+
+    <li class="searchbar">
+      <a href="#">Search</a>
+    </li>
+
+    <div class="navbar-right">
+    <li>
+      <a href="#">Upload</a>
+    </li>
     <!-- <li>
       <div class="avatar">
       <div class="username">
     </li> -->
+  </div>
   </ul>
 </div>

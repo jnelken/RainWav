@@ -1,25 +1,52 @@
-  .navbar > li {
-    position: relative;
-    display: block;
-    float: left;
-    background: #333333;
-    padding: 15px 40px;
-    color: #ccc;
-    border-right: 1px solid #111;
-  }
-  .searchbar {
-    border-image-repeat: stretch;
-    width: 30%;
-    text-align: center;
-  }
-  .navbar > li:hover {
-    color: #fff;
-  }
-
 .navbar-container {
-  width: 100%;
+  background: #333333;
   display: block;
   position: fixed;
-  // overflow: hidden;
+  width: 100%;
   z-index: 1;
+  text-align: center;
+  height: 46px;
+  padding: 0px 30px;
+}
+
+.navbar {
+  width: 1120px;
+  background: #333333;
+  li {
+    background: #333444;
+    font-size: 14px;
+    color: #ccc;
+    float: left;
+    display: block;
+    padding: 10px;
+    height: 26px;
+    width: 100px;
+    border-right: 1px solid #111;
+
+  }
+}
+
+li.logo {
+    padding: 0px;
+    width: 69px;
+    height: 46px;
+    background-image: linear-gradient(rgb(255, 119, 0), rgb(255, 51, 0));
+
+}
+li.logo > a {
+  background: url(https://a-v2.sndcdn.com/assets/images/header/cloud-e365a4.png) no-repeat 12px 11px;
+      display: block;
+      height: 46px;
+      width: 69px;
+}
+
+.navbar > li:hover {
+  color: #fff;
+}
+
+.navbar-left li {
+  float:left;
+}
+.navbar-right li {
+  float:right;
 }

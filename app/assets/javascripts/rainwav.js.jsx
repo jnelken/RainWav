@@ -8,8 +8,8 @@ $(function () {
   var App = React.createClass({
     render: function () {
       return (
-        <div>
-          <header><h1>RainWav</h1></header>
+        <div id="app">
+          <Nav />
           {this.props.children}
         </div>
       );
@@ -18,7 +18,7 @@ $(function () {
 
   var routes = (
     <Route path="/" component={App}>
-      <IndexRoute component={TracksIndex}/>
+      <IndexRoute component={TracksIndex} />
       <Route path="users" component={UsersIndex} />
       <Route path="users/:id" component={UsersDetail} />
       <Route path=":username" component={UsersDetail} />
