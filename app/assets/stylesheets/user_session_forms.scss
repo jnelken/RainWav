@@ -1,0 +1,45 @@
+.create-account {
+  width: 400px;
+  margin: 50px auto;
+}
+
+.form-tabs {
+  background: #333;
+  display: block;
+
+}
+
+h2 {
+  text-align: right;
+  font-size: 14px;
+  font-weight: normal;
+  display: block;
+  float: right;
+  color: #cccccc;
+  background: #333;
+  padding: 10px;
+  margin-bottom: 8px;
+}
+
+p, input {
+  margin-bottom: 10px;
+  margin: auto 5px;
+  border-radius: 3px;
+  padding: 2.5px;
+}
+
+.email input, .long-password input {
+  width: 383px;
+}
+
+.password-fields {
+  float: left;
+}
+.choose-password input, .retype-password input {
+  width: 183px;
+}
+
+.button {
+  margin: 15px 5px;
+  float: right;
+}
