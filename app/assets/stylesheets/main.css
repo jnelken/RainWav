@@ -21,3 +21,11 @@ body button {
   border-radius: 5px;
   border-style: none;
 }
+
+#content {
+  width: 1180px;
+  padding: 46px 30px;
+  margin: 39,500px;
+  background: black;
+  display: block;
+}

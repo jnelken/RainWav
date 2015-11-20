@@ -1,0 +1,25 @@
+  .navbar > li {
+    position: relative;
+    display: block;
+    float: left;
+    background: #333333;
+    padding: 15px 40px;
+    color: #ccc;
+    border-right: 1px solid #111;
+  }
+  .searchbar {
+    border-image-repeat: stretch;
+    width: 30%;
+    text-align: center;
+  }
+  .navbar > li:hover {
+    color: #fff;
+  }
+
+.navbar-container {
+  width: 100%;
+  display: block;
+  position: fixed;
+  // overflow: hidden;
+  z-index: 1;
+}

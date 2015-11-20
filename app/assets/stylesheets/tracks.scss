@@ -1,3 +1,8 @@
 // Place all the styles related to the Tracks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+ul.tracks-index {
+  padding: 30px 30px 0 0;
+  border-right: 1px solid rgb(242, 242, 242);
+}
