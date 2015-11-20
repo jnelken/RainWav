@@ -67,4 +67,16 @@ ApiUtil = {
       }
     });
   },
+
+  login: function (credentials) {
+    debugger
+    $.ajax({
+      url: 'api/sessions/' + userId,
+      type: 'GET',
+      dataType: 'json',
+      success: function (data) {
+        ApiActions.receiveUser(data);
+      }
+    });
+  }
 };

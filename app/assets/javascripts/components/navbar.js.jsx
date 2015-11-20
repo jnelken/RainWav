@@ -34,7 +34,7 @@ var Nav = React.createClass({
           <li className="nav-tab">
             <a href="#">User</a>
           </li>
-          
+
           <li className="nav-tab">
             <a href="#">Upload</a>
           </li>

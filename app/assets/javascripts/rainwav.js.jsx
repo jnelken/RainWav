@@ -6,6 +6,8 @@ $(function () {
   var IndexRoute = ReactRouter.IndexRoute;
 
   var App = React.createClass({
+
+
     render: function () {
       return (
         <div id="app">
@@ -15,10 +17,10 @@ $(function () {
       );
     }
   });
-
   var routes = (
     <Route path="/" component={App}>
       <IndexRoute component={TracksIndex} />
+      <Route path="login" component={Login} />
       <Route path="users" component={UsersIndex} />
       <Route path="users/:id" component={UsersDetail} />
       <Route path=":username" component={UsersDetail} />
@@ -26,7 +28,5 @@ $(function () {
       <Route path=":username/:title" component={TracksDetail} />
     </Route>
   );
-
   React.render(<Router>{routes}</Router>, root);
-
 });
