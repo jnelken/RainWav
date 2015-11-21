@@ -22,10 +22,10 @@ var Nav = React.createClass({
 
   render: function () {
     var username = "login";
+    console.log(username);
     if (this.state.currentUser) {
       username = this.state.currentUser.username;
     }
-    console.log(username);
     return (
       <div className="navbar-container group">
         <ul className="navbar group">

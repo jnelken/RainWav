@@ -1,13 +1,18 @@
-.user-form {
-  width: 400px;
-  margin: 50px auto;
+.login {
+  border: 1px solid black;
+
 }
 
 .form-tabs {
   background: #333333;
   display: block;
   padding: 10px;
+}
 
+.user-form {
+  width: 400px;
+  margin: 0 auto;
+  padding: 150px;
 }
 
 h2 {
@@ -29,7 +34,7 @@ p, input {
   padding: 2.5px;
 }
 
-.email input, .long-password input {
+.username input, .email input, .long-password input {
   width: 383px;
 }
 
