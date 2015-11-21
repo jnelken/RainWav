@@ -25,8 +25,8 @@ $(function () {
       this.setState({currentUser: CurrentUserStore.currentUser()});
     },
 
-    render: function () {
       // if (!this.state.currentUser) { return ( <img className="spinner" src={assets.spinner} /> ); }
+    render: function () {
       return (
         <div id="app">
           <Nav />

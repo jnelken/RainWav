@@ -6,6 +6,7 @@ showDetail: function () {
 },
 
   render: function () {
+
     var track = this.props.track;
     return (
       <li className="tracks-index-item">
