@@ -40,6 +40,7 @@ $(function () {
     <Route path="/" component={App}>
       <IndexRoute component={TracksIndex} />
       <Route path="login" component={Login} />
+      <Route path="createaccount" component={CreateAcc} />
       <Route path="users" component={UsersIndex} />
       <Route path="users/:id" component={UsersDetail} />
       <Route path=":username" component={UsersDetail} />
