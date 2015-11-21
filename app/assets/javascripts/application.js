@@ -17,4 +17,5 @@
 //= require ReactRouter.min
 //= require flux
 //= require eventemitter
+//= require jquery.serializeJSON
 //= require_tree .

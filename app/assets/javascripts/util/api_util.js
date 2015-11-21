@@ -68,14 +68,41 @@ ApiUtil = {
     });
   },
 
-  login: function (credentials) {
-    debugger
+  // currentUser
+
+  login: function (credentials, success) {
     $.ajax({
-      url: 'api/sessions/' + userId,
+      url: '/api/session',
+      type: 'POST',
+      dataType: 'json',
+      data: credentials,
+      success: function (currentUser) {
+        ApiActions.receiveCurrentUser(currentUser);
+        success && success();
+      }
+    });
+  },
+
+  logout: function () {
+    $.ajax({
+      url: '/api/session',
+      type: 'DELETE',
+      dataType: 'json',
+      success: function () {
+        console.log("logged out!");
+        CurrentUserActions.receiveCurrentUser({});
+      }
+    });
+  },
+
+  fetchCurrentUser: function () {
+    $.ajax({
+      url: '/api/session',
       type: 'GET',
       dataType: 'json',
-      success: function (data) {
-        ApiActions.receiveUser(data);
+      success: function (currentUser) {
+            debugger
+        CurrentUserActions.receiveCurrentUser(currentUser);
       }
     });
   }

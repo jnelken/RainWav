@@ -32,5 +32,12 @@ ApiActions = {
       actionType: UserConstants.USER_RECEIVED,
       user: user
     });
+  },
+
+  receiveCurrentUser: function (currentUser) {
+    AppDispatcher.dispatch({
+      actionType: CurrentUserConstants.RECEIVE_CURRENT_USER,
+      currentUser: currentUser
+    });
   }
 };

@@ -9,7 +9,10 @@ showDetail: function () {
     var track = this.props.track;
     return (
       <li className="tracks-index-item">
-        <div className="play-button"></div>
+        <div className="play-button">
+          <img src={assets.play} />
+        </div>
+        <h3 className="artist">Thissongissick.com</h3>
         <h3>{track.title}</h3>
           <button className="genre">#{track.genre_id}</button>
           <div>
@@ -18,8 +21,8 @@ showDetail: function () {
               <source src={track.audio_url} type="audio/mp3" />
             </audio>
           </div>
-        <ReactRouter.Link to={"/users/" + track.user_id }>^ Go to user</ReactRouter.Link>
-        <ReactRouter.Link to={"/tracks/" + track.id }>^ Go to track</ReactRouter.Link>
+        <ReactRouter.Link className="artist" to={"/users/" + track.user_id }>^ Go to user</ReactRouter.Link>
+        <ReactRouter.Link className="artist" to={"/tracks/" + track.id }>^ Go to track </ReactRouter.Link>
       </li>
     );
   }

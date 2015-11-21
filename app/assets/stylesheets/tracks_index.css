@@ -1,0 +1,35 @@
+/*// Place all the styles related to the Tracks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/*/
+
+ul.tracks-index {
+  width: 840px;
+  padding-top: 75px;
+  padding-right: 20px;
+  padding-left: 30px;
+  margin-right: 320px;
+  margin-left: 30px;
+  border-right: 1px solid rgb(242, 242, 242);
+  background: white;
+}
+
+ul.tracks-index h1 {
+  color: #333;
+  transition: color 0.5s;
+  font-size: 24px;
+  line-height: 38.4px;
+  border-bottom: 1px solid #F2F2F2;
+  margin-bottom: 10px;
+}
+
+ul.tracks-index:hover h1 {
+  color: #f50;
+  transition: color 0.3s;
+}
+
+ul.tracks-index p {
+  padding: 20px 0;
+  font-weight: 100;
+  color: #999;
+  font-size: 18px;
+}

@@ -1,4 +1,4 @@
-html body {
+html body * {
   font-family: "Interstate", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Garuda, Verdana, Tahoma, sans-serif;
 }
 
@@ -24,10 +24,6 @@ body button {
 
 #content {
   background: #F2F2F2;
-}
-
-.tracks-index {
-  padding: 0px 30px;
 }
 
 #app {

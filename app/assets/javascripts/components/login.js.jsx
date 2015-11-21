@@ -1,21 +1,14 @@
 var Login = React.createClass({
-
-  // handleSubmit: function (e) {
-  //   var credentials = e.currentTarget.seralizeJSON();
-  //   CurrentUserStore.addChangeHandler();
-  //   ApiUtil.createSession(credentials);
-  // },
-
   mixins: [ReactRouter.History],
 
-handleSubmit: function (e) {
-    e.preventDefault();
-    debugger
-    var credentials = $(e.currentTarget).serializeJSON()
-    ApiUtil.login(credentials, function () {
-      this.history.pushState(null, "#");
-    }.bind(this));
-  },
+  handleSubmit: function (e) {
+      e.preventDefault();
+
+      var credentials = $(e.currentTarget).serializeJSON();
+      ApiUtil.login(credentials, function () {
+        this.history.pushState(null, "#");
+      }.bind(this));
+    },
 
   render: function () {
 

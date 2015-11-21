@@ -18,6 +18,10 @@ var TracksIndex = React.createClass({
 
     return (
         <ul className="tracks-index">
+          <li>
+            <h1>Stream</h1>
+            <p>Hear the latest posts from the people you're following</p>
+          </li>
         {
           this.state.tracks.map(function (track) {
             return (

@@ -7,8 +7,27 @@ $(function () {
 
   var App = React.createClass({
 
+    getInitialState: function () {
+      return { currentUser: null };
+    },
+
+    // mixins: [ReactRouter.History],
+
+    componentWillMount: function () {
+      CurrentUserStore.addChangeHandler(this._ensureLoggedIn);
+      ApiUtil.fetchCurrentUser();
+    },
+
+    _ensureLoggedIn: function () {
+      if (!CurrentUserStore.isLoggedIn()) {
+        this.history.pushState(null, "/login");
+      }
+
+      this.setState({currentUser: CurrentUserStore.currentUser()});
+    },
 
     render: function () {
+      if (!this.state.currentUser) { return ( <p>loading...</p> ); }
       return (
         <div id="app">
           <Nav />
@@ -17,6 +36,7 @@ $(function () {
       );
     }
   });
+
   var routes = (
     <Route path="/" component={App}>
       <IndexRoute component={TracksIndex} />
