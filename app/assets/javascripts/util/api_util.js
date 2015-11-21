@@ -89,7 +89,6 @@ ApiUtil = {
       type: 'DELETE',
       dataType: 'json',
       success: function () {
-        console.log("logged out!");
         CurrentUserActions.receiveCurrentUser({});
       }
     });
@@ -101,8 +100,7 @@ ApiUtil = {
       type: 'GET',
       dataType: 'json',
       success: function (currentUser) {
-            debugger
-        CurrentUserActions.receiveCurrentUser(currentUser);
+        ApiActions.receiveCurrentUser(currentUser);
       }
     });
   }

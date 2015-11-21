@@ -1,18 +1,15 @@
 var Nav = React.createClass({
 
+  getInitialState: function () {
+    return {currentUser: CurrentUserStore.currentUser()};
+  },
   componentDidMount: function () {
     UserStore.addChangeListener(this._changeUser);
-    // ApiUtil.fetchUser(this.props.params.id);
   },
-
   _changeUser: function () {
-    this.setState({ user: UserStore.show() });
+    this.setState({ currentUser: CurrentUserStore.currentUser() });
   },
-
   render: function () {
-    //
-    // if (current_user)
-
     return (
       <div className="navbar-container group">
         <ul className="navbar group">
@@ -32,7 +29,7 @@ var Nav = React.createClass({
 
           <div className="navbar-right">
           <li className="nav-tab">
-            <a href="#">User</a>
+            <a href={'#/' + this.state.currentUser.username}>{this.state.currentUser.username}</a>
           </li>
 
           <li className="nav-tab">

@@ -1,16 +1,14 @@
 class Api::SessionController < ApplicationController
 
   require 'BYEBUG'
-  def show
-    sleep 2
-    byebug
+  def index
     unless current_user
       render json: {}
       return
     end
 
     @user = current_user
-    render "api/users/show"
+    render json: @user
   end
 
   def create
