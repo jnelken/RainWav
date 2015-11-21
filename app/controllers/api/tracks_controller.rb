@@ -1,5 +1,5 @@
 class Api::TracksController < ApplicationController
-  require 'byebug'
+
   def index
 
     @tracks = Track.all

@@ -1,6 +1,5 @@
 class Api::SessionController < ApplicationController
 
-  require 'BYEBUG'
   def index
     unless current_user
       render json: {}
