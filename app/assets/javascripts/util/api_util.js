@@ -85,11 +85,11 @@ ApiUtil = {
 
   logout: function () {
     $.ajax({
-      url: '/api/session',
+      url: '/api/session' + "/0",
       type: 'DELETE',
       dataType: 'json',
       success: function () {
-        CurrentUserActions.receiveCurrentUser({});
+        ApiActions.receiveCurrentUser({});
       }
     });
   },

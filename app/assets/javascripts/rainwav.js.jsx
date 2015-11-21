@@ -6,15 +6,14 @@ $(function () {
   var IndexRoute = ReactRouter.IndexRoute;
 
   var App = React.createClass({
+    mixins: [ReactRouter.History],
 
     getInitialState: function () {
       return { currentUser: null };
     },
 
-    // mixins: [ReactRouter.History],
-
     componentWillMount: function () {
-      CurrentUserStore.addChangeHandler(this._ensureLoggedIn);
+      CurrentUserStore.addChangeListener(this._ensureLoggedIn);
       ApiUtil.fetchCurrentUser();
     },
 
@@ -27,7 +26,7 @@ $(function () {
     },
 
     render: function () {
-      if (!this.state.currentUser) { return ( <p>loading...</p> ); }
+      // if (!this.state.currentUser) { return ( <img className="spinner" src={assets.spinner} /> ); }
       return (
         <div id="app">
           <Nav />

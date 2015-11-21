@@ -5,21 +5,12 @@ var Login = React.createClass({
       e.preventDefault();
 
       var credentials = $(e.currentTarget).serializeJSON();
-      ApiUtil.login(credentials, function () {
-        this.history.pushState(null, "#");
-      }.bind(this));
+        ApiUtil.login(credentials, function () {
+          this.history.pushState(null, "#");
+        }.bind(this));
     },
 
   render: function () {
-
-        // <div className="form-tabs group">
-        //   <a href="<%= new_session_url %>">
-        //     <h2>Sign in</h2>
-        //   </a>
-        //   <a href="<%= new_user_url %>">
-        //     <h2>Create account</h2>
-        //   </a>
-        // </div>
 
     return (
       <div className="login">

@@ -24,10 +24,16 @@ body button {
 
 #content {
   background: #F2F2F2;
+  height: 600px;
 }
 
 #app {
   width: 1180px;
   margin: 0 35,000px;
   /*margin: 0 auto;*/
+}
+
+.spinner {
+  width: 50px;
+  margin: 50px auto;
 }

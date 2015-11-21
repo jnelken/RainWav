@@ -1,15 +1,28 @@
 var Nav = React.createClass({
+  mixins: [ReactRouter.History],
 
   getInitialState: function () {
-    return {currentUser: CurrentUserStore.currentUser()};
+    return {currentUser: { username: "login"}};
   },
   componentDidMount: function () {
-    UserStore.addChangeListener(this._changeUser);
+    CurrentUserStore.addChangeListener(this._changeUser);
   },
   _changeUser: function () {
     this.setState({ currentUser: CurrentUserStore.currentUser() });
   },
+
+  handleLogout: function () {
+    ApiUtil.logout();
+    this.history.pushState(null, "#/login");
+  },
+
   render: function () {
+    var username = "login";
+    if (this.state.currentUser) {
+      username = this.state.currentUser.username;
+      // return (<div>Logged out. <a href="#/login">Log In</a></div>);
+    }
+    console.log(username);
     return (
       <div className="navbar-container group">
         <ul className="navbar group">
@@ -29,11 +42,19 @@ var Nav = React.createClass({
 
           <div className="navbar-right">
           <li className="nav-tab">
-            <a href={'#/' + this.state.currentUser.username}>{this.state.currentUser.username}</a>
+            <a href={'#/' + username}>{username.capitalize()}</a>
+          </li>
+
+          <li className="nav-tab" onClick={this.handleLogout}>
+            <a href="#">Logout</a>
           </li>
 
           <li className="nav-tab">
             <a href="#">Upload</a>
+          </li>
+
+          <li className="nav-tab more" onClick={this.handleLogout}>
+            <a href="#"></a>
           </li>
         </div>
         </ul>
