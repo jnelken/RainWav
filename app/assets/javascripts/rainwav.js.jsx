@@ -37,9 +37,7 @@ $(function () {
       return (
         <div id="app">
           <Nav currentUser={this.state.currentUser} />
-        <div id="main">
           {this.props.children}
-        </div>
         </div>
       );
     }

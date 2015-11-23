@@ -1,8 +1,10 @@
 .navbar-container {
+  color: #ccc;
   background: #333333;
   position: fixed;
   width: 100%;
   z-index: 1;
+  // overflow: scroll;
 }
 
 .navbar {
@@ -12,7 +14,6 @@
   background: #333333;
 
   li {
-    color: #ccc;
     float: left;
 
     a {

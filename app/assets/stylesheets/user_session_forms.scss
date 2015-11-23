@@ -1,48 +1,46 @@
 .login {
+  width: 400px;
+  padding: 20px;
+  display: block;
+  margin: 0px auto;
 }
 
 .form-tabs {
-  background: #333333;
-  display: block;
-  padding: 10px;
+  margin-top: 80px;
+  h2 {
+    text-align: right;
+    font-size: 14px;
+    display: block;
+    float: right;
+    padding: 10px;
+    background: #333333;
+    color: #ccc;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
 }
 
 .user-form {
   width: 400px;
   margin: 0 auto;
-  padding-top: 150px;
-}
 
-h2 {
-  text-align: right;
-  font-size: 14px;
-  font-weight: normal;
-  display: block;
-  float: right;
-  color: #cccccc;
-  background: #333;
-  padding: 10px;
-  margin-bottom: 8px;
-}
+  p, input {
+    padding: 5px;
+    margin: 0 5px;
+  }
 
-p, input {
-  margin-bottom: 10px;
-  margin: auto 5px;
-  padding: 2.5px;
-}
+  .username input, .email input, .long-password input {
+    width: 383px;
+  }
+  .choose-password input, .retype-password input {
+    width: 183px;
+  }
 
-.username input, .email input, .long-password input {
-  width: 383px;
-}
-
-.password-fields {
-  float: left;
-}
-.choose-password input, .retype-password input {
-  width: 183px;
-}
-
-.button {
-  margin: 15px 5px;
-  float: right;
+  .password-fields {
+    float: left;
+  }
+  .button {
+    margin: 15px 5px;
+    float: right;
+  }
 }

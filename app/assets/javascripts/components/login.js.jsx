@@ -11,21 +11,20 @@ var Login = React.createClass({
     },
 
   render: function () {
-
     return (
-      <div className="login">
+      <div className="login group">
+
 
         <div className="form-tabs group">
-          <a href="login">
+          <a href="#/login">
             <h2>Sign in</h2>
           </a>
 
-          <a href="createaccount">
+          <a href="#/createaccount">
             <h2>Create account</h2>
           </a>
         </div>
-
-        <div className="user-form">
+        <div className="user-form group">
           <form onSubmit={this.handleSubmit}>
 
             <label className="email">
