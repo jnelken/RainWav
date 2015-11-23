@@ -1,24 +1,21 @@
 class Api::TracksController < ApplicationController
 
+  require 'byebug'
   def index
-
     @tracks = Track.all
 
-    # byebug
-    unless params[:user_id].nil?
+    if params[:user_id]
       userTracks = []
       @tracks.each do |track|
          if track.user_id == params[:user_id].to_i
            userTracks << track
          end
-
-      @tracks = userTracks
       end
 
-      @tracks
+      @tracks = userTracks
     end
 
-    # byebug
+    @tracks
   end
 
   def new

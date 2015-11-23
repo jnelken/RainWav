@@ -13,6 +13,10 @@ var TracksIndex = React.createClass({
     this.setState({ tracks: TrackStore.all() });
   },
 
+  componentWillUnmount: function () {
+    TrackStore.removeChangeListener(this._onChange);
+  },
+
   render: function () {
 
 
@@ -25,7 +29,7 @@ var TracksIndex = React.createClass({
         {
           this.state.tracks.map(function (track) {
             return (
-                <TracksIndexItem track={track} />
+                <TracksIndexItem key={track.title} track={track} />
             );
           })
         }

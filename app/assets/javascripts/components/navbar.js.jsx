@@ -7,14 +7,10 @@ var Nav = React.createClass({
   },
 
   render: function () {
-    console.log("render");
-
     var username = "login";
     if (this.props.currentUser.username) {
       username = this.props.currentUser.username;
     }
-
-    console.log(username);
     return (
       <div className="navbar-container">
         <ul className="navbar group">
@@ -38,7 +34,7 @@ var Nav = React.createClass({
             </li>
 
             <li className="nav-tab">
-              <a href={'#/' + username}>{username}</a>
+              <a href={'#/' + username}>{username.capitalize()}</a>
             </li>
 
             <li className="more" onClick={this.handleLogout}>

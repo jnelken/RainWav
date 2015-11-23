@@ -3,13 +3,11 @@
   var CHANGE_EVENT = 'change';
   var _users = [];
   var _user = {
-    user: {
       'username': '',
       'email': '',
       'bio': '',
       'image_url': '',
       'cover_image_url': ''
-    }
   };
 
   var resetUsers = function (users) {

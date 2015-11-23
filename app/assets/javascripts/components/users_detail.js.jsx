@@ -11,33 +11,37 @@ componentDidMount: function () {
   UserStore.addChangeListener(this._getUser);
   TrackStore.addChangeListener(this._getUserTracks);
 
-  if (this.props.params.username !== undefined) {
-    ApiUtil.fetchUser(this.props.params.username);
+  var u = this.props.params;
+  if (u.username === undefined) {
+    ApiUtil.fetchUser(u.id);
   } else {
-    ApiUtil.fetchUser(this.props.params.id);
+    ApiUtil.fetchUser(u.username);
   }
-  ApiUtil.fetchUserTracks(this.props.params.id);
 },
 
 _getUser: function () {
-  // debugger
   this.setState({ user: UserStore.show() });
-  this.setState({ tracks: TrackStore.userTracks() });
+  ApiUtil.fetchUserTracks(this.state.user.id);
 },
 
 _getUserTracks: function () {
   this.setState({ tracks: TrackStore.userTracks() });
 },
 
+componentWillUnmount: function () {
+  UserStore.removeChangeListener(this._getUser);
+  TrackStore.removeChangeListener(this._getUserTracks);
+},
+
   render: function () {
     var user = this.state.user;
     return (
         <div className="show-page">
-          <header><h2>{user.username}</h2></header>
+          <header><h2>{user.username.capitalize()}</h2></header>
           <p>{user.bio}</p>
           <ul>
             {this.state.tracks.map(function (track) {
-              return <TracksIndexItem track={track} />;
+              return <TracksIndexItem key={track.title} track={track} />;
             })}
           </ul>
         </div>
