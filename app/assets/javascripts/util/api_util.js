@@ -57,9 +57,9 @@ ApiUtil = {
     });
   },
 
-  fetchUser: function (userId) {
+  fetchUser: function (userParams) {
     $.ajax({
-      url: 'api/users/' + userId,
+      url: 'api/users/' + userParams,
       type: 'GET',
       dataType: 'json',
       success: function (data) {

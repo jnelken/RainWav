@@ -4,12 +4,9 @@
 
 ul.tracks-index {
   width: 840px;
-  padding-top: 75px;
-  padding-right: 20px;
-  padding-left: 30px;
+  padding: 75px 20px;
   margin-right: 320px;
-  margin-left: 30px;
-  border-right: 1px solid rgb(242, 242, 242);
+  border-right: 1px solid #f2f2f2;
   background: white;
 }
 
@@ -18,7 +15,7 @@ ul.tracks-index h1 {
   transition: color 0.5s;
   font-size: 24px;
   line-height: 38.4px;
-  border-bottom: 1px solid #F2F2F2;
+  border-bottom: 1px solid #f2f2f2;
   margin-bottom: 10px;
 }
 

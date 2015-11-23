@@ -9,28 +9,37 @@ $(function () {
     mixins: [ReactRouter.History],
 
     getInitialState: function () {
-      return { currentUser: null };
+      return { currentUser: CurrentUserStore.currentUser() };
     },
 
-    componentWillMount: function () {
-      CurrentUserStore.addChangeListener(this._ensureLoggedIn);
+    componentDidMount: function () {
+      CurrentUserStore.addChangeListener(this._onChange);
       ApiUtil.fetchCurrentUser();
+    },
+
+    componentWillReceiveProps: function (newProps) {
+      if (this.props.location.pathname !== newProps.location.pathname) {
+        this._ensureLoggedIn();
+      }
     },
 
     _ensureLoggedIn: function () {
       if (!CurrentUserStore.isLoggedIn()) {
         this.history.pushState(null, "/login");
       }
-
-      this.setState({currentUser: CurrentUserStore.currentUser()});
     },
 
-      // if (!this.state.currentUser) { return ( <img className="spinner" src={assets.spinner} /> ); }
+    _onChange: function () {
+      this.setState({currentUser: CurrentUserStore.currentUser() });
+    },
+
     render: function () {
       return (
         <div id="app">
-          <Nav />
+          <Nav currentUser={this.state.currentUser} />
+        <div id="main">
           {this.props.children}
+        </div>
         </div>
       );
     }

@@ -1,19 +1,17 @@
 .navbar-container {
   background: #333333;
-  display: block;
   position: fixed;
   width: 100%;
-  z-index: 10;
-  text-align: center;
-  height: 46px;
-  padding: 0px 30px;
+  z-index: 1;
 }
 
 .navbar {
   width: 1120px;
+  margin: 0 auto;
+  text-align: center;
   background: #333333;
+
   li {
-    // background: #333444; nice blue!!!
     color: #ccc;
     float: left;
 
@@ -24,9 +22,9 @@
       height: 18px;
       width: 100px;
     }
-
   }
 }
+
 .navbar-left li {
   float:left;
   border-right: 1px solid #111;
@@ -43,7 +41,6 @@
 }
 
 li.logo {
-  padding: 0px;
   width: 69px;
   height: 46px;
   background-image: linear-gradient(rgb(255, 119, 0), rgb(255, 51, 0));
@@ -53,7 +50,6 @@ li.logo > a {
   background: url(https://a-v2.sndcdn.com/assets/images/header/cloud-e365a4.png) no-repeat 12px 11px;
   border-right: none;
   display: block;
-  width:40px;
 }
 
 .more {

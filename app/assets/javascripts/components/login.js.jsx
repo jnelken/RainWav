@@ -15,7 +15,7 @@ var Login = React.createClass({
     return (
       <div className="login">
 
-        <div class="form-tabs group">
+        <div className="form-tabs group">
           <a href="login">
             <h2>Sign in</h2>
           </a>
@@ -30,13 +30,13 @@ var Login = React.createClass({
 
             <label className="email">
               <p>Your email address</p>
-            <input className="email-input" type="email" name="user[email]" value="qwertyuiop@qwertyuiop.com"/>
+            <input className="email-input" type="email" name="user[email]" />
             </label>
 
             <div className="password-fields">
               <label className="long-password">
                 <p>Your password</p>
-              <input className="long-password-input" type="password" name="user[password]" value="qwertyuiop" />
+              <input className="long-password-input" type="password" name="user[password]" />
               </label>
             </div>
 
@@ -46,10 +46,9 @@ var Login = React.createClass({
 
           </form>
         </div>
-        
+
       </div>
   );
   }
 
 });
-            // {auth.token}
