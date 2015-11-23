@@ -32,12 +32,12 @@ componentWillUnmount: function () {
   UserStore.removeChangeListener(this._getUser);
   TrackStore.removeChangeListener(this._getUserTracks);
 },
-
   render: function () {
     var user = this.state.user;
     return (
         <div className="show-page">
           <header><h2>{user.username.capitalize()}</h2></header>
+          <img className="avatar" src={user.avatar} />
           <p>{user.bio}</p>
           <ul>
             {this.state.tracks.map(function (track) {

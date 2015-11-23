@@ -7,6 +7,11 @@ class User < ActiveRecord::Base
 
   has_many :tracks, dependent: :destroy
 
+  has_attached_file :avatar, styles: { large: "500x500>", medium: "200x200>", thumb: "120x120>" }
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+  has_attached_file :cover, styles: { large: "1080x260>" }
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
   attr_reader :password
 
   after_initialize :ensure_session_token

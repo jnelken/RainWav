@@ -19,6 +19,7 @@ $(function () {
 
     componentWillReceiveProps: function (newProps) {
       if (this.props.location.pathname !== newProps.location.pathname) {
+        sleep(0.5);
         this._ensureLoggedIn();
       }
     },
