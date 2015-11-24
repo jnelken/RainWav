@@ -1,24 +1,46 @@
-.show-page {
-  padding-top: 46px;
-  margin: 0 auto;
-  width: 1120px;
+.profile-page, .track-page {
+  // margin: 0 auto;
+  // width: 1120px;
   background: #fff;
 
   header {
     height: 260px;
+    position: relative;
+    font: "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;
 
-    h2 {
-      float: left;
-      font-size: 24px;
+    h2, p {
+      font-size: 36px;
       text-align: center;
+      color: white;
+      background: black;
+
+      position: absolute;
+      margin: 30px; // wowww
+      padding: 10px;
+      top: 0;
+      left: 230px;
+      z-index: 1;
+    }
+
+    p {
+      font-size: 16px;
+      margin-top: 90px
+
     }
   }
 
   .avatar {
     width: 200px;
+
+    position: absolute;
+    padding: 30px; // wowww
+    top: 0;
+    left: 0;
+    z-index: 1;
   }
 
   .cover {
-    width: 1240px;
+    width: 1250px;
+    position: relative;
   }
 }

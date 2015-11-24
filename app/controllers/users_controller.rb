@@ -15,11 +15,9 @@ class UsersController < ApplicationController
 
     if @user.save
       sign_in(@user)
-      flash.now[:notice] = ["Success!"]
       redirect_to :root
     else
-      flash.now[:notice] = @user.errors.full_messages
-      render :new
+      render json: @user.errors.full_messages
     end
   end
 

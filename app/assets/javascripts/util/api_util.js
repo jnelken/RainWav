@@ -68,7 +68,24 @@ ApiUtil = {
     });
   },
 
-  // currentUser
+  // credentials/ user forms
+
+  createUser: function (credentials, success) {
+    $.ajax({
+      url: '/api/users',
+      type: 'POST',
+      dataType: 'json',
+      data: credentials,
+      success: function (data) {
+        ApiActions.receiveCurrentUser(data);
+        success && success();
+      },
+      error: function (data) {
+        console.log(data);
+      }
+
+    });
+  },
 
   login: function (credentials, success) {
     $.ajax({
@@ -76,10 +93,14 @@ ApiUtil = {
       type: 'POST',
       dataType: 'json',
       data: credentials,
-      success: function (currentUser) {
-        ApiActions.receiveCurrentUser(currentUser);
+      success: function (data) {
+        ApiActions.receiveCurrentUser(data);
         success && success();
+      },
+      error: function (data) {
+        console.log(data);
       }
+
     });
   },
 

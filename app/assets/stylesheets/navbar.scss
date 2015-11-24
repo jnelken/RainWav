@@ -1,14 +1,18 @@
 .navbar-container {
   color: #ccc;
-  background: #333333;
+  background: #444444;
   position: fixed;
   width: 100%;
   z-index: 1;
   // overflow: scroll;
 }
 
+.nav-spacer {
+  height: 46px;
+}
+
 .navbar {
-  width: 1120px;
+  width: 1250px;
   margin: 0 auto;
   text-align: center;
   background: #333333;

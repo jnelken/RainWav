@@ -41,7 +41,9 @@ $(function () {
       return (
         <div id="app">
           <Nav currentUser={this.state.currentUser} />
-          {this.props.children}
+          <div id="viewport">
+            {this.props.children}
+          </div>
         </div>
       );
     }

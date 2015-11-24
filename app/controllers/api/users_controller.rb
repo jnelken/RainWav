@@ -1,5 +1,6 @@
 class Api::UsersController < ApplicationController
 
+  require 'byebug'
   def index
     @users = User.all
     render 'index'
@@ -8,5 +9,31 @@ class Api::UsersController < ApplicationController
   def show
     @user = User.find_by_username(params[:id].downcase)
     @user ||= User.find(params[:id])
+  end
+
+  def create
+    @user = User.new(user_params)
+
+    unless passwords_match
+      render json: ["Passwords don't match. Try again"], status: :unprocessable_entity
+      return
+    end
+
+    if @user.save
+      sign_in(@user)
+      render json: @user
+    else
+      render json: @user.errors.full_messages,  status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:username, :email, :password)
+  end
+
+  def passwords_match
+    params[:user][:password] == params[:user][:retype_password]
   end
 end

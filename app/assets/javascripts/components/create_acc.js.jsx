@@ -5,17 +5,16 @@ var CreateAcc = React.createClass({
       e.preventDefault();
 
       var credentials = $(e.currentTarget).serializeJSON();
-        ApiUtil.login(credentials, function () {
+        ApiUtil.createUser(credentials, function () {
           this.history.pushState(null, "#");
         }.bind(this));
     },
 
   render: function () {
-
     return (
-      <div className="login">
-
+      <div className="user-form group">
         <div className="form-tabs group">
+
           <a href="#/login">
             <h2>Sign in</h2>
           </a>
@@ -23,46 +22,38 @@ var CreateAcc = React.createClass({
           <a href="#/createaccount">
             <h2>Create account</h2>
           </a>
+
         </div>
 
+        <form className="user-form group" onSubmit={this.handleSubmit}>
 
-        <div className="user-form">
-              <form onSubmit={this.handleSubmit}>
-                <label className="username">
-                  <p>Choose a username (optional)</p>
-                  <input type="text" name="user[username]" />
-                </label>
-                <div className="email">
-                  <label>
-                    <p>What's your email address?</p>
-                    <input type="email" name="user[email]" />
-                  </label>
-                </div>
+          <label className="username">
+            <p>Choose a username (optional)</p>
+            <input type="text" name="user[username]" />
+          </label>
 
-                <div className="password-fields">
-                  <label className="choose-password">
-                    <p>Choose a password</p>
-                    <input type="password" name="user[password]" />
-                  </label>
-                </div>
+          <label className="email">
+            <p>What's your email address?</p>
+            <input type="email" name="user[email]" />
+          </label>
 
-                <div className="password-fields">
-                  <label className="retype-password">
-                  <p>Re-type password</p>
-                    <input type="password" name="user[retype_password]" />
-                  </label>
-                </div>
+          <div className="password-fields">
+            <label className="choose-password">
+              <p>Choose a password</p>
+              <input type="password" name="user[password]" />
+            </label>
 
-                <div className="button">
-                  <button>Create Account</button>
-                </div>
-              </form>
-            <div>
+            <label className="retype-password">
+            <p>Re-type password</p>
+              <input type="password" name="user[retype_password]" />
+            </label>
           </div>
-        </div>
-      </div>
 
+          <div className="button">
+            <button>Create Account</button>
+          </div>
+        </form>
+      </div>
     );
   }
 });
-            // s{auth.token};

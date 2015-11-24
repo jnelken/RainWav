@@ -35,10 +35,15 @@ componentWillUnmount: function () {
   render: function () {
     var user = this.state.user;
     return (
-        <div className="show-page">
-          <header><h2>{user.username.capitalize()}</h2></header>
-          <img className="avatar" src={user.avatar} />
-          <p>{user.bio}</p>
+        <div className="profile-page">
+          <header>
+          <img className="cover" src={user.cover}>
+              <img className="avatar" src={user.avatar} />
+              <h2>{user.username.capitalize()}</h2>
+              <p>{user.bio}</p>
+          </img>
+          </header>
+
           <ul>
             {this.state.tracks.map(function (track) {
               return <TracksIndexItem key={track.title} track={track} />;
@@ -48,3 +53,5 @@ componentWillUnmount: function () {
     );
   }
 });
+          // <div className="cover" styles={"background-image: url(" + user.cover + ")"}>
+          // </div>

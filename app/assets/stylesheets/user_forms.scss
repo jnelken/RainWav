@@ -1,4 +1,4 @@
-.login {
+.user-form {
   width: 400px;
   padding: 20px;
   display: block;
@@ -23,9 +23,9 @@
 .user-form {
   width: 400px;
   margin: 0 auto;
+  padding: 5px;
 
   p, input {
-    padding: 5px;
     margin: 0 5px;
   }
 

@@ -12,37 +12,40 @@ var Nav = React.createClass({
       username = this.props.currentUser.username;
     }
     return (
-      <div className="navbar-container">
-        <ul className="navbar group">
-          <div className="navbar-left">
-            <li className="logo">
-              <a href="#"></a>
+      <div>
+        <div className="navbar-container">
+          <ul className="navbar group">
+            <div className="navbar-left">
+              <li className="logo">
+                <a href="#"></a>
+              </li>
+
+              <li className="nav-tab">
+                <a href="#">Home</a>
+              </li>
+            </div>
+
+            <li className="searchbar">
+              <a href="#">Search</a>
             </li>
 
-            <li className="nav-tab">
-              <a href="#">Home</a>
-            </li>
-          </div>
+            <div className="navbar-right">
+              <li className="nav-tab">
+                <a href="#">Upload</a>
+              </li>
 
-          <li className="searchbar">
-            <a href="#">Search</a>
-          </li>
+              <li className="nav-tab">
+                <a href={'#/' + username}>{username.capitalize()}</a>
+              </li>
 
-          <div className="navbar-right">
-            <li className="nav-tab">
-              <a href="#">Upload</a>
-            </li>
+              <li className="more" onClick={this.handleLogout}>
+                <p>abc</p>
+              </li>
+            </div>
 
-            <li className="nav-tab">
-              <a href={'#/' + username}>{username.capitalize()}</a>
-            </li>
-
-            <li className="more" onClick={this.handleLogout}>
-              <p>abc</p>
-            </li>
-          </div>
-
-        </ul>
+          </ul>
+        </div>
+        <div className="nav-spacer"></div>
       </div>
     );
   }

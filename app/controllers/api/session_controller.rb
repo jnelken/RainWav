@@ -10,6 +10,7 @@ class Api::SessionController < ApplicationController
     render json: @user
   end
 
+
   def create
     @user = User.find_by_credentials(
       params[:user][:email],
