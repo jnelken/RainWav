@@ -14,6 +14,18 @@ var CreateAcc = React.createClass({
 
     return (
       <div className="login">
+
+        <div className="form-tabs group">
+          <a href="#/login">
+            <h2>Sign in</h2>
+          </a>
+
+          <a href="#/createaccount">
+            <h2>Create account</h2>
+          </a>
+        </div>
+
+
         <div className="user-form">
               <form onSubmit={this.handleSubmit}>
                 <label className="username">

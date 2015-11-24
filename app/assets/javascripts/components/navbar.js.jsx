@@ -3,7 +3,7 @@ var Nav = React.createClass({
 
   handleLogout: function () {
     ApiUtil.logout();
-    this.history.pushState(null, "#/login");
+    this.history.pushState(null, "/login");
   },
 
   render: function () {
@@ -38,7 +38,7 @@ var Nav = React.createClass({
             </li>
 
             <li className="more" onClick={this.handleLogout}>
-              <a href="#"></a>
+              <p>abc</p>
             </li>
           </div>
 

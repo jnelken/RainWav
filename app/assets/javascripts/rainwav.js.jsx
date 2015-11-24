@@ -18,8 +18,11 @@ $(function () {
     },
 
     componentWillReceiveProps: function (newProps) {
-      if (this.props.location.pathname !== newProps.location.pathname) {
-        sleep(0.5);
+      var newPath = newProps.location.pathname;
+      if (newPath === "/createaccount") {
+        return;
+      }
+      if (newPath !== this.props.location.pathname) {
         this._ensureLoggedIn();
       }
     },
