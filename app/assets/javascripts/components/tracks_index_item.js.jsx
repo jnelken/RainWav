@@ -5,6 +5,7 @@ showDetail: function () {
   // this.history.pushState(null, "/users/" + this.props.track.user_id);
 },
 
+// ADD ARTIST NAME ABOVE TRACK
   render: function () {
 
     var track = this.props.track;
@@ -13,7 +14,7 @@ showDetail: function () {
         <div className="play-button">
           <img src={assets.play} />
         </div>
-        <h3 className="artist">Thissongissick.com</h3>
+        <h3 className="artist">Artist Name</h3>
         <h3>{track.title}</h3>
           <button className="genre">#{track.genre_id}</button>
           <div>
