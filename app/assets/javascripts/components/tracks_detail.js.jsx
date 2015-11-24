@@ -38,7 +38,6 @@ var TracksDetail = React.createClass({
         <div className="show-page">
           <header><h2>{track.title}</h2></header>
           <p>Genre: {track.genre}</p>
-          <p>{track.audio_url}</p>
         </div>
     );
   }

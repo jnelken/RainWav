@@ -7,7 +7,6 @@ showDetail: function () {
 
 // ADD ARTIST NAME ABOVE TRACK
   render: function () {
-
     var track = this.props.track;
     return (
       <li className="tracks-index-item">
@@ -20,7 +19,7 @@ showDetail: function () {
           <div>
             <audio controls="controls">
               Your browser does not support the <code>audio</code> element.
-              <source src={track.audio_url} type="audio/mp3" />
+              <source src={track.audio} type="audio/mp3" />
             </audio>
           </div>
         <ReactRouter.Link className="artist" to={"/users/" + track.user_id }>^ Go to user</ReactRouter.Link>
