@@ -4,11 +4,6 @@
   var _tracks = [];
   var _track;
   var _userTracks = [];
-  // = { track:
-  //                 title: '',
-  //                 audio_url: '',
-  //                 description
-  //               }
 
   var resetTracks = function (tracks) {
     _tracks = tracks;
