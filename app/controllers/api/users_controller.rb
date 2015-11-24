@@ -1,6 +1,5 @@
 class Api::UsersController < ApplicationController
 
-  require 'byebug'
   def index
     @users = User.all
     render 'index'

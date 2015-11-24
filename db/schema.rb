@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151123210001) do
+ActiveRecord::Schema.define(version: 20151124194751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,18 +25,23 @@ ActiveRecord::Schema.define(version: 20151123210001) do
   add_index "genres", ["genre"], name: "index_genres_on_genre", unique: true, using: :btree
 
   create_table "tracks", force: :cascade do |t|
-    t.string   "title",       null: false
-    t.string   "audio_url",   null: false
-    t.string   "image"
+    t.string   "title",              null: false
     t.string   "description"
     t.integer  "plays"
-    t.integer  "genre_id",    null: false
-    t.integer  "user_id",     null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "genre_id",           null: false
+    t.integer  "user_id",            null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "audio_file_name",    null: false
+    t.string   "audio_content_type", null: false
+    t.integer  "audio_file_size",    null: false
+    t.datetime "audio_updated_at",   null: false
   end
 
-  add_index "tracks", ["audio_url"], name: "index_tracks_on_audio_url", unique: true, using: :btree
   add_index "tracks", ["user_id"], name: "index_tracks_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|

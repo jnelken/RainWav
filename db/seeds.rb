@@ -76,8 +76,6 @@ Genre.create({
 Track.create({
   title: "Eclipse",
   genre_id: space.id,
-  audio_url: "http://freesound.org/data/previews/210/210895_1015240-lq.mp3",
-  image: "https://cdn1.iconfinder.com/data/icons/music-12/96/CD-2-512.png",
   description: "Space track!",
   user_id: j.id
 })
@@ -85,8 +83,6 @@ Track.create({
 Track.create({
   title: "Boom Bap",
   genre_id: hiphop.id,
-  audio_url: "https://dl-web.dropbox.com/get/%2CWstvlns%2C/wstvlns/Potluck%20Ft.%20DoLo%20%26%20Big%20Toof%20%28master%29.mp3?_subject_uid=61823155&w=AAAJm15S2UG5sOr69K9n7WiVmLL012yyTrvvhrn2hMTC_Q",
-  image: "https://cdn1.iconfinder.com/data/icons/music-12/96/CD-2-512.png",
   description: "Normal track from Earth",
   user_id: j.id
 })
@@ -94,8 +90,6 @@ Track.create({
 Track.create({
   title: "HipHopper",
   genre_id: hiphop.id,
-  audio_url: "https://dl-web.dropbox.com/get/%2CWstvlns%2C/Kickin%20Rocks%20samples/Kojo%20no%20Tsuki%20%28The%20Moon%20over%20the%20Ruined%20Castle%29.mp3?_subject_uid=61823155&w=AACTdHq6N7sTC319g9GY5uukpohWqQOfQ0miYz3V4reggQ",
-  image: "https://cdn1.iconfinder.com/data/icons/music-12/96/CD-2-512.png",
   description: "Friend's track",
   user_id: q.id
 })
