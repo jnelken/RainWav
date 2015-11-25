@@ -17,7 +17,6 @@ var TrackForm = React.createClass({
   },
 
   _onChange: function () {
-    debugger
     this.setState({ track: TrackStore.show() });
     this.history.pushState(null, "#/tracks/" + this.state.track.id);
   },
@@ -34,14 +33,14 @@ var TrackForm = React.createClass({
     var description = this.state.description;
     var trackFile = this.state.trackFile;
     var imageFile = this.state.imageFile;
-    var userId = currentUserStore.currentUser().id;
+    var userId = CurrentUserStore.currentUser().id;
 
     var formData = new FormData();
     formData.append("track[title]", title);
     formData.append("track[genre]", genre);
     formData.append("track[description]", description);
     formData.append("track[track]", trackFile);
-    formData.append("track[image]", imageFile);
+    if (imageFile) { formData.append("track[image]", imageFile); }
     formData.append("track[user_id]", userId);
 
   TracksUtil.createTrack(formData, this._resetForm);
@@ -49,20 +48,24 @@ var TrackForm = React.createClass({
 
 
   _resetForm: function() {
-    this.setState({ title: "", imageUrl: "", imageFile: null });
+    this.setState({
+      title: "",
+      trackUrl: "",
+      trackFile: null,
+      imageUrl: "",
+      imageFile: null });
   },
 
   render: function () {
 
     return (
-      <section className="track-form modal is-active">
-        <article class="modal-content">
+      <section className="track-form modal group is-active">
+        <article className="m-odal-content">
           <span
             className="modal-close"
             onClick={this.props.closeOut}>&times;
           </span>
-
-          <h1>Upload</h1>
+            <h2>Upload</h2>
           <form onSubmit={this.handleSubmit}>
             <label>Update image
               <input type="file" onChange={this.changeImageFile} />
@@ -83,9 +86,12 @@ var TrackForm = React.createClass({
             <label>Description
               <input type="textarea" onChange={this.changeDescription} />
             </label>
+
+            <button>Upload</button>
+            <button className="cancel" onClick={this.props.closeOut}>Cancel</button>
           </form>
         </article>
-        <div class="modal-screen" onClick={this.props.closeOut}></div>
+        <div className="modal-screen" onClick={this.props.closeOut}></div>
       </section>
     );
   },

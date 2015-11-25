@@ -19,12 +19,14 @@ TracksUtil = {
     });
   },
 
-  createTrack: function (newTrack, success) {
+  createTrack: function (trackData, success) {
     $.ajax({
       url: '/api/tracks',
       type: 'POST',
+      processData: false,
+      contentType: false,
       dataType: 'json',
-      data: newTrack,
+      data: trackData,
       success: function (data) {
         ApiActions.receiveTrack(data);
         success && success();

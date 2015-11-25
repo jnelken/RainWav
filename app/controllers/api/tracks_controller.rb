@@ -1,5 +1,5 @@
 class Api::TracksController < ApplicationController
-
+  require 'byebug'
   def index
     @tracks = Track.all
 
@@ -21,8 +21,8 @@ class Api::TracksController < ApplicationController
   end
 
   def create
+    byebug
     @track = Track.new(track_params)
-
     if @track.save
       render json: @track
     else

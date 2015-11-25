@@ -11,8 +11,48 @@
     margin: 20px;
     display: block;
 
-    input {
+    input, select {
       float: right;
     }
+
+    input[type="text"] {
+      min-height: 20px;
+    }
   }
+
+  button.cancel {
+    color: #f50;
+    background: #fff;
+    margin: 10px;
+  }
+
+  button {
+    margin: 10px 20px;
+    float: right;
+  }
+
+  padding: 15px;
+  border: 3px solid #111;
+  border-radius: 5px;
+  background: #444;
+  color: #eee;
+
+  p, input {
+    line-height: 2.0;
+    color: #000;
+  }
+
+  p {
+    margin-top: 10px;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 14px;
+    display: block;
+    padding: 10px;
+    // background: #555;
+    color: #ccc;
+  }
+
 }

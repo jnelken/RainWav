@@ -15,6 +15,10 @@ var Nav = React.createClass({
     this.setState({ uploadClick: uploadClick });
   },
 
+  _closeOut: function () {
+    this.uploadClick();
+  },
+
   render: function () {
     var username = "login";
     if (this.props.currentUser.username) {
@@ -31,11 +35,6 @@ var Nav = React.createClass({
     trackForm = undefined;
   }
 
-/// help
-    var style = {
-      backgroundImage: 'url(' + this.props.currentUser.avatar + ')'
-    };
-
     return (
       <div>
         <div className="navbar-container">
@@ -50,26 +49,29 @@ var Nav = React.createClass({
               </li>
             </div>
 
-            <li className="searchbar">
-              <input type="search" placeholder="Search"/>
-            </li>
-
-            <div className="navbar-right">
-              <li onClick={this.uploadClick}className="nav-tab">
-                  <a href="#">Upload</a>
+            <div className="flex-container">
+              <li className="searchbar">
+                <input type="search" placeholder="Search"/>
               </li>
 
-              <li className="nav-tab">
+              <div className="navbar-right">
+                <li onClick={this.uploadClick}className="nav-tab">
+                    <a>Upload</a>
+                </li>
 
-                <a href={'#/' + username}>
-                  <div className="avtr" style={style}></div>
-                  {username.capitalize()}
-                </a>
-              </li>
+                <li className="nav-tab nav-profile group">
 
-              <li className="more" onClick={this.handleLogout}>
-                <a className="dots" href="#/login" ></a>
-              </li>
+                  <a href={'#/' + username}>
+                    <img src={this.props.currentUser.avatar} className="avtr" />
+                    {username.capitalize()}
+                  </a>
+                </li>
+
+                <li className="more" onClick={this.handleLogout}>
+                  <a className="dots" href="#/login" ></a>
+                </li>
+
+              </div>
             </div>
 
           </ul>

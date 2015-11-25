@@ -5,34 +5,21 @@ var App = React.createClass({
     return ({ currentUser: CurrentUserStore.currentUser() });
   },
 
-  _setGenres: function () {
-    this.setState({ genres: GenreStore.all() });
-  },
-
-  _setUsers: function () {
-    this.setState({ users: UserStore.all() });
-  },
-
   componentDidMount: function () {
     CurrentUserStore.addChangeListener(this._setCurrentUser);
     ApiUtil.fetchCurrentUser();
-    GenreStore.addChangeListener(this._setGenres);
-    GenreUtil.fetchGenres();
-    UserStore.addChangeListener(this._setUsers);
+
     ApiUtil.fetchUsers();
+    ApiUtil.fetchTracks();
+    GenreUtil.fetchGenres();
   },
 
-  // componentWillUnmount: function () {
-  //   GenreStore.removeChangeListener(this._setGenres);
-  //   GenreStore.removeChangeListener(this._setUsers);
-  // },
-
   componentWillReceiveProps: function (newProps) {
+    /// logged out redirect
+
     var newPath = newProps.location.pathname;
-    if (newPath === "/createaccount") {
-      return;
-    }
-    if (newPath !== this.props.location.pathname) {
+    var currentPath = this.props.location.pathname;
+    if (newPath !== currentPath && newPath !== "/createaccount") {
       this._ensureLoggedIn();
     }
   },
