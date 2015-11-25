@@ -43,7 +43,7 @@ var Nav = React.createClass({
               <li className="nav-tab">
 
                 <a href={'#/' + username}>
-                  <div className="avtr" styles={style}></div>
+                  <div className="avtr" style={style}></div>
                   {username.capitalize()}
                 </a>
               </li>
