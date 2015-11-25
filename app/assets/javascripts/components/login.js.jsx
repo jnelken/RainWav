@@ -10,12 +10,25 @@ var Login = React.createClass({
         }.bind(this));
     },
 
+    handleAutofill: function (e) {
+      e.preventDefault();
+
+      var credentials = { user: {
+          username: "Dew",
+          email: "dew@rainwav.com",
+          password: "abc123"
+        }};
+        ApiUtil.login(credentials, function () {
+          this.history.pushState(null, "#");
+        }.bind(this));
+    },
+
   render: function () {
     return (
-      <div className="user-form group">
+      <div className="user-form-page group">
 
         <div className="form-tabs group">
-          <a href="#/login">
+          <a className="selected" href="#/login">
             <h2>Sign in</h2>
           </a>
 
@@ -38,9 +51,8 @@ var Login = React.createClass({
             </label>
           </div>
 
-          <div className="button">
-            <button>Sign In</button>
-          </div>
+          <button onClick={this.handleAutofill}>Demo</button>
+          <button>Sign In</button>
         </form>
       </div>
     );

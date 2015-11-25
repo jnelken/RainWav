@@ -19,21 +19,24 @@ var TracksIndex = React.createClass({
 
   render: function () {
 
-
+    // Floats left
     return (
-        <ul className="tracks-index">
-          <li>
-            <h1>Stream</h1>
-            <p>Hear the latest posts from the people you're following</p>
-          </li>
+      <div className="group">
+      <ul className="tracks-index">
+        <li>
+          <h1>Stream</h1>
+          <p>Hear the latest posts from the people you're following</p>
+        </li>
         {
           this.state.tracks.map(function (track) {
             return (
-                <TracksIndexItem key={track.title} track={track} />
+              <TracksIndexItem key={track.title} track={track} />
             );
           })
         }
-        </ul>
+      </ul>
+      <Sidebar currentUser={this.state.currentUser} />
+      </div>
     );
   }
 });

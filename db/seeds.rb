@@ -18,6 +18,16 @@ q = User.create({
   bio: "qwertyuiop qwertyuiop!"
 })
 
+q = User.create({
+  username: "Dew",
+  email: "dew@rainwav.com",
+  password: "abc123",
+  bio: "💧🌊",
+  avatar: File.open('/Users/josx/Desktop/dew_avatar.png'),
+  cover: File.open('/Users/josx/Desktop/dew_cover.jpg')
+})
+
+
 #1
 space = Genre.create({
   genre: "space"

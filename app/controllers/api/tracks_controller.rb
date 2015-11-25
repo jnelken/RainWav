@@ -23,6 +23,16 @@ class Api::TracksController < ApplicationController
   def create
   end
 
+  def update
+    @track = Track.new(params[:track])
+
+    if @track.save
+      render json: @track
+    else
+      render json: @track.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+
   def show
     @track = Track.find(params[:id])
   end

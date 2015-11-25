@@ -1,11 +1,12 @@
 ul.tracks-index {
-  min-height: 80vh;
   float:left;
-  width: 890px;
+  // min-height: 80vh;
+  width: 849px;
   padding: 30px 20px;
   // margin-right: 320px;
   border-right: 1px solid #f2f2f2;
   background: white;
+
   h1 {
     color: #333;
     transition: color 0.5s;

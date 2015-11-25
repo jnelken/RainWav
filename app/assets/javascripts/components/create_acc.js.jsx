@@ -12,14 +12,14 @@ var CreateAcc = React.createClass({
 
   render: function () {
     return (
-      <div className="user-form group">
+      <div className="user-form-page group">
         <div className="form-tabs group">
 
           <a href="#/login">
             <h2>Sign in</h2>
           </a>
 
-          <a href="#/createaccount">
+          <a className="selected" href="#/createaccount">
             <h2>Create account</h2>
           </a>
 
@@ -37,7 +37,7 @@ var CreateAcc = React.createClass({
             <input type="email" name="user[email]" />
           </label>
 
-          <div className="password-fields">
+          <div className="password-fields group">
             <label className="choose-password">
               <p>Choose a password</p>
               <input type="password" name="user[password]" />

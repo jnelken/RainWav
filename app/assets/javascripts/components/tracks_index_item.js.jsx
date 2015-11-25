@@ -8,7 +8,9 @@ showDetail: function () {
 // ADD ARTIST NAME ABOVE TRACK
 
 handlePlay: function () {
-  ApiUtil.addPlay(this.props.track);
+  debugger
+  // TRACKSUTIL IS NOT DEFINED
+  TracksUtil.addPlay(this.props.track);
 },
 
   render: function () {
@@ -22,7 +24,7 @@ handlePlay: function () {
         <div className="track-profile">
           <div className="play-button">
 
-            <img src={assets.play} />
+            <img src={assets.play} onClick={this.handlePlay} />
           </div>
           <h3 className="artist">
             <ReactRouter.Link className="artist" to={"/users/" + track.user_id }>
@@ -35,7 +37,7 @@ handlePlay: function () {
             </ReactRouter.Link>
           </h3>
           <button className="genre">#{track.genre_id}</button>
-          <div onClick={this.handlePlay}>
+          <div>
             <audio controls="controls">
               Your browser does not support the <code>audio</code> element.
               <source src={track.audio} type="audio/mp3" />

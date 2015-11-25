@@ -35,7 +35,7 @@ componentWillUnmount: function () {
   render: function () {
     var user = this.state.user;
     return (
-        <div className="profile-page">
+        <div className="profile-page group">
           <header>
           <img className="cover" src={user.cover}>
               <img className="avatar" src={user.avatar} />

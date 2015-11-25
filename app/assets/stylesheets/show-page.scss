@@ -5,9 +5,13 @@
 
   header {
     height: 260px;
+    // overflow: hidden;
     position: relative;
     font: "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;
 
+    img {
+      max-height: 260px;
+    }
     h2, p {
       font-size: 36px;
       text-align: center;

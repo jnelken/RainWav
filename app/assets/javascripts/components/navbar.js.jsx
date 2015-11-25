@@ -6,11 +6,17 @@ var Nav = React.createClass({
     this.history.pushState(null, "/login");
   },
 
+
   render: function () {
     var username = "login";
     if (this.props.currentUser.username) {
       username = this.props.currentUser.username;
     }
+
+    var style = {
+      backgroundImage: 'url(' + this.props.currentUser.avatar + ')'
+    };
+
     return (
       <div>
         <div className="navbar-container">
@@ -35,11 +41,15 @@ var Nav = React.createClass({
               </li>
 
               <li className="nav-tab">
-                <a href={'#/' + username}>{username.capitalize()}</a>
+
+                <a href={'#/' + username}>
+                  <div className="avtr" styles={style}></div>
+                  {username.capitalize()}
+                </a>
               </li>
 
               <li className="more" onClick={this.handleLogout}>
-                <p>abc</p>
+                <a className="dots" href="#/login" ></a>
               </li>
             </div>
 

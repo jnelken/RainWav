@@ -34,9 +34,9 @@ var App = React.createClass({
     return (
       <div id="app">
         <Nav currentUser={this.state.currentUser} />
-        <div id="viewport group">
+
+        <div id="viewport">
           {this.props.children}
-          <Sidebar currentUser={this.state.currentUser} />
         </div>
       </div>
     );
