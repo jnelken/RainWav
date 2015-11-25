@@ -6,8 +6,8 @@ j = User.create({
     email: "jnelks@gmail.com",
     password: "qwertyuiop",
     username: "Callisto",
-    bio: "Dj from Jupiter's moon"
-    avatar: File.open('/Users/josx/Desktop/callisto_avatar.jpg')
+    bio: "Dj from Jupiter's moon",
+    avatar: File.open('/Users/josx/Desktop/callisto_avatar.jpg'),
     cover: File.open('/Users/josx/Desktop/callisto_cover.jpg')
 })
 
