@@ -35,10 +35,7 @@ var Nav = React.createClass({
     trackForm = undefined;
   }
 
-  // <li className="searchbar">
-  //   <input type="search" placeholder="Search"/>
-  // </li>
-
+/// change ul to div or divs to li
     return (
       <div>
         <div className="navbar-container">
@@ -52,7 +49,6 @@ var Nav = React.createClass({
             </li>
 
             <div className="flex-container">
-
               <input type="search" placeholder="Search"/>
 
               <div className="navbar-right group">

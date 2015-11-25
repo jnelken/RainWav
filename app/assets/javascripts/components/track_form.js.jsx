@@ -1,9 +1,10 @@
 var TrackForm = React.createClass({
-
+  mixins: [ReactRouter.History],
+  
   getInitialState: function() {
     return {
       title: "",
-      genre: "",
+      genre_id: "",
       description: "",
       imageUrl: "",
       imageFile: null,
@@ -26,26 +27,26 @@ var TrackForm = React.createClass({
   },
 
   handleSubmit: function (e) {
+    debugger
     e.preventDefault();
 
     var title = this.state.title;
-    var genre = this.state.genre;
+    var genre_id = this.state.genre_id;
     var description = this.state.description;
     var trackFile = this.state.trackFile;
     var imageFile = this.state.imageFile;
     var userId = CurrentUserStore.currentUser().id;
 
-    var formData = new FormData();
-    formData.append("track[title]", title);
-    formData.append("track[genre]", genre);
-    formData.append("track[description]", description);
-    formData.append("track[track]", trackFile);
-    if (imageFile) { formData.append("track[image]", imageFile); }
-    formData.append("track[user_id]", userId);
+    var newTrackData = new FormData();
+    newTrackData.append("track[title]", title);
+    newTrackData.append("track[genre_id]", genre_id);
+    newTrackData.append("track[description]", description);
+    newTrackData.append("track[audio]", trackFile);
+    if (imageFile) { newTrackData.append("track[image]", imageFile); }
+    newTrackData.append("track[user_id]", userId);
 
-  TracksUtil.createTrack(formData, this._resetForm);
+  TracksUtil.createTrack(newTrackData, this._resetForm);
   },
-
 
   _resetForm: function() {
     this.setState({
@@ -78,8 +79,9 @@ var TrackForm = React.createClass({
             </label>
             <label>Genre*
               <select onChange={this.changeGenre} >
+                <option>Select a genre:</option>
                 {GenreStore.all().map(function (genre) {
-                  return <option>{genre.genre}</option>;
+                  return <option value={genre.id}>{genre.genre}</option>;
                 })}
               </select>
             </label>
@@ -101,11 +103,12 @@ var TrackForm = React.createClass({
   },
 
   changeGenre: function(e) {
-    this.setState({ title: e.currentTarget.value });
+    debugger
+    this.setState({ genre_id: e.currentTarget.value });
   },
 
   changeDescription: function(e) {
-    this.setState({ title: e.currentTarget.value });
+    this.setState({ description: e.currentTarget.value });
   },
 
   changeTrackFile: function(e) {

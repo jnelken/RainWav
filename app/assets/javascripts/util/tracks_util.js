@@ -20,6 +20,7 @@ TracksUtil = {
   },
 
   createTrack: function (trackData, success) {
+    debugger
     $.ajax({
       url: '/api/tracks',
       type: 'POST',

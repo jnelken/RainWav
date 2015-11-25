@@ -17,6 +17,7 @@
     background: #333333;
     li {
       float: left;
+    }
       a {
         display: block;
         font-size: 13px;
@@ -24,15 +25,13 @@
         height: 18px;
         width: 100px;
       }
-    }
 
-    li.nav-tab:hover, .more:hover {
+    .nav-tab:hover, .more:hover {
       background: #111111;
       color: #fff;
     }
 
-
-    li.logo {
+    .logo {
       width: 69px;
       height: 46px;
       background-image: linear-gradient(rgb(255, 119, 0), rgb(255, 51, 0));
