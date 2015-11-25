@@ -2,7 +2,7 @@ class Api::UsersController < ApplicationController
 
   def index
     @users = User.all
-    # render 'index'
+    render 'index'
   end
 
   def show
@@ -20,7 +20,7 @@ class Api::UsersController < ApplicationController
 
     if @user.save
       sign_in(@user)
-      render json: @user
+      render 'api/users/show'
     else
       render json: @user.errors.full_messages,  status: :unprocessable_entity
     end

@@ -1,6 +1,6 @@
 var TrackForm = React.createClass({
   mixins: [ReactRouter.History],
-  
+
   getInitialState: function() {
     return {
       title: "",
@@ -27,7 +27,6 @@ var TrackForm = React.createClass({
   },
 
   handleSubmit: function (e) {
-    debugger
     e.preventDefault();
 
     var title = this.state.title;
@@ -54,9 +53,12 @@ var TrackForm = React.createClass({
       trackUrl: "",
       trackFile: null,
       imageUrl: "",
-      imageFile: null });
+      imageFile: null
+    });
+    this.props.closeOut();
   },
-
+  
+/// fix modal class / functionality
   render: function () {
 
     return (
@@ -103,7 +105,6 @@ var TrackForm = React.createClass({
   },
 
   changeGenre: function(e) {
-    debugger
     this.setState({ genre_id: e.currentTarget.value });
   },
 
@@ -128,19 +129,19 @@ var TrackForm = React.createClass({
   },
 
   changeImageFile: function(e) {
-  var reader = new FileReader();
-  var file = e.currentTarget.files[0];
-  var that = this;
+    var reader = new FileReader();
+    var file = e.currentTarget.files[0];
+    var that = this;
 
-  reader.onloadend = function() {
-    that.setState({ imageUrl: reader.result, imageFile: file });
-  };
+    reader.onloadend = function() {
+      that.setState({ imageUrl: reader.result, imageFile: file });
+    };
 
-  if (file) {
-    reader.readAsDataURL(file);
-  } else {
-    this.setState({ imageUrl: "", imageFile: null });
-  }
-},
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      this.setState({ imageUrl: "", imageFile: null });
+    }
+  },
 
 });

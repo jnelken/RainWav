@@ -1,6 +1,5 @@
 var TracksDetail = React.createClass({
 
-////////*** make api util for fetchTrack ***////////////
   getInitialState: function () {
     return ({ user: TrackStore.show() });
   },
@@ -35,9 +34,24 @@ var TracksDetail = React.createClass({
     if (track === undefined) { return <div>loading...</div>; }
 
     return (
-        <div className="show-page">
-          <header><h2>{track.title}</h2></header>
-          <p>Genre: {track.genre}</p>
+        <div className="track-page group">
+          <header>
+            <img className="avatar" src={user.avatar} />
+            <h2>{user.username.capitalize()}</h2>
+            <p>{user.bio}</p>
+          </header>
+          <section className="tracklist">
+            <ul className="profile-tabs group">
+              <li><a href={"#/" + user.username}>All</a></li>
+              <li><a href="#/tracks">Tracks</a></li>
+              <li><a href="#/reposts">Reposts (coming soon)</a></li>
+            </ul>
+            <ul>
+              {this.state.tracks.map(function (track) {
+                return <TracksIndexItem key={track.title} track={track} />;
+              })}
+            </ul>
+          </section>
         </div>
     );
   }

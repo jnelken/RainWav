@@ -6,6 +6,7 @@
 
   var resetUsers = function (users) {
     _users = users;
+    console.log(_users[0])
   };
 
   var setUser = function (user) {
@@ -20,6 +21,12 @@
 
     show: function () {
       return _user;
+    },
+
+    getUser: function (userId) {
+      return _users.filter(function (user) {
+        return user.id === userId;
+      })[0];
     },
 
     addChangeListener: function (callback) {

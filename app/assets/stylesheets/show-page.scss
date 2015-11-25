@@ -9,9 +9,6 @@
     position: relative;
     font: "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;
 
-    img {
-      max-height: 260px;
-    }
     h2, p {
       font-size: 36px;
       text-align: center;
@@ -35,7 +32,7 @@
 
   .avatar {
     width: 200px;
-
+    max-height: 260px;
     position: absolute;
     padding: 30px; // wowww
     top: 0;

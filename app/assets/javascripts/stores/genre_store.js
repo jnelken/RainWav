@@ -22,6 +22,12 @@
       return _genre;
     },
 
+    getGenre: function (genreId) {
+      return _genres.filter(function (genre) {
+        return genre.id === genreId;
+      })[0];
+    },
+
     addChangeListener: function (callback) {
       this.on(CHANGE_EVENT, callback);
     },
