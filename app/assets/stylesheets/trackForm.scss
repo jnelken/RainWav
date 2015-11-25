@@ -1,0 +1,18 @@
+.track-form {
+  width: 450px;
+  margin: 60px auto;
+
+  h1 {
+    text-align: center;
+    font-size: 24px;
+  }
+
+  label {
+    margin: 20px;
+    display: block;
+
+    input {
+      float: right;
+    }
+  }
+}

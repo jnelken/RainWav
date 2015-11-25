@@ -8,6 +8,7 @@ $(function () {
   var routes = (
     <Route path="/" component={App}>
       <IndexRoute component={TracksIndex} />
+      <Route path="upload" component={TrackForm} />
       <Route path="login" component={Login} />
       <Route path="createaccount" component={CreateAcc} />
       <Route path="users" component={UsersIndex} />

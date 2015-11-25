@@ -1,11 +1,19 @@
 var Nav = React.createClass({
   mixins: [ReactRouter.History],
 
+  getInitialState: function () {
+    return ({ uploadClick: false});
+  },
+
   handleLogout: function () {
     ApiUtil.logout();
     this.history.pushState(null, "/login");
   },
 
+  uploadClick: function () {
+    var uploadClick = this.state.uploadClick ? false : true;
+    this.setState({ uploadClick: uploadClick });
+  },
 
   render: function () {
     var username = "login";
@@ -13,6 +21,17 @@ var Nav = React.createClass({
       username = this.props.currentUser.username;
     }
 
+    var trackForm;
+    if (this.state.uploadClick) {
+      trackForm = <TrackForm
+      genres={this.props.genres}
+      closeOut={this._closeOut}
+      />;
+  } else {
+    trackForm = undefined;
+  }
+
+/// help
     var style = {
       backgroundImage: 'url(' + this.props.currentUser.avatar + ')'
     };
@@ -36,8 +55,8 @@ var Nav = React.createClass({
             </li>
 
             <div className="navbar-right">
-              <li className="nav-tab">
-                <a href="#">Upload</a>
+              <li onClick={this.uploadClick}className="nav-tab">
+                  <a href="#">Upload</a>
               </li>
 
               <li className="nav-tab">
@@ -56,9 +75,10 @@ var Nav = React.createClass({
           </ul>
         </div>
         <div className="nav-spacer"></div>
+        {trackForm}
       </div>
     );
-  }
+  },
 });
             // <a href={'#/' + username}>{username.capitalize()}</a>
 // <img src={assets.logo}/>

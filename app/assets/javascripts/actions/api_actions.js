@@ -1,4 +1,6 @@
 ApiActions = {
+
+/// Tracks
   receiveAllTracks: function (tracks) {
     AppDispatcher.dispatch({
       actionType: TrackConstants.TRACKS_RECEIVED,
@@ -20,6 +22,7 @@ ApiActions = {
     });
   },
 
+/// Users
   receiveAllUsers: function (users) {
     AppDispatcher.dispatch({
       actionType: UserConstants.USERS_RECEIVED,
@@ -38,6 +41,21 @@ ApiActions = {
     AppDispatcher.dispatch({
       actionType: CurrentUserConstants.RECEIVE_CURRENT_USER,
       currentUser: currentUser
+    });
+  },
+
+/// Genres
+  receiveAllGenres: function (genres) {
+    AppDispatcher.dispatch({
+      actionType: GenreConstants.GENRES_RECEIVED,
+      genres: genres
+    });
+  },
+
+  receiveGenre: function (genre) {
+    AppDispatcher.dispatch({
+      actionType: UserConstants.GENRE_RECEIVED,
+      genre: genre
     });
   }
 };
