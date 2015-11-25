@@ -10,14 +10,13 @@
   z-index: 10;
 
   .navbar {
+    position: relative;
     width: 1250px;
     margin: 0 auto;
     text-align: center;
     background: #333333;
-
     li {
       float: left;
-
       a {
         display: block;
         font-size: 13px;
@@ -27,52 +26,56 @@
       }
     }
 
-    .navbar-left li {
-      float:left;
-      border-right: 1px solid #111;
-    }
-
-    .flex-container {
-      display: flex;
-      flex-direction: row;
-    }
-
-    .searchbar {
-
-      // margin: 0 auto;
-    }
-    .searchbar input {
-      justify-content: space-between;
-
-      text-align: left;
-      margin: 8px 20px;
-      color: #666;
-      padding: 5px 7px;
-      background: #e5e5e5;
-    }
-
     li.nav-tab:hover, .more:hover {
       background: #111111;
       color: #fff;
     }
 
-    .navbar-right {
-      justify-content: flex-end;
 
-      width: 20rem;
+    li.logo {
+      width: 69px;
+      height: 46px;
+      background-image: linear-gradient(rgb(255, 119, 0), rgb(255, 51, 0));
+      a {
+        // use local logo, not soundcloud's
+        background: url(https://a-v2.sndcdn.com/assets/images/header/cloud-e365a4.png) no-repeat 12px 11px;
+        border-right: none;
+        display: block;
+      }
+    }
+
+    .flex-container {
+      display: flex;
+      border-left: 1px solid #111;
+      // flex-direction: row;
+      // flex-wrap: nowrap;
+      // justify-content: space-between;
+    }
+      input {
+        margin: auto;
+        flex: 1 1 100px;
+
+        text-align: left;
+        margin: 8px 20px;
+        color: #666;
+        padding: 5px 7px;
+        background: #e5e5e5;
+      }
+
+    .navbar-right {
       border-left: 1px solid #111;
       float: right;
+      height: 46px;
       li {
         float:left;
         a {
           width: 60px;
         }
       }
-
       .nav-profile {
-
         a {
         width: auto;
+        flex-basis: auto;
           float: left;
         }
         .avtr {
@@ -87,16 +90,6 @@
       }
     }
 
-    li.logo {
-      width: 69px;
-      height: 46px;
-      background-image: linear-gradient(rgb(255, 119, 0), rgb(255, 51, 0));
-      a {
-        background: url(https://a-v2.sndcdn.com/assets/images/header/cloud-e365a4.png) no-repeat 12px 11px;
-        border-right: none;
-        display: block;
-      }
-    }
 
     .dots {
       width: 70px;
