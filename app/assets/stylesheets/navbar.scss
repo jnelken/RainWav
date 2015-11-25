@@ -1,62 +1,71 @@
+.nav-spacer {
+  height: 46px;
+}
+
 .navbar-container {
   color: #ccc;
   background: #444444;
   position: fixed;
   width: 100%;
-  z-index: 1;
-  // overflow: scroll;
-}
+  z-index: 10;
 
-.nav-spacer {
-  height: 46px;
-}
+  .navbar {
+    width: 1250px;
+    margin: 0 auto;
+    text-align: center;
+    background: #333333;
 
-.navbar {
-  width: 1250px;
-  margin: 0 auto;
-  text-align: center;
-  background: #333333;
+    li {
+      float: left;
 
-  li {
-    float: left;
+      a {
+        display: block;
+        font-size: 13px;
+        padding: 14px;
+        height: 18px;
+        width: 100px;
+      }
+    }
 
-    a {
+    .navbar-left li {
+      float:left;
+      border-right: 1px solid #111;
+    }
+
+    .searchbar input {
       display: block;
-      font-size: 13px;
-      padding: 14px;
-      height: 18px;
-      width: 100px;
+      text-align: left;
+      margin: 8px 50px;
+      color: #666;
+      width: 600px;
+      padding: 5px 7px;
+      background: #e5e5e5;
+    }
+
+    .navbar-right {
+      float: right;
+      li {
+        float:left;
+      }
+      li.nav-tab:hover {
+        background: #111111;
+        color: #fff;
+      }
+    }
+
+    li.logo {
+      width: 69px;
+      height: 46px;
+      background-image: linear-gradient(rgb(255, 119, 0), rgb(255, 51, 0));
+      a {
+        background: url(https://a-v2.sndcdn.com/assets/images/header/cloud-e365a4.png) no-repeat 12px 11px;
+        border-right: none;
+        display: block;
+      }
+    }
+
+    .more {
+      background: url(https://a-v2.sndcdn.com/assets/images/header/more-0e9e75.svg) 50% 50% no-repeat;
     }
   }
-}
-
-.navbar-left li {
-  float:left;
-  border-right: 1px solid #111;
-}
-.navbar-right {
-  float: right;
-}
-.navbar-right li {
-  float:left;
-}
-.navbar li.nav-tab:hover {
-  background: #111111;
-  color: #fff;
-}
-
-li.logo {
-  width: 69px;
-  height: 46px;
-  background-image: linear-gradient(rgb(255, 119, 0), rgb(255, 51, 0));
-
-}
-li.logo > a {
-  background: url(https://a-v2.sndcdn.com/assets/images/header/cloud-e365a4.png) no-repeat 12px 11px;
-  border-right: none;
-  display: block;
-}
-
-.more {
-  background: url(https://a-v2.sndcdn.com/assets/images/header/more-0e9e75.svg) 50% 50% no-repeat;
 }

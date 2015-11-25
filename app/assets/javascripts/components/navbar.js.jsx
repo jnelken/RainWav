@@ -26,7 +26,7 @@ var Nav = React.createClass({
             </div>
 
             <li className="searchbar">
-              <a href="#">Search</a>
+              <input type="search" placeholder="Search"/>
             </li>
 
             <div className="navbar-right">

@@ -43,12 +43,18 @@ componentWillUnmount: function () {
               <p>{user.bio}</p>
           </img>
           </header>
-
-          <ul>
-            {this.state.tracks.map(function (track) {
-              return <TracksIndexItem key={track.title} track={track} />;
-            })}
-          </ul>
+          <section className="tracklist">
+            <ul className="profile-tabs group">
+              <li><a href={"#/" + user.username}>All</a></li>
+              <li><a href="#/tracks">Tracks</a></li>
+              <li><a href="#/reposts">Reposts (coming soon)</a></li>
+            </ul>
+            <ul>
+              {this.state.tracks.map(function (track) {
+                return <TracksIndexItem key={track.title} track={track} />;
+              })}
+            </ul>
+          </section>
         </div>
     );
   }
