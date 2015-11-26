@@ -30,8 +30,8 @@ var TracksDetail = React.createClass({
 
   render: function () {
 
-    var track = this.state.track;
-    if (track === undefined) { return <img className="spinner" src={assets.spinner} />; }
+
+    if (typeof track === "undefined") { return <img className="spinner" src={assets.spinner} />; }
 
     return (
         <div className="track-page group">
@@ -48,7 +48,7 @@ var TracksDetail = React.createClass({
             </ul>
             <ul>
               {this.state.tracks.map(function (track) {
-                return <TracksIndexItem key={track.title} track={track} />;
+                return <TracksIndexItem key={track + track.id} track={track} />;
               })}
             </ul>
           </section>

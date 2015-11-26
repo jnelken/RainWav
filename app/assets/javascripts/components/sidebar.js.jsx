@@ -15,6 +15,11 @@ var Sidebar = React.createClass({
     this.setState({ userPlays: CurrentUserStore.currentUser().plays });
   },
 
+  componentWillUnmount: function () {
+    CurrentUserStore.removeChangeListener(this._setPlays);
+  },
+
+
   render: function () {
     var currentUser = CurrentUserStore.currentUser();
     var trackStats;

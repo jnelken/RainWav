@@ -2,6 +2,7 @@
   float: left;
   padding: 30px 20px;
   width: 320px;
+  min-height: 100vh;
 
   background: #fff;
   color: #999;
@@ -21,8 +22,12 @@
       border-radius: 3px;
       background: #fff;
       position: absolute;
+      top: 220px;
+      right: 160px;
       transition: opacity .55s;
       text-align: left;
+      border: 1px solid #109dc8;
+      padding: 10px;
     }
 
     .plays, .tracks{

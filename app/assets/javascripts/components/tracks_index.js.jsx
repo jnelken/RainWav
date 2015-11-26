@@ -30,7 +30,7 @@ var TracksIndex = React.createClass({
         {
           this.state.tracks.map(function (track) {
             return (
-              <TracksIndexItem key={track.id} track={track} />
+              <TracksIndexItem key={track + track.id} track={track} />
             );
           })
         }

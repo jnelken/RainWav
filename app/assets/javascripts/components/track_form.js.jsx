@@ -79,7 +79,7 @@ var TrackForm = React.createClass({
               <select onChange={this.changeGenre} >
                 <option>Select a genre:</option>
                 {GenreStore.all().map(function (genre) {
-                  return <option value={genre.id}>{genre.genre}</option>;
+                  return <option key={genre} value={genre.id}>{genre.genre}</option>;
                 })}
               </select>
             </label>
