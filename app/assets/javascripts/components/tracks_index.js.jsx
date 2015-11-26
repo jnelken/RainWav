@@ -1,6 +1,7 @@
 var TracksIndex = React.createClass({
 
   getInitialState: function () {
+    /// turn into real followee feed
     return { tracks: TrackStore.all() };
   },
 
@@ -33,7 +34,7 @@ var TracksIndex = React.createClass({
           })
         }
       </ul>
-      <Sidebar currentUser={this.state.currentUser} />
+      <Sidebar />
       </div>
     );
   }
