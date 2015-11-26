@@ -57,17 +57,13 @@ var TrackForm = React.createClass({
     });
     this.props.closeOut();
   },
-  
+
 /// fix modal class / functionality
   render: function () {
 
     return (
       <section className="track-form modal group is-active">
         <article className="m-odal-content">
-          <span
-            className="modal-close"
-            onClick={this.props.closeOut}>&times;
-          </span>
             <h2>Upload</h2>
           <form onSubmit={this.handleSubmit}>
             <label>Update image

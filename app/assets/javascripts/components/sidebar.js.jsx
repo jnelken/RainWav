@@ -14,7 +14,7 @@ var Sidebar = React.createClass({
     var trackCount;
 
     if (currentUser.tracks) {
-      trackCount = <p className="plays">{currentUser.tracks.length}</p>;
+      trackCount = <p className="tracks">{currentUser.tracks.length}</p>;
       trackStats = currentUser.tracks.map(function (track) {
         return (
           <li key={track.id}>
@@ -39,7 +39,10 @@ var Sidebar = React.createClass({
             {trackStats}
           </ul>
 
-          <p className="plays" onClick={this.togglePlayDetails}>{currentUser.plays}</p><p>Plays in total</p>
+          <p className="plays" onClick={this.togglePlayDetails}>
+            {currentUser.plays}
+          </p>
+          <p>Plays in total</p>
           {trackCount}<p>Tracks in total</p>
 
         </article>

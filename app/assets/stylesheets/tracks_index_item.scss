@@ -70,5 +70,13 @@ $brand-color: #f50;
     .waveform {
       width: 100%;
     }
+
+    .playcount {
+      float:right;
+      color: #bbb;
+      img {
+        width: 16px;
+      }
+    }
   }
 }

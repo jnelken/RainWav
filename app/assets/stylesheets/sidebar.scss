@@ -22,13 +22,20 @@
       background: #fff;
       position: absolute;
       transition: opacity .55s;
+      text-align: left;
     }
 
-    .plays {
+    .plays, .tracks{
       text-align: center;
       font-size: 24px;
-      cursor: pointer;
     }
+
+    .plays:hover {
+      cursor: pointer;
+      color: #f50;
+      transition: color 0.3s;
+    }
+
     .stats-header {
       padding-bottom: 10px;
       margin: 10px 0;

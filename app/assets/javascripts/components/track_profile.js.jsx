@@ -1,7 +1,7 @@
 var TracksDetail = React.createClass({
 
   getInitialState: function () {
-    return ({ user: TrackStore.show() });
+    return ({ track: TrackStore.show() });
   },
 
   componentDidMount: function () {
@@ -31,7 +31,7 @@ var TracksDetail = React.createClass({
   render: function () {
 
     var track = this.state.track;
-    if (track === undefined) { return <div>loading...</div>; }
+    if (track === undefined) { return <img className="spinner" src={assets.spinner} />; }
 
     return (
         <div className="track-page group">

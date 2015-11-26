@@ -47,7 +47,7 @@ componentWillUnmount: function () {
             <ul className="profile-tabs group">
               <li><a href={"#/" + user.username}>All</a></li>
               <li><a href="#/tracks">Tracks</a></li>
-              <li><a href="#/reposts">Reposts (coming soon)</a></li>
+              <li><a href="#/reposts">Reposts</a></li>
             </ul>
             <ul>
               {this.state.tracks.map(function (track) {

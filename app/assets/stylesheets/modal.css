@@ -31,16 +31,3 @@
   background: white;
   border-radius: 5px;
 }
-.modal-close {
-  position: absolute;
-  top: 50px;
-  right: 35px;
-  width: 500px;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-  color: gray;
-}
-.modal-close:hover {
-  color: black;
-}

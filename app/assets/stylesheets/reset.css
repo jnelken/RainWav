@@ -103,4 +103,5 @@ button {
 .spinner {
   width: 50px;
   margin: 50px auto;
+  border-radius: 50%;
 }

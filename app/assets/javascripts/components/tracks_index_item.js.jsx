@@ -50,7 +50,6 @@ var TracksIndexItem = React.createClass({
       return <img className="spinner" src={assets.spinner} />;
     }
 
-
     return (
       <li className="tracks-index-item group">
         <ReactRouter.Link className="artist" to={"/tracks/" + track.id }>
@@ -77,6 +76,10 @@ var TracksIndexItem = React.createClass({
               <audio id="audio" method={this.state.togglePlay}>
                 <source src={track.audio} type="audio/mp3" />
               </audio>
+              <div className="playcount">
+                <img src={assets.plays} />
+                {this.state.plays}
+              </div>
           </div>
 
 
