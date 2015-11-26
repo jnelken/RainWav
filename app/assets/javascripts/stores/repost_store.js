@@ -14,10 +14,6 @@
 
   root.RepostStore = $.extend({}, EventEmitter.prototype, {
 
-    // all: function () {
-    //   return _reposts.slice(0);
-    // },
-
     show: function (track_id) {
       var match;
       _reposts.forEach(function (repost) {

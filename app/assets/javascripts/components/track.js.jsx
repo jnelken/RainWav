@@ -10,6 +10,7 @@ var TracksIndexItem = React.createClass({
   },
 
   componentDidMount: function () {
+    debugger
     UserStore.addChangeListener(this._onUserChange);
     GenreStore.addChangeListener(this._onGenreChange);
   },
@@ -76,8 +77,8 @@ var TracksIndexItem = React.createClass({
             {this.state.controls}
           </div>
           <h3 className="artist">
-            <ReactRouter.Link className="artist" to={this.state.artist.username.capitalize()}>
-              {this.state.artist.username}
+            <ReactRouter.Link to={this.state.artist.username}>
+              {this.state.artist.username.capitalize()}
             </ReactRouter.Link>
           </h3>
           <h3 className="title">
@@ -86,16 +87,11 @@ var TracksIndexItem = React.createClass({
             </ReactRouter.Link>
           </h3>
           <button className="genre">#{this.state.genre.genre}</button>
-
-          <div id="wavform">
-            <img className="waveform" src={assets.waveform} />
-            <audio id={"audio-" + track.id } src={track.audio} type="audio/mp3" />
-
-            <CommentBar plays={this.state.plays} track={this.props.track} />
-          </div>
+          <img className="waveform" src={assets.waveform} />
+          <audio id={"audio-" + track.id } src={track.audio} type="audio/mp3" />
+          <CommentBar plays={this.state.plays} track={this.props.track} />
         </div>
       </li>
     );
   }
 });
-          // <TracksDetail track={track} />

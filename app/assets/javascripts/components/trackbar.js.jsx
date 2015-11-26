@@ -11,7 +11,7 @@ var CommentBar = React.createClass({
   },
 
   _getRepost: function () {
-    debugger
+    // debugger
     this.setState({repost: RepostStore.show(this.props.track.id)});
   },
 
@@ -30,7 +30,6 @@ var CommentBar = React.createClass({
   render: function () {
     // var repost = this.state.repost;
     // var repostStatus = repost.status ? "Repost" : repost.status;
-    console.log(this.state.repost);
 
     return (
         <div className="comment-bar flex-container">
