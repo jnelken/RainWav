@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124194751) do
+ActiveRecord::Schema.define(version: 20151126072308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "follows", force: :cascade do |t|
+    t.integer  "following_id", null: false
+    t.integer  "follower_id",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "follows", ["follower_id"], name: "index_follows_on_follower_id", using: :btree
+  add_index "follows", ["following_id"], name: "index_follows_on_following_id", using: :btree
 
   create_table "genres", force: :cascade do |t|
     t.string   "genre",      null: false
@@ -23,6 +33,16 @@ ActiveRecord::Schema.define(version: 20151124194751) do
   end
 
   add_index "genres", ["genre"], name: "index_genres_on_genre", unique: true, using: :btree
+
+  create_table "reposts", force: :cascade do |t|
+    t.integer  "track_id",   null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "reposts", ["track_id"], name: "index_reposts_on_track_id", using: :btree
+  add_index "reposts", ["user_id"], name: "index_reposts_on_user_id", using: :btree
 
   create_table "tracks", force: :cascade do |t|
     t.string   "title",              null: false

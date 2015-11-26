@@ -14,7 +14,8 @@ class Track < ActiveRecord::Base
   has_attached_file :image, default: 'public/images/original/missing.png', styles: { large: "500x500>", medium: "200x200>", thumb: "120x120>" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
-# is this ok?
+
   belongs_to :user
   belongs_to :genre
+  has_many :reposts
 end

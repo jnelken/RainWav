@@ -11,6 +11,16 @@ class User < ActiveRecord::Base
 
   has_many :tracks, dependent: :destroy
 
+  has_many :followers,
+  class_name: "User",
+  foreign_key: :follower_id
+
+  has_many :followees,
+  class_name: "User",
+  foreign_key: :following_id
+
+  has_many :reposts
+
   def plays
     sum = 0
     self.tracks.each do |track|
