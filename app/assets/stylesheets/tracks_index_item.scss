@@ -71,9 +71,9 @@ $brand-color: #20C1F3;
       width: 100%;
     }
 
-    .playcount {
+    .playcount, .repost {
       float:right;
-      color: #bbb;
+      margin: 0 10px;
       img {
         width: 16px;
       }

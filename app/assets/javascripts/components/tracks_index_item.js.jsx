@@ -22,6 +22,11 @@ var TracksIndexItem = React.createClass({
     this.setState({ genre: GenreStore.getGenre(this.props.track.genre_id) });
   },
 
+  componentWillUnmount: function () {
+    UserStore.addChangeListener(this._onUserChange);
+    GenreStore.addChangeListener(this._onGenreChange);
+  },
+
   handlePlay: function () {
     var trackId = "audio-" + this.props.track.id;
     document.getElementById(trackId).play();
@@ -45,15 +50,24 @@ var TracksIndexItem = React.createClass({
     this.setState({ controls: <img src={assets.play} onClick={this.handlePlay} /> });
   },
 
-  // var play = <img src={assets.play} onClick={this.handlePlay} />;
-  // var pause = <img src={assets.pause} onClick={this.handlePause} />;
-  // var controls = this.state.playing ? pause : play;
+  handleRepost: function () {
+    RepostUtil.createRepost(CurrentUserStore.currentUser().id, this.props.track.id);
+  },
+
   render: function () {
     var track = this.props.track;
 
     if (!this.state.artist || !this.state.genre) {
       return <img className="spinner" src={assets.spinner} />;
     }
+
+    // var waveform = new Waveform({
+    //   container: document.getElementById("wavform"),
+    //   data: [1, 0.2, 0.5],
+    //   innerColor: "#20C1F3",
+    //   // outerColor:
+    //   interpolate:
+    // });
 
     return (
       <li className="tracks-index-item group">
@@ -77,7 +91,7 @@ var TracksIndexItem = React.createClass({
           </h3>
           <button className="genre">#{this.state.genre.genre}</button>
 
-          <div>
+          <div id="wavform">
             <img className="waveform" src={assets.waveform} />
             <audio id={"audio-" + track.id } src={track.audio} type="audio/mp3" />
 
@@ -85,9 +99,11 @@ var TracksIndexItem = React.createClass({
                 <img src={assets.plays} />
                 {this.state.plays}
               </div>
+              <div onClick={this.handleRepost}>
+                <img className="repost thin"src={assets.repost} />
+                Repost
+              </div>
           </div>
-
-
         </div>
       </li>
     );
