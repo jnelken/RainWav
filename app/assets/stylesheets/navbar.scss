@@ -39,6 +39,8 @@
       .logo {
         width: 69px;
         height: 46px;
+        background-image: -webkit-linear-gradient(rgb(0, 209, 255), rgb(0, 71, 255));
+        background-image: -o-linear-gradient(rgb(0, 209, 255), rgb(0, 71, 255));
         background-image: linear-gradient(rgb(0, 209, 255), rgb(0, 71, 255));
         a {
           // use local logo, not soundcloud's
