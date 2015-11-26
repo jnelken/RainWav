@@ -75,6 +75,7 @@ follow: function () {
               })}
             </ul>
           </section>
+          <Sidebar className="sidebar" />
         </div>
     );
   }

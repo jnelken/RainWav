@@ -4,6 +4,7 @@
   background: #fff;
 
   header {
+    display: block;
     max-height: 260px;
     overflow: hidden;
     position: relative;
@@ -44,7 +45,12 @@
     position: relative;
   }
 
+  .sidebar {
+    margin-top: 40px;
+  }
+
   .tracklist {
+    float: left;
     padding: 15px 30px;
 
     .profile-tabs {
@@ -61,7 +67,8 @@
       }
 
       .follow-button {
-        float:right;
+        position: relative;
+        left: 840px;
         box-shadow: 2px 2px 1px #20C1F3;
         border-radius: 5px;
       }
