@@ -18,13 +18,6 @@ class User < ActiveRecord::Base
     end
     sum
   end
-  def plays_in_7_days
-    sum = 0
-    self.tracks.each do |track|
-      sum += track.plays.to_i
-    end
-    sum
-  end
 
   attr_reader :password
 

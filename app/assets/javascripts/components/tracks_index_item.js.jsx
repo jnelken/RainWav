@@ -27,9 +27,11 @@ var TracksIndexItem = React.createClass({
       TracksUtil.addPlay(this.props.track);
       this.setState({ plays: parseInt(this.props.track.plays) + 1 });
     }
+
     toggle = this.state.playing ? true : false;
     this.setState({ playing: toggle });
       console.log("play");
+      debugger
   },
 
   handlePause: function () {

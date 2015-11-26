@@ -1,11 +1,19 @@
 var Sidebar = React.createClass({
 
   getInitialState: function() {
-    return {playDetails: "hidden"};
+    return {
+      playDetails: "hidden",
+      userPlays: CurrentUserStore.currentUser().plays
+    };
   },
 
   componentDidMount: function () {
+    CurrentUserStore.addChangeListener(this._setPlays);
+  },
 
+  _setPlays: function () {
+    debugger
+    this.setState({ userPlays: CurrentUserStore.currentUser().plays });
   },
 
   render: function () {
@@ -40,7 +48,7 @@ var Sidebar = React.createClass({
           </ul>
 
           <p className="plays" onClick={this.togglePlayDetails}>
-            {currentUser.plays}
+            {this.state.userPlays}
           </p>
           <p>Plays in total</p>
           {trackCount}<p>Tracks in total</p>
