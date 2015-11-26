@@ -55,7 +55,7 @@ var Sidebar = React.createClass({
             {this.state.userPlays}
           </p>
           <p>Plays in total</p>
-          {trackCount}<p>Tracks in total</p>
+          {trackCount}<p>Tracks</p>
 
         </article>
 

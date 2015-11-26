@@ -19,9 +19,14 @@
     // },
 
     show: function (track_id) {
-      return _reposts.filter(function (repost) {
-        return repost.track.id === track_id;
-      })[0];
+      var match;
+      _reposts.forEach(function (repost) {
+        if (repost.track.id === track_id) {
+          match = repost;
+          return match;
+        }
+      });
+      return match;
     },
 
     addChangeListener: function (callback) {

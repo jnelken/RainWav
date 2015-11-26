@@ -1,8 +1,8 @@
 User.destroy_all
 Track.destroy_all
 Genre.destroy_all
-# Follow.destroy_all
-# Repost.destroy_all
+Follow.destroy_all
+Repost.destroy_all
 
 j = User.create({
     email: "jnelks@gmail.com",
