@@ -5,7 +5,8 @@
 
   header {
     display: block;
-    max-height: 260px;
+    height: 260px;
+
     overflow: hidden;
     position: relative;
     font: "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;
@@ -30,7 +31,7 @@
     }
   }
 
-  .avatar {
+  .avatar, .track-image {
     width: 200px;
     max-height: 260px;
     position: absolute;
@@ -80,6 +81,15 @@
       }
     }
   }
+}
+
+.banner {
+  height: 380px;
+  background-color: #47484A;
+}
+
+.lgwaveform {
+  width: 820px;
 }
 
 .hide {

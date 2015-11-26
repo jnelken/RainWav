@@ -10,6 +10,7 @@ var TrackForm = React.createClass({
       imageFile: null,
       trackUrl: "",
       trackFile: null,
+      newTrack: ""
     };
   },
 
@@ -28,6 +29,8 @@ var TrackForm = React.createClass({
 
   handleSubmit: function (e) {
     e.preventDefault();
+
+    this.setState({ newTrack: "uploaded" });
 
     var title = this.state.title;
     var genre_id = this.state.genre_id;
@@ -53,9 +56,11 @@ var TrackForm = React.createClass({
       trackUrl: "",
       trackFile: null,
       imageUrl: "",
-      imageFile: null
+      imageFile: null,
+      newTrack: ""
     });
     this.props.closeOut();
+    forceUpdate();
   },
 
 /// fix modal class / functionality
@@ -64,6 +69,7 @@ var TrackForm = React.createClass({
     return (
       <section className="track-form modal group is-active">
         <article className="m-odal-content">
+          <img className={"spinner-track-form" + this.state.newTrack} src={assets.spinner} />
             <h2>Upload</h2>
           <form onSubmit={this.handleSubmit}>
             <label>Update image
@@ -79,7 +85,7 @@ var TrackForm = React.createClass({
               <select onChange={this.changeGenre} >
                 <option>Select a genre:</option>
                 {GenreStore.all().map(function (genre) {
-                  return <option key={genre} value={genre.id}>{genre.genre}</option>;
+                  return <option key={genre.id} value={genre.id}>{genre.genre}</option>;
                 })}
               </select>
             </label>

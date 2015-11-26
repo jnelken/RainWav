@@ -2,7 +2,7 @@ var Trackbar = React.createClass({
 
   getInitialState: function () {
     return ({
-      repost: { status:"Repost" }
+      reposted: "false"
     });
   },
 
@@ -12,24 +12,16 @@ var Trackbar = React.createClass({
 
   _getRepost: function () {
     // debugger
-    this.setState({repost: RepostStore.show(this.props.track.id)});
+    this.setState({reposted: RepostStore.show(this.props.track.id)});
   },
 
   componentWillUnmount: function () {
     RepostStore.removeChangeListener(this._getRepost);
   },
 
-  handleRepost: function () {
-    if (this.state.repost.status === "Repost") {
-      RepostUtil.createRepost(CurrentUserStore.currentUser().id, this.props.track.id);
-    } else {
-      RepostUtil.unRepost(this.state.repost.id);
-    }
-  },
-
   render: function () {
     // var repost = this.state.repost;
-    // var repostStatus = repost.status ? "Repost" : repost.status;
+    // var reposted = repost.status ? "Repost" : repost.status;
 
     return (
         <div className="comment-bar flex-container">
@@ -39,9 +31,29 @@ var Trackbar = React.createClass({
           </div>
           <button className="repost" onClick={this.handleRepost}>
             <img src={assets.repost} />
-             {this.state.repost.status}
+             {this.state.repoststatus}
+          </button>
+          <button className="repost" onClick={this.handleTrash}>
+            <img src={assets.trash} />
+            {this.success}
           </button>
         </div>
     );
+  },
+
+  handleRepost: function () {
+    if (this.state.reposted === "Repost") {
+      RepostUtil.createRepost(CurrentUserStore.currentUser().id, this.props.track.id);
+    } else {
+      RepostUtil.unRepost(this.state.repost.id);
+    }
+  },
+
+  handleTrash: function () {
+    TracksUtil.deleteTrack(this.props.track.id, this.success);
+  },
+
+  success: function () {
+    return <p class="stats">Track deleted!</p>;
   }
 });

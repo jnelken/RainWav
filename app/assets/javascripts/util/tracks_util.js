@@ -84,4 +84,20 @@ TracksUtil = {
     });
   },
 
+  deleteTrack: function (trackId, success) {
+    $.ajax({
+      url: '/api/tracks/' + trackId,
+      type: 'DELETE',
+      dataType: 'json',
+      success: function (data) {
+        ApiActions.receiveTrack(data);
+        success && success();
+      },
+      error: function (data) {
+        console.log("delete track failed:");
+        console.log(data);
+      }
+    });
+  }
+
 };

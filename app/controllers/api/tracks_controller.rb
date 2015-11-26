@@ -39,6 +39,13 @@ class Api::TracksController < ApplicationController
     @track = Track.find(params[:id])
   end
 
+  def destroy
+    @track = Track.find(params[:id])
+    @track.destroy
+    @user = @track.user
+    render 'api/users/show'
+  end
+
   private
 
   def track_params

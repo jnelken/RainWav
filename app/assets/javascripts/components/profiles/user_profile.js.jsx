@@ -4,7 +4,7 @@ var UsersDetail = React.createClass({
     return ({
       user: UserStore.show(),
       tracks: TrackStore.userTracks(),
-      follow: { status: "Follow"}
+      follow: FollowStore.show()
     });
   },
 
@@ -13,12 +13,21 @@ componentDidMount: function () {
   TrackStore.addChangeListener(this._getUserTracks);
   FollowStore.addChangeListener(this._getFollow);
 
-  var u = this.props.params;
+  this.fetchUser(this.props.params);
+},
+
+fetchUser: function (params) {
+  var u = params;
   if (u.username === undefined) {
     UserUtil.fetchUser(u.id);
   } else {
     UserUtil.fetchUser(u.username);
   }
+},
+
+componentWillReceiveProps: function (newProps) {
+  this.fetchUser(newProps.params);
+  FollowUtil.fetchFollows();
 },
 
 _getUser: function () {
@@ -29,6 +38,7 @@ _getUserTracks: function () {
   this.setState({ tracks: TrackStore.userTracks() });
 },
 _getFollow: function () {
+  debugger
   this.setState({ follow: FollowStore.show() });
 },
 
@@ -41,11 +51,19 @@ componentWillUnmount: function () {
   render: function () {
     var user = this.state.user;
     var hideMe;
+    var status;
+
     if (this.state.user.id === CurrentUserStore.currentUser().id) {
       hideMe = "hide";
     }
 
-    console.log(this.state.follow.status);
+    if (this.state.follow) {
+      status = "Following";
+    } else {
+      status = "Follow";
+    }
+    // debugger
+
     return (
         <div className="profile-page group">
           <header>
@@ -60,8 +78,8 @@ componentWillUnmount: function () {
               <li><a href={"#/" + user.username}>All</a></li>
               <li><a href="#/tracks">Tracks</a></li>
               <li><a href="#/reposts">Reposts</a></li>
-              <li className={"follow-button " + this.state.follow.status}>
-                <button className={hideMe} onClick={this.follow}>{this.state.follow.status}</button>
+              <li className={"follow-button " + status}>
+                <button className={hideMe} onClick={this.follow}>{status}</button>
               </li>
             </ul>
 
@@ -76,8 +94,8 @@ componentWillUnmount: function () {
     );
   },
 
-  follow: function () {
-    if (this.state.follow.status == "Follow") {
+  follow: function (status) {
+    if (typeof follow === "undefined") {
       FollowUtil.addFollow(CurrentUserStore.currentUser().id, this.state.user.id);
     } else {
       FollowUtil.removeFollow(this.state.follow.id);
@@ -85,5 +103,3 @@ componentWillUnmount: function () {
   }
 
 });
-          // <div className="cover" styles={"background-image: url(" + user.cover + ")"}>
-          // </div>

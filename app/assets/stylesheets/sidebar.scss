@@ -3,7 +3,7 @@
   // position: fixed;
   // right: 174px;
   padding: 30px 20px;
-  width: 320px;
+  width: 319px;
   min-height: 100vh;
 
   background: #fff;
@@ -23,9 +23,8 @@
       font-size: 12px;
       border-radius: 3px;
       background: #fff;
-      position: absolute;
-      top: 220px;
-      right: 160px;
+      position: fixed;
+      z-index: 5;
       transition: opacity .55s;
       text-align: left;
       border: 1px solid #109dc8;
@@ -80,11 +79,16 @@ ul.flex-container {
   float: left;
   padding-right: 5px;
 
-  .icon {
+  img.icon {
     width: 16px;
   }
 }
 
 .trackcount {
 
+}
+
+.small {
+  text-align: center;
+  max-width:16px;
 }

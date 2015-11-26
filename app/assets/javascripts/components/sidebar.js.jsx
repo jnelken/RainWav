@@ -50,22 +50,20 @@ var Sidebar = React.createClass({
     return (
       <section className="sidebar">
         <article className="stats">
-
           <div className="stats-header">
             <img src={assets.stats} />
-            Statistics
+            Your Statistics
           </div>
-
-          <ul className={"play-details " + this.state.playDetails}>
-            {trackStats}
-          </ul>
 
           <p className="plays" onClick={this.togglePlayDetails}>
             {this.state.userPlays}
           </p>
-          <p>Plays in total</p>
-          {trackCount}<p>Tracks</p>
-
+          <p>Plays in total of</p>
+            <ul className={"play-details " + this.state.playDetails}>
+              {trackStats}
+            </ul>
+          {trackCount}
+            <p>Tracks</p>
         </article>
 
         <article className="stats">
@@ -82,7 +80,7 @@ var Sidebar = React.createClass({
                     <li key={profile.id} className="profile">
                       <a href={"#/users/" + profile.id}><img src={profile.avatar} /></a>
                       <div className="followcount">
-                        <img className="icon" src={assets.followers} /> {profile.followers.length}
+                        <img className="icon" src={assets.followers} /> {profile.followees.length}
                       </div>
                       <div className="trackcount">
                         <img className="icon" src={assets.wave} />{profile.tracks.length}

@@ -6,18 +6,14 @@ var TracksDetail = React.createClass({
 
   componentDidMount: function () {
     TrackStore.addChangeListener(this._getTrack);
-
-    // try to make this component read /id or username/title
-    if (this.props.params.id === undefined) {
-      var options = {
-        track: this.props.params.title,
-        artist: this.props.params.username
-      };
-
-      TracksUtil.fetchTrackUrl(options);
-    } else {
+      // TracksUtil.fetchTrackUrl(options);
+    // } else {
       TracksUtil.fetchTrack(this.props.params.id);
-    }
+    // }
+  },
+
+  componentWillReceiveProps: function (newProps) {
+    TracksUtil.fetchTrack(newProps.params.id);
   },
 
   _getTrack: function () {
@@ -29,27 +25,26 @@ var TracksDetail = React.createClass({
   },
 
   render: function () {
+    if (typeof this.state.track === "undefined") { return <img className="spinner" src={assets.spinner} />; }
 
-
-    if (typeof track === "undefined") { return <img className="spinner" src={assets.spinner} />; }
+    var user = this.state.track.user;
+    var track = this.state.track;
+    console.log(this.state.track);
 
     return (
         <div className="track-page group">
-          <header>
-            <img className="avatar" src={user.avatar} />
-            <h2>{user.username.capitalize()}</h2>
-            <p>{user.bio}</p>
+          <header className="cover">
+            <h2>{track.title.capitalize()}</h2>
+            <p>{track.description}</p>
+            <img className="lgwaveform" src={assets.lgwaveform} />
+            <img className="track-image" src={track.image} />
           </header>
+              <TracksIndexItem key={track.id} track={track} />;
           <section className="tracklist">
             <ul className="profile-tabs group">
               <li><a href={"#/" + user.username}>All</a></li>
               <li><a href="#/tracks">Tracks</a></li>
-              <li><a href="#/reposts">Reposts (coming soon)</a></li>
-            </ul>
-            <ul>
-              {this.state.tracks.map(function (track) {
-                return <TracksIndexItem key={track.id} track={track} />;
-              })}
+              <li><a href="#/reposts">Reposts</a></li>
             </ul>
           </section>
         </div>

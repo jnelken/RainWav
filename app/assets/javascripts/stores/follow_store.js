@@ -1,10 +1,11 @@
 (function (root) {
 
   var CHANGE_EVENT = 'change';
-  var _follow;
   var _follows = [];
+  var _follow;
 
   var setFollow = function (follow) {
+    console.log("follow in store");
     _follow = follow;
   };
 
@@ -19,13 +20,14 @@
     },
 
     show: function () {
-      if (_follow) {
-        return _follow;
-      } else {
-        return _follows.filter(function (follow) {
-          return follow.following_id === UserStore.show().id;
-        })[0];
-      }
+      // if (typeof _follow !== "undefined") {
+        // if (_follow.following_id === UserStore.show().id && _follow.follower_id === CurrentUserStore.currentUser()) {
+          return _follow;
+        // }
+      // }
+      // return _follows.filter(function (follow) {
+        // return follow.following_id === UserStore.show().id && follow.follower_id === CurrentUserStore.currentUser();
+      // })[0];
     },
 
     addChangeListener: function (callback) {
