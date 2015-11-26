@@ -26,7 +26,6 @@
     p {
       font-size: 16px;
       margin-top: 90px
-
     }
   }
 
@@ -59,6 +58,18 @@
           display: block;
           padding: 10px 20px;
         }
+      }
+
+      .follow-button {
+        float:right;
+        box-shadow: 2px 2px 1px #20C1F3;
+        border-radius: 5px;
+      }
+      .Following button {
+        color: #20C1F3;
+        background: #fff;
+        border: 1px solid #20C1F3;
+
       }
     }
   }

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :tracks,  only: [:index, :show, :create, :update, :destroy]
     resources :genres,  only: [:index, :show, :create]
 
-    resources :follows, only: [:create, :destroy]
+    resources :follows, only: [:index, :show, :create, :destroy]
     resources :reposts, only: [:create, :destroy]
   end
 

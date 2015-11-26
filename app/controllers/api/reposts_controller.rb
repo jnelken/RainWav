@@ -2,11 +2,11 @@ class Api::RepostsController < ApplicationController
 
   def create
     @repost = Repost.new(repost_params)
-    
+
     if @repost.save
       render :show
     else
-      render json: @repost.errors.full_messages
+      render json: @repost.errors.full_messages, status: :unprocessable_entity
     end
   end
 

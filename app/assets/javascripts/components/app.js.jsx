@@ -12,6 +12,7 @@ var App = React.createClass({
     ApiUtil.fetchUsers();
     ApiUtil.fetchTracks();
     GenreUtil.fetchGenres();
+    FollowUtil.fetchFollows();
   },
 
   componentWillReceiveProps: function (newProps) {

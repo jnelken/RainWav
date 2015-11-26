@@ -3,13 +3,15 @@ var UsersDetail = React.createClass({
   getInitialState: function () {
     return ({
       user: UserStore.show(),
-      tracks: TrackStore.userTracks()
+      tracks: TrackStore.userTracks(),
+      follow: { status: "Follow"}
     });
   },
 
 componentDidMount: function () {
   UserStore.addChangeListener(this._getUser);
   TrackStore.addChangeListener(this._getUserTracks);
+  FollowStore.addChangeListener(this._getFollow);
 
   var u = this.props.params;
   if (u.username === undefined) {
@@ -28,12 +30,26 @@ _getUserTracks: function () {
   this.setState({ tracks: TrackStore.userTracks() });
 },
 
+_getFollow: function () {
+  this.setState({ follow: FollowStore.show() });
+},
+
 componentWillUnmount: function () {
   UserStore.removeChangeListener(this._getUser);
   TrackStore.removeChangeListener(this._getUserTracks);
+  FollowStore.removeChangeListener(this._getFollow);
+},
+
+follow: function () {
+  if (this.state.follow.status == "Follow") {
+    FollowUtil.addFollow(CurrentUserStore.currentUser().id, this.state.user.id);
+  } else {
+    FollowUtil.removeFollow(this.state.follow.id);
+  }
 },
   render: function () {
     var user = this.state.user;
+
     return (
         <div className="profile-page group">
           <header>
@@ -48,7 +64,11 @@ componentWillUnmount: function () {
               <li><a href={"#/" + user.username}>All</a></li>
               <li><a href="#/tracks">Tracks</a></li>
               <li><a href="#/reposts">Reposts</a></li>
+              <li className={"follow-button " + this.state.follow.status}>
+                <button onClick={this.follow}>{this.state.follow.status}</button>
+              </li>
             </ul>
+
             <ul>
               {this.state.tracks.map(function (track) {
                 return <TracksIndexItem key={track + track.id} track={track} />;
