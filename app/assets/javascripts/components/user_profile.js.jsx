@@ -25,11 +25,9 @@ _getUser: function () {
   this.setState({ user: UserStore.show() });
   ApiUtil.fetchUserTracks(this.state.user.id);
 },
-
 _getUserTracks: function () {
   this.setState({ tracks: TrackStore.userTracks() });
 },
-
 _getFollow: function () {
   this.setState({ follow: FollowStore.show() });
 },
@@ -40,13 +38,6 @@ componentWillUnmount: function () {
   FollowStore.removeChangeListener(this._getFollow);
 },
 
-follow: function () {
-  if (this.state.follow.status == "Follow") {
-    FollowUtil.addFollow(CurrentUserStore.currentUser().id, this.state.user.id);
-  } else {
-    FollowUtil.removeFollow(this.state.follow.id);
-  }
-},
   render: function () {
     var user = this.state.user;
     var hideMe;
@@ -83,7 +74,16 @@ follow: function () {
           <Sidebar className="sidebar" />
         </div>
     );
+  },
+
+  follow: function () {
+    if (this.state.follow.status == "Follow") {
+      FollowUtil.addFollow(CurrentUserStore.currentUser().id, this.state.user.id);
+    } else {
+      FollowUtil.removeFollow(this.state.follow.id);
+    }
   }
+
 });
           // <div className="cover" styles={"background-image: url(" + user.cover + ")"}>
           // </div>

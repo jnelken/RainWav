@@ -5,4 +5,6 @@ class Repost < ActiveRecord::Base
 belongs_to :track
 belongs_to :user
 
+attr_accessor :status
+
 end

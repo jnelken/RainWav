@@ -10,6 +10,7 @@ var TracksIndex = React.createClass({
 
   componentDidMount: function () {
     TrackStore.addChangeListener(this._onChange);
+    RepostUtil.getReposts();
   },
 
   _onChange: function () {

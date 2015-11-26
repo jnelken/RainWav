@@ -1,10 +1,36 @@
 var CommentBar = React.createClass({
 
+  getInitialState: function () {
+    return ({
+      repost: { status:"Repost" }
+    });
+  },
+
+  componentDidMount: function () {
+    RepostStore.addChangeListener(this._getRepost);
+  },
+
+  _getRepost: function () {
+    this.setState({repost: RepostStore.show(this.props.track.id)});
+    debugger
+  },
+
+  componentWillUnmount: function () {
+    RepostStore.removeChangeListener(this._getRepost);
+  },
+
   handleRepost: function () {
-    RepostUtil.createRepost(CurrentUserStore.currentUser().id, this.props.track.id);
+    if (this.state.repost.status === "Repost") {
+      RepostUtil.createRepost(CurrentUserStore.currentUser().id, this.props.track.id);
+    } else {
+      RepostUtil.unRepost(this.state.repost.id);
+    }
   },
 
   render: function () {
+    // var repost = this.state.repost;
+    // var repostStatus = repost.status ? "Repost" : repost.status;
+
     return (
         <div className="comment-bar flex-container">
           <div className="playcount">
@@ -13,11 +39,9 @@ var CommentBar = React.createClass({
           </div>
           <button className="repost" onClick={this.handleRepost}>
             <img src={assets.repost} />
-             Repost
+             {this.state.repost.status}
           </button>
         </div>
     );
   }
 });
-          // <div className="cover" styles={"background-image: url(" + user.cover + ")"}>
-          // </div>
