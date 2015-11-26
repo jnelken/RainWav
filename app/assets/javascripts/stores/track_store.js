@@ -24,6 +24,15 @@
       return _tracks.slice(0);
     },
 
+    // feed: function () {
+    //   return _tracks.filter(function (track) {
+    //     FollowStore.all().forEach(function (follow) {
+    //     return track.id ==
+    //
+    //   })
+    //   });
+    // },
+
     show: function () {
       return _track;
     },

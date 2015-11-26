@@ -50,10 +50,6 @@ var TracksIndexItem = React.createClass({
     this.setState({ controls: <img src={assets.play} onClick={this.handlePlay} /> });
   },
 
-  handleRepost: function () {
-    RepostUtil.createRepost(CurrentUserStore.currentUser().id, this.props.track.id);
-  },
-
   render: function () {
     var track = this.props.track;
 
@@ -95,14 +91,7 @@ var TracksIndexItem = React.createClass({
             <img className="waveform" src={assets.waveform} />
             <audio id={"audio-" + track.id } src={track.audio} type="audio/mp3" />
 
-              <div className="playcount">
-                <img src={assets.plays} />
-                {this.state.plays}
-              </div>
-              <div onClick={this.handleRepost}>
-                <img className="repost thin"src={assets.repost} />
-                Repost
-              </div>
+            <CommentBar plays={this.state.plays} track={this.props.track} />
           </div>
         </div>
       </li>

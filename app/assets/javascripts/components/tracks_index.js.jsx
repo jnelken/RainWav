@@ -2,7 +2,10 @@ var TracksIndex = React.createClass({
 
   getInitialState: function () {
     ApiUtil.fetchTracks();
-    return {tracks: TrackStore.all() };
+    return {
+      tracks: TrackStore.all(),
+
+     };
   },
 
   componentDidMount: function () {

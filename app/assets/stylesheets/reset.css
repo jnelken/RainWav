@@ -89,16 +89,6 @@ button {
   border-style: none;
 }
 
-button.thin * {
-  font-size: 11px;
-  vertical-align: super;
-  max-height: 20px;
-  padding: auto;
-  color: #000;
-  background-color: #fff;
-  border: 1px soild #000;
-}
-
 #content {
 }
 

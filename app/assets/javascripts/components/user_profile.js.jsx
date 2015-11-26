@@ -49,7 +49,12 @@ follow: function () {
 },
   render: function () {
     var user = this.state.user;
+    var hideMe;
+    if (this.state.user.id === CurrentUserStore.currentUser().id) {
+      hideMe = "hide";
+    }
 
+    console.log(this.state.follow.status);
     return (
         <div className="profile-page group">
           <header>
@@ -65,7 +70,7 @@ follow: function () {
               <li><a href="#/tracks">Tracks</a></li>
               <li><a href="#/reposts">Reposts</a></li>
               <li className={"follow-button " + this.state.follow.status}>
-                <button onClick={this.follow}>{this.state.follow.status}</button>
+                <button className={hideMe} onClick={this.follow}>{this.state.follow.status}</button>
               </li>
             </ul>
 
