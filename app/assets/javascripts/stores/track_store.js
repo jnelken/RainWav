@@ -19,6 +19,7 @@
 
   root.TrackStore = $.extend({}, EventEmitter.prototype, {
 
+
     all: function () {
       return _tracks.slice(0);
     },

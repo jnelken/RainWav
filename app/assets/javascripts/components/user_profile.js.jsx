@@ -51,7 +51,7 @@ componentWillUnmount: function () {
             </ul>
             <ul>
               {this.state.tracks.map(function (track) {
-                return <TracksIndexItem key={track.title} track={track} />;
+                return <TracksIndexItem key={track + track.id} track={track} />;
               })}
             </ul>
           </section>

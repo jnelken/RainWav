@@ -97,6 +97,22 @@
       .dots {
         width: 70px;
         background: url(https://a-v2.sndcdn.com/assets/images/header/more-0e9e75.svg) 50% 50% no-repeat;
+
+      }
+
+      .more p {
+        display: none;
+        content: "Log out"
+      }
+
+      .more:hover p {
+        display: block;
+        position: absolute;
+        top: 46px;
+        padding: 10px 27px;
+        font-size: 10px;
+        background: #111111;
+        color: #fff;
       }
     }
 }

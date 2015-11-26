@@ -21,7 +21,7 @@ var UsersIndex = React.createClass({
           this.state.users.map(function (user) {
             return (
               <div className="users-index">
-                <p>hello</p>
+                <p>user.username</p>
                 <p>{user.id}</p>
                 <p>{user.email}</p>
               </div>

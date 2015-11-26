@@ -50,6 +50,6 @@
           break;
       }
     })
-
   });
+  GenreStore.setMaxListeners(99);
 })(this);

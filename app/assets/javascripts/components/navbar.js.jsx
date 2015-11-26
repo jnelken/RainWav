@@ -62,6 +62,7 @@ var Nav = React.createClass({
                   </a>
                 </li>
                 <li className="more" onClick={this.handleLogout}>
+                  <p>log out</p>
                   <a className="dots" href="#/login" ></a>
                 </li>
               </div>
