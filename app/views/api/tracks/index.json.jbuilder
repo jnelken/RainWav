@@ -12,7 +12,8 @@
       :image,
 
       :user,
-      :genre
+      :genre,
+      :reposts
 end
 
 # make a partial

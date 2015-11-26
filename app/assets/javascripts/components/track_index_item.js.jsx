@@ -9,29 +9,6 @@ var TracksIndexItem = React.createClass({
     });
   },
 
-  handlePlay: function () {
-    var trackId = "audio-" + this.props.track.id;
-    document.getElementById(trackId).play();
-
-    if (this.state.playing === undefined) {
-      this.setState({ plays: parseInt(this.props.track.plays) + 1 });
-      TracksUtil.addPlay(this.props.track);
-    }
-    this.setState({
-      playing: this.state.playing ? true : false,
-      controls: <img className="pause" src={assets.pause} onClick={this.handlePause} />
-    });
-  },
-
-  handlePause: function () {
-    var trackId = "audio-" + this.props.track.id;
-    document.getElementById(trackId).pause();
-
-    toggle = this.state.playing ? true : false;
-    this.setState({ playing: toggle });
-    this.setState({ controls: <img src={assets.play} onClick={this.handlePlay} /> });
-  },
-
   render: function () {
     var track = this.props.track;
     var artist = this.state.artist;
@@ -40,15 +17,6 @@ var TracksIndexItem = React.createClass({
     if (!this.state.artist || !this.state.genre) {
       return <img className="spinner" src={assets.spinner} />;
     }
-
-
-    // var waveform = new Waveform({
-    //   container: document.getElementById("wavform"),
-    //   data: [1, 0.2, 0.5],
-    //   innerColor: "#20C1F3",
-    //   // outerColor:
-    //   interpolate:
-    // });
 
     return (
       <li className="tracks-index-item group">
@@ -71,11 +39,35 @@ var TracksIndexItem = React.createClass({
             </ReactRouter.Link>
           </h3>
           <button className="genre">#{genre}</button>
-          <img className="waveform" src={assets.waveform} />
-          <audio id={"audio-" + track.id } src={track.audio} type="audio/mp3" />
-          <CommentBar plays={this.state.plays} track={this.props.track} />
+
+          <Waveform track={track}/>
+          <Trackbar plays={this.state.plays} track={track} />
         </div>
       </li>
     );
-  }
+  },
+
+  handlePlay: function () {
+    var trackId = "audio-" + this.props.track.id;
+    document.getElementById(trackId).play();
+
+    if (this.state.playing === undefined) {
+      this.setState({ plays: this.props.track.plays + 1 });
+      TracksUtil.addPlay(this.props.track);
+    }
+    this.setState({
+      playing: this.state.playing ? true : false,
+      controls: <img className="pause" src={assets.pause} onClick={this.handlePause} />
+    });
+  },
+
+  handlePause: function () {
+    var trackId = "audio-" + this.props.track.id;
+    document.getElementById(trackId).pause();
+
+    toggle = this.state.playing ? true : false;
+    this.setState({ playing: toggle });
+    this.setState({ controls: <img src={assets.play} onClick={this.handlePlay} /> });
+  },
+
 });

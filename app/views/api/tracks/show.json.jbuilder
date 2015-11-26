@@ -11,4 +11,5 @@ json.extract! @track,
   :image,
 
   :user,
-  :genre
+  :genre,
+  :reposts

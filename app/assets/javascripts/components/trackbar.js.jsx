@@ -1,4 +1,4 @@
-var CommentBar = React.createClass({
+var Trackbar = React.createClass({
 
   getInitialState: function () {
     return ({

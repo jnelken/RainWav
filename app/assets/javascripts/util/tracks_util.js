@@ -47,7 +47,7 @@ TracksUtil = {
   },
 
   addPlay: function (track) {
-    // track.plays += 1; // already adds play in component prop, just needs to save
+    track.plays += 1;
     $.ajax({
       url: 'api/tracks/' + track.id,
       type: 'PATCH',
