@@ -10,8 +10,8 @@ class Track < ActiveRecord::Base
   has_attached_file :audio
   validates_attachment_content_type :audio, content_type: /\Aaudio\/.*\Z/
 
-  #  fix default image path
-  has_attached_file :image, default: 'public/images/original/missing.png', styles: { large: "500x500>", medium: "200x200>", thumb: "120x120>" }
+  #  fix default image path :default_url => ActionController::Base.helpers.asset_path('missing_:style.png')
+  has_attached_file :image, :default_url => ActionController::Base.helpers.asset_path('images/original/missing.png'), styles: { large: "500x500>", medium: "200x200>", thumb: "120x120>" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
 
