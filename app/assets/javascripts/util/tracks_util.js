@@ -1,26 +1,24 @@
 TracksUtil = {
   addPlay: function (track) {
     track.plays += 1;
-    debugger
     $.ajax({
       url: 'api/tracks/' + track.id,
       type: 'PATCH',
       dataType: 'json',
-      data: { track: track },
+      data: { track: { plays: track.plays }},
       success: function (data) {
         console.log("added play:");
         console.log(track.plays);
         ApiActions.receiveTrack(data);
       },
       error: function (data) {
-        console.log("addPlay:");
+        console.log("addPlay error:");
         console.log(data);
       }
     });
   },
 
   createTrack: function (trackData, success) {
-    debugger
     $.ajax({
       url: '/api/tracks',
       type: 'POST',

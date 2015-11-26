@@ -3,7 +3,8 @@ var TracksIndexItem = React.createClass({
   getInitialState: function () {
     return ({
       genre: GenreStore.getGenre(this.props.track.genre_id),
-      artist: UserStore.getUser(this.props.track.user_id)
+      artist: UserStore.getUser(this.props.track.user_id),
+      plays: parseInt(this.props.track.plays)
     });
   },
 
@@ -20,20 +21,35 @@ var TracksIndexItem = React.createClass({
     this.setState({ genre: GenreStore.getGenre(this.props.track.genre_id) });
   },
 
-// ADD ARTIST NAME ABOVE TRACK
+  handlePlay: function () {
+    document.getElementById('audio').play();
+    if (this.state.playing === undefined) {
+      TracksUtil.addPlay(this.props.track);
+      this.setState({ plays: parseInt(this.props.track.plays) + 1 });
+    }
+    toggle = this.state.playing ? true : false;
+    this.setState({ playing: toggle });
+      console.log("play");
+  },
 
-handlePlay: function () {
-  debugger
-  // TRACKSUTIL IS NOT DEFINED
-  TracksUtil.addPlay(this.props.track);
-},
+  handlePause: function () {
+    document.getElementById('audio').pause();
+    toggle = this.state.playing ? true : false;
+    this.setState({ playing: toggle });
+    console.log("pause");
+  },
 
   render: function () {
     var track = this.props.track;
 
+    var play = <img src={assets.play} onClick={this.handlePlay} />;
+    var pause = <img src={assets.pause} onClick={this.handlePause} />;
+    var controls = this.state.playing ? pause : play;
+
     if (!this.state.artist || !this.state.genre) {
       return <img className="spinner" src={assets.spinner} />;
     }
+
 
     return (
       <li className="tracks-index-item group">
@@ -42,9 +58,8 @@ handlePlay: function () {
         </ReactRouter.Link>
 
         <div className="track-profile">
-          <div className="play-button">
-
-            <img src={assets.play} onClick={this.handlePlay} />
+          <div className="controls">
+            {controls}
           </div>
           <h3 className="artist">
             <ReactRouter.Link className="artist" to={this.state.artist.username}>
@@ -58,10 +73,10 @@ handlePlay: function () {
           </h3>
           <button className="genre">#{this.state.genre.genre}</button>
           <div>
-            <audio controls="controls">
-              Your browser does not support the <code>audio</code> element.
-              <source src={track.audio} type="audio/mp3" />
-            </audio>
+            <img className="waveform" src={assets.waveform} />
+              <audio id="audio" method={this.state.togglePlay}>
+                <source src={track.audio} type="audio/mp3" />
+              </audio>
           </div>
 
 

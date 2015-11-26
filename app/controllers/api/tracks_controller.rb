@@ -11,29 +11,25 @@ class Api::TracksController < ApplicationController
       end
 
       @tracks = userTracks
+      render :index
     end
 
     @tracks
   end
 
-  def new
-  end
-
   def create
     @track = Track.new(track_params)
     if @track.save
-      render json: @track
+      render :show
     else
       render json: @track.errors.full_messages, status: :unprocessable_entity
     end
   end
 
   def update
-    #get track id???
-    @track = Track.new(track_params)
-
-    if @track.save
-      render json: @track
+    @track = Track.find(params[:id])
+    if @track.update_attributes(track_params)
+      render :show
     else
       render json: @track.errors.full_messages, status: :unprocessable_entity
     end
@@ -46,6 +42,6 @@ class Api::TracksController < ApplicationController
   private
 
   def track_params
-    params.require(:track).permit(:title, :genre_id, :user_id, :audio, :image, :description)
+    params.require(:track).permit(:title, :genre_id, :plays, :user_id, :audio, :image, :description)
   end
 end

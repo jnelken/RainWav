@@ -6,7 +6,6 @@
 
   var resetUsers = function (users) {
     _users = users;
-    console.log(_users[0])
   };
 
   var setUser = function (user) {
