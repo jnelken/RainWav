@@ -12,7 +12,6 @@ var Sidebar = React.createClass({
   },
 
   _setPlays: function () {
-    debugger
     this.setState({ userPlays: CurrentUserStore.currentUser().plays });
   },
 

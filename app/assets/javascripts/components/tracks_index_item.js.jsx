@@ -4,7 +4,8 @@ var TracksIndexItem = React.createClass({
     return ({
       genre: GenreStore.getGenre(this.props.track.genre_id),
       artist: UserStore.getUser(this.props.track.user_id),
-      plays: parseInt(this.props.track.plays)
+      plays: parseInt(this.props.track.plays),
+      controls: <img src={assets.play} onClick={this.handlePlay} />
     });
   },
 
@@ -22,31 +23,33 @@ var TracksIndexItem = React.createClass({
   },
 
   handlePlay: function () {
-    document.getElementById('audio').play();
-    if (this.state.playing === undefined) {
-      TracksUtil.addPlay(this.props.track);
-      this.setState({ plays: parseInt(this.props.track.plays) + 1 });
-    }
+    var trackId = "audio-" + this.props.track.id;
+    document.getElementById(trackId).play();
 
-    toggle = this.state.playing ? true : false;
-    this.setState({ playing: toggle });
-      console.log("play");
-      debugger
+    if (this.state.playing === undefined) {
+      this.setState({ plays: parseInt(this.props.track.plays) + 1 });
+      TracksUtil.addPlay(this.props.track);
+    }
+    this.setState({
+      playing: this.state.playing ? true : false,
+      controls: <img className="pause" src={assets.pause} onClick={this.handlePause} />
+    });
   },
 
   handlePause: function () {
-    document.getElementById('audio').pause();
+    var trackId = "audio-" + this.props.track.id;
+    document.getElementById(trackId).pause();
+
     toggle = this.state.playing ? true : false;
     this.setState({ playing: toggle });
-    console.log("pause");
+    this.setState({ controls: <img src={assets.play} onClick={this.handlePlay} /> });
   },
 
+  // var play = <img src={assets.play} onClick={this.handlePlay} />;
+  // var pause = <img src={assets.pause} onClick={this.handlePause} />;
+  // var controls = this.state.playing ? pause : play;
   render: function () {
     var track = this.props.track;
-
-    var play = <img src={assets.play} onClick={this.handlePlay} />;
-    var pause = <img src={assets.pause} onClick={this.handlePause} />;
-    var controls = this.state.playing ? pause : play;
 
     if (!this.state.artist || !this.state.genre) {
       return <img className="spinner" src={assets.spinner} />;
@@ -60,10 +63,10 @@ var TracksIndexItem = React.createClass({
 
         <div className="track-profile">
           <div className="controls">
-            {controls}
+            {this.state.controls}
           </div>
           <h3 className="artist">
-            <ReactRouter.Link className="artist" to={this.state.artist.username}>
+            <ReactRouter.Link className="artist" to={this.state.artist.username.capitalize()}>
               {this.state.artist.username}
             </ReactRouter.Link>
           </h3>
@@ -73,11 +76,11 @@ var TracksIndexItem = React.createClass({
             </ReactRouter.Link>
           </h3>
           <button className="genre">#{this.state.genre.genre}</button>
+
           <div>
             <img className="waveform" src={assets.waveform} />
-              <audio id="audio" method={this.state.togglePlay}>
-                <source src={track.audio} type="audio/mp3" />
-              </audio>
+            <audio id={"audio-" + track.id } src={track.audio} type="audio/mp3" />
+
               <div className="playcount">
                 <img src={assets.plays} />
                 {this.state.plays}
