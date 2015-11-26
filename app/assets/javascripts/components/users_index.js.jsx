@@ -6,7 +6,7 @@ var UsersIndex = React.createClass({
 
   componentDidMount: function () {
     UserStore.addChangeListener(this._onChange);
-    ApiUtil.fetchUsers();
+    UserUtil.fetchUsers();
   },
 
   _onChange: function () {

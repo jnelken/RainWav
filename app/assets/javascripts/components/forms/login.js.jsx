@@ -5,7 +5,7 @@ var Login = React.createClass({
       e.preventDefault();
 
       var credentials = $(e.currentTarget).serializeJSON();
-        ApiUtil.login(credentials, function () {
+        SessionUtil.login(credentials, function () {
           this.history.pushState(null, "#");
         }.bind(this));
     },
@@ -18,7 +18,7 @@ var Login = React.createClass({
           email: "dew@rainwav.com",
           password: "abc123"
         }};
-        ApiUtil.login(credentials, function () {
+        SessionUtil.login(credentials, function () {
           this.history.pushState(null, "#");
         }.bind(this));
     },

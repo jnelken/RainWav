@@ -5,7 +5,7 @@ var CreateAcc = React.createClass({
       e.preventDefault();
 
       var credentials = $(e.currentTarget).serializeJSON();
-        ApiUtil.createUser(credentials, function () {
+        UserUtil.createUser(credentials, function () {
           this.history.pushState(null, "#");
         }.bind(this));
     },

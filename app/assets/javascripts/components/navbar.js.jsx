@@ -6,7 +6,7 @@ var Nav = React.createClass({
   },
 
   handleLogout: function () {
-    ApiUtil.logout();
+    SessionUtil.logout();
     this.history.pushState(null, "/login");
   },
 
@@ -21,8 +21,8 @@ var Nav = React.createClass({
 
   render: function () {
     var username = "login";
-    if (this.props.currentUser.username) {
-      username = this.props.currentUser.username;
+    if (this.props.cUser.username) {
+      username = this.props.cUser.username;
     }
 
     var trackForm;
@@ -57,7 +57,7 @@ var Nav = React.createClass({
                 </li>
                 <li className="nav-tab nav-profile group">
                   <a href={'#/' + username}>
-                    <img src={this.props.currentUser.avatar} className="avtr" />
+                    <img src={this.props.cUser.avatar} className="avtr" />
                     {username.capitalize()}
                   </a>
                 </li>

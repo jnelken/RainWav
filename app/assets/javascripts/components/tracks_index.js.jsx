@@ -1,15 +1,14 @@
 var TracksIndex = React.createClass({
 
   getInitialState: function () {
-    ApiUtil.fetchTracks();
     return {
-      tracks: TrackStore.all(),
-
+      tracks: TrackStore.all()
      };
   },
 
   componentDidMount: function () {
     TrackStore.addChangeListener(this._onChange);
+    TracksUtil.fetchTracks();
     RepostUtil.getReposts();
   },
 
@@ -22,19 +21,17 @@ var TracksIndex = React.createClass({
   },
 
   render: function () {
-
-    // Floats left
     return (
       <div className="group">
       <ul className="tracks-index">
         <li>
           <h1>Stream</h1>
-          <p>Hear the latest posts from the people you're following</p>
+          <p>Hear the latest posts from the people youre following</p>
         </li>
         {
           this.state.tracks.map(function (track) {
             return (
-              <TracksIndexItem key={track + track.id} track={track} />
+              <TracksIndexItem key={track.id} track={track} />
             );
           })
         }

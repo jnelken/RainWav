@@ -15,15 +15,15 @@ componentDidMount: function () {
 
   var u = this.props.params;
   if (u.username === undefined) {
-    ApiUtil.fetchUser(u.id);
+    UserUtil.fetchUser(u.id);
   } else {
-    ApiUtil.fetchUser(u.username);
+    UserUtil.fetchUser(u.username);
   }
 },
 
 _getUser: function () {
   this.setState({ user: UserStore.show() });
-  ApiUtil.fetchUserTracks(this.state.user.id);
+  TracksUtil.fetchUserTracks(this.state.user.id);
 },
 _getUserTracks: function () {
   this.setState({ tracks: TrackStore.userTracks() });
@@ -67,7 +67,7 @@ componentWillUnmount: function () {
 
             <ul>
               {this.state.tracks.map(function (track) {
-                return <TracksIndexItem key={track + track.id} track={track} />;
+                return <TracksIndexItem key={track.id} track={track} />;
               })}
             </ul>
           </section>

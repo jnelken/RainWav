@@ -7,7 +7,11 @@ json.extract! @user,
   :updated_at,
   :avatar,
   :cover,
+
   :plays,
-  :tracks
+  :tracks,
+  :reposts,
+  :followers,
+  :followees
 
 # json.banner asset_path(@user.cover.url(:large))

@@ -12,11 +12,11 @@ class User < ActiveRecord::Base
   has_many :tracks, dependent: :destroy
 
   has_many :followers,
-  class_name: "User",
+  class_name: "Follow",
   foreign_key: :follower_id
 
   has_many :followees,
-  class_name: "User",
+  class_name: "Follow",
   foreign_key: :following_id
 
   has_many :reposts

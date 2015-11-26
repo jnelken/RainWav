@@ -14,9 +14,9 @@ var TracksDetail = React.createClass({
         artist: this.props.params.username
       };
 
-      ApiUtil.fetchTrackUrl(options);
+      TracksUtil.fetchTrackUrl(options);
     } else {
-      ApiUtil.fetchTrack(this.props.params.id);
+      TracksUtil.fetchTrack(this.props.params.id);
     }
   },
 
@@ -48,7 +48,7 @@ var TracksDetail = React.createClass({
             </ul>
             <ul>
               {this.state.tracks.map(function (track) {
-                return <TracksIndexItem key={track + track.id} track={track} />;
+                return <TracksIndexItem key={track.id} track={track} />;
               })}
             </ul>
           </section>

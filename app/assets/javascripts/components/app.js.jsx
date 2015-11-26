@@ -7,19 +7,14 @@ var App = React.createClass({
 
   componentDidMount: function () {
     CurrentUserStore.addChangeListener(this._setCurrentUser);
-    ApiUtil.fetchCurrentUser();
-
-    ApiUtil.fetchUsers();
-    ApiUtil.fetchTracks();
-    GenreUtil.fetchGenres();
-    FollowUtil.fetchFollows();
+    SessionUtil.fetchCurrentUser();
   },
 
   componentWillReceiveProps: function (newProps) {
     /// logged out redirect
-
     var newPath = newProps.location.pathname;
     var currentPath = this.props.location.pathname;
+
     if (newPath !== currentPath && newPath !== "/createaccount") {
       this._ensureLoggedIn();
     }
@@ -36,14 +31,13 @@ var App = React.createClass({
   },
 
   render: function () {
+    // var children = React.Children.map(this.props.children, function(child) {
+    //   return React.cloneElement(child, {...this.state});
+    // }, this);
+
     return (
       <div id="app">
-        <Nav
-          currentUser={this.state.currentUser}
-          users={this.state.users}
-          genres={this.state.genres}
-        />
-
+        <Nav cUser={this.state.currentUser} />
         <div id="viewport">
           {this.props.children}
         </div>
