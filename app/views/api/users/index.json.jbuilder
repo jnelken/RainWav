@@ -8,6 +8,10 @@ json.array! @users do |user|
   :updated_at,
   :avatar,
   :cover,
+
   :plays,
-  :tracks
+  :tracks,
+  :reposts,
+  :followers,
+  :followees
 end

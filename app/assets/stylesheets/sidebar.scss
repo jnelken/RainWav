@@ -1,7 +1,7 @@
 .sidebar {
   float: left;
-  position: fixed;
-  right: 174px;
+  // position: fixed;
+  // right: 174px;
   padding: 30px 20px;
   width: 320px;
   min-height: 100vh;
@@ -59,4 +59,32 @@
 .hidden {
   opacity: 0;
   transition: opacity .55s;
+}
+
+ul.flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.profile {
+  min-width: 105px;
+  // flex-basis: 90px;
+    padding-bottom: 5px;
+  img {
+    max-width: 80px;
+  }
+}
+.followcount, .trackcount {
+  // position: relative;
+  float: left;
+  padding-right: 5px;
+
+  .icon {
+    width: 16px;
+  }
+}
+
+.trackcount {
+
 }

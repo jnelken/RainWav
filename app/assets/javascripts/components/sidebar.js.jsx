@@ -3,16 +3,24 @@ var Sidebar = React.createClass({
   getInitialState: function() {
     return {
       playDetails: "hidden",
-      userPlays: CurrentUserStore.currentUser().plays
+      userPlays: CurrentUserStore.currentUser().plays,
+      profiles: UserStore.all()
     };
   },
 
   componentDidMount: function () {
     CurrentUserStore.addChangeListener(this._setPlays);
+    UserStore.addChangeListener(this._setProfiles);
+
+    UserUtil.fetchUsers();
   },
 
   _setPlays: function () {
     this.setState({ userPlays: CurrentUserStore.currentUser().plays });
+  },
+
+  _setProfiles: function () {
+    this.setState({ profiles: UserStore.all() });
   },
 
   componentWillUnmount: function () {
@@ -24,6 +32,7 @@ var Sidebar = React.createClass({
     var currentUser = CurrentUserStore.currentUser();
     var trackStats;
     var trackCount;
+    var count;
 
     if (currentUser.tracks) {
       trackCount = <p className="tracks">{currentUser.tracks.length}</p>;
@@ -35,9 +44,9 @@ var Sidebar = React.createClass({
         );
       });
     }
-
-    var profiles;
-
+    if (Object.keys(currentUser).length === 0) {
+      return <img className="spinner" src={assets.spinner} />;
+    }
     return (
       <section className="sidebar">
         <article className="stats">
@@ -64,7 +73,27 @@ var Sidebar = React.createClass({
             <img src={assets.followers} />
             Who to follow
           </div>
-          <p>{profiles}</p>
+          <ul className="profiles group flex-container">
+          {
+            this.state.profiles.map(function (profile, i) {
+              if (currentUser.followees.indexOf(profile) === -1) {
+                if (i < 10) {
+                  return (
+                    <li key={profile.id} className="profile">
+                      <a href={"#/users/" + profile.id}><img src={profile.avatar} /></a>
+                      <div className="followcount">
+                        <img className="icon" src={assets.followers} /> {profile.followers.length}
+                      </div>
+                      <div className="trackcount">
+                        <img className="icon" src={assets.wave} />{profile.tracks.length}
+                      </div>
+                    </li>
+                  );
+                }
+              }
+          })}
+
+        </ul>
 
         </article>
 
