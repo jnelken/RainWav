@@ -4,11 +4,6 @@
   var _follows = [];
   var _follow;
 
-  var setFollow = function (follow) {
-    console.log("follow in store");
-    _follow = follow;
-  };
-
   var setFollows = function (follows) {
     _follows = follows;
   };
@@ -20,14 +15,11 @@
     },
 
     show: function () {
-      // if (typeof _follow !== "undefined") {
-        // if (_follow.following_id === UserStore.show().id && _follow.follower_id === CurrentUserStore.currentUser()) {
-          return _follow;
-        // }
-      // }
-      // return _follows.filter(function (follow) {
-        // return follow.following_id === UserStore.show().id && follow.follower_id === CurrentUserStore.currentUser();
-      // })[0];
+      if (typeof _follows !== "undefined") {
+        return _follows.filter(function (fllw) {
+          return fllw.follower_id === CurrentUserStore.currentUser().id && fllw.following_id === UserStore.show().id;
+        })[0];
+      }
     },
 
     addChangeListener: function (callback) {
@@ -47,7 +39,7 @@
           break;
         case FollowConstants.FOLLOW_RECEIVED:
 
-          setFollow(payload.follow);
+          _follows.push(payload.follow);
           FollowStore.emit(CHANGE_EVENT);
           break;
       }

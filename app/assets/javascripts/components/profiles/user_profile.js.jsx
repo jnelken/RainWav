@@ -14,6 +14,7 @@ componentDidMount: function () {
   FollowStore.addChangeListener(this._getFollow);
 
   this.fetchUser(this.props.params);
+  FollowUtil.fetchFollows();
 },
 
 fetchUser: function (params) {
@@ -36,10 +37,11 @@ _getUser: function () {
 },
 _getUserTracks: function () {
   this.setState({ tracks: TrackStore.userTracks() });
+  FollowUtil.fetchFollows();
 },
 _getFollow: function () {
-  debugger
   this.setState({ follow: FollowStore.show() });
+  // debugger
 },
 
 componentWillUnmount: function () {
@@ -100,6 +102,7 @@ componentWillUnmount: function () {
     } else {
       FollowUtil.removeFollow(this.state.follow.id);
     }
+    FollowUtil.fetchFollows();
   }
 
 });

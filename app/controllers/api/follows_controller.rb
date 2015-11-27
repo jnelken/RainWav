@@ -10,7 +10,6 @@ class Api::FollowsController < ApplicationController
     @follow = Follow.new(follow_params)
 
     if @follow.save
-      @follow.status = "Following"
       render :show
     else
       render json: @follow.errors.full_messages, status: :unprocessable_entity
@@ -25,7 +24,6 @@ class Api::FollowsController < ApplicationController
   def destroy
     @follow = Follow.find(params[:id])
     @follow.destroy
-    @follow.status = "Follow"
     render :show
   end
 
