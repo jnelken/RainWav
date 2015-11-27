@@ -31,11 +31,12 @@ componentWillReceiveProps: function (newProps) {
 
 _getUser: function () {
   this.setState({ user: UserStore.show() });
-  FollowUtil.fetchFollows();
+  this._getFollow();
   TracksUtil.fetchUserTracks(this.state.user.id);
 },
 _getUserTracks: function () {
   this.setState({ tracks: TrackStore.userTracks() });
+
 },
 _getFollow: function () {
   this.setState({ follow: FollowStore.show() });

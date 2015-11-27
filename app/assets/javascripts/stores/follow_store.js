@@ -44,7 +44,7 @@
           break;
         case FollowConstants.FOLLOW_REMOVED:
 
-          var i = _follows.indexOf(payload.follow);
+          var i = _follows.map(function(follow) { return follow.id; }).indexOf(payload.follow.id);
           // debugger
           _follows.splice(i,1);
           FollowStore.emit(CHANGE_EVENT);
