@@ -19,7 +19,7 @@ q = User.create({
   password: "abc123",
   bio: "💧🌊",
   avatar: 'https://s3.amazonaws.com/rainwav-seeds/user_images/dew_avatar.png',
-  cover: 'https://s3.amazonaws.com/rainwav-seeds/user_images/dew_cover.png',
+  cover: "https://s3.amazonaws.com/rainwav-seeds/user_images/2015-11-02-amazing-outfits-amazing-class.JPG"
 })
 
 mc = User.create({
