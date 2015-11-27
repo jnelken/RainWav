@@ -22,7 +22,7 @@ FollowUtil = {
       dataType: 'json',
       success: function (data) {
         console.log('deleted follow');
-        FollowActions.receiveFollow(data);
+        FollowActions.removeFollow(data);
       }
     });
   },

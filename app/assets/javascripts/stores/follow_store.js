@@ -42,6 +42,13 @@
           _follows.push(payload.follow);
           FollowStore.emit(CHANGE_EVENT);
           break;
+        case FollowConstants.FOLLOW_REMOVED:
+
+          var i = _follows.indexOf(payload.follow);
+          // debugger
+          _follows.splice(i,1);
+          FollowStore.emit(CHANGE_EVENT);
+          break;
       }
     })
   });

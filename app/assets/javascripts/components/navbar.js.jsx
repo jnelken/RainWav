@@ -42,7 +42,7 @@ var Nav = React.createClass({
           <ul className="navbar group">
 
             <li className="logo">
-              <a href="#"></a>
+              <a href="#"><img src={assets.logo} /></a>
             </li>
             <li className="nav-tab">
               <a href="#">Home</a>

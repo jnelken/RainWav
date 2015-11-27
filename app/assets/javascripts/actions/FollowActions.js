@@ -13,4 +13,11 @@ FollowActions = {
       follows: follows
     });
   },
+
+  removeFollow: function (follow) {
+    AppDispatcher.dispatch({
+      actionType: FollowConstants.FOLLOW_REMOVED,
+      follow: follow
+    });
+  },
 };

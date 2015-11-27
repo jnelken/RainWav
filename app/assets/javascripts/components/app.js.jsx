@@ -10,8 +10,6 @@ var App = React.createClass({
     SessionUtil.fetchCurrentUser();
 
     GenreUtil.fetchGenres();
-    RepostUtil.getReposts();
-
   },
 
   componentWillReceiveProps: function (newProps) {

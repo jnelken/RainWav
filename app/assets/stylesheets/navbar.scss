@@ -40,9 +40,16 @@
         background-image: linear-gradient(rgb(0, 209, 255), rgb(0, 71, 255));
         a {
           // use local logo, not soundcloud's
-          background: url(https://a-v2.sndcdn.com/assets/images/header/cloud-e365a4.png) no-repeat 12px 11px;
+          // background: url(https://a-v2.sndcdn.com/assets/images/header/cloud-e365a4.png) no-repeat 12px 11px;
           border-right: none;
           display: block;
+        }
+
+        img {
+          width: 45px;
+          position: relative;
+          top: -15px;
+          left: -2px;
         }
       }
 
