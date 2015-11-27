@@ -243,7 +243,7 @@ mm = User.create({
   email: "Morizio@rainwav.com",
   password: "Morizio",
   bio: "i love this site yo",
-  image: "https://s3.amazonaws.com/rainwav-seeds/user_images/morizio.png"
+  image: "https://s3.amazonaws.com/rainwav-seeds/user_images/morizio.png",
   cover: "http://p1.pichost.me/i/63/1880733.jpg"
   })
 
