@@ -83,7 +83,7 @@ Track.create({
   plays: rand(200000),
   user_id: j.id,
   audio: 'https://s3.amazonaws.com/rainwav-seeds/track_audio/Sai.mp3',
-  image: 'http://redmp3.me/cover/367419-460x460/a-piece-of-my-heart.jpg',
+  image: 'https://redmp3.me/cover/367419-460x460/a-piece-of-my-heart.jpg',
 
 })
 
@@ -191,7 +191,7 @@ tl = User.create({
   password: "qwertyuiop",
   bio: "Dimeloooho!",
   avatar: "https://s3.amazonaws.com/hiphopdx-production/2014/05/Tory_Lanez-304-300x300.jpg",
-  cover: "http://theelectrobeat.com/wp-content/uploads/2015/10/kansas-city-skyline-in-black-watercolor-on-white-background-pablo-romero-600x450.jpg"
+  cover: "https://s3.amazonaws.com/rainwav-seeds/user_images/tory_cover.jpg"
 })
 
 Track.create({
@@ -229,7 +229,7 @@ travis = User.create({
   password: "qwertyuiop",
   bio: "So young, so pretty",
   cover: "https://i.ytimg.com/vi/eRg7Yv9Z15M/maxresdefault.jpg",
-  avatar: "http://imb.ulximg.com/image/src/artist/1391551644_71e049f5e11f642da08431e7ab760844.jpg/1443ac41d361c9354bb31379d29b4586/1391551644_600_1390583806_travis_scott_38_32.jpg"
+  avatar: "https://s3.amazonaws.com/rainwav-seeds/user_images/travis_avatar.jpg"
 })
 
 Track.create({
@@ -250,7 +250,7 @@ mm = User.create({
   password: "Morizio",
   bio: "i love this site yo",
   image: "https://s3.amazonaws.com/rainwav-seeds/user_images/morizio.png",
-  cover: "http://p1.pichost.me/i/63/1880733.jpg"
+  cover: "https://s3.amazonaws.com/rainwav-seeds/user_images/moizio_cover.jpg"
   })
 
   Track.create({
