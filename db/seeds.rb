@@ -4,14 +4,8 @@ Genre.destroy_all
 Follow.destroy_all
 Repost.destroy_all
 
-j = User.create({
-    email: "jnelks@gmail.com",
-    password: "qwertyuiop",
-    username: "Callisto",
-    bio: "Dj from Jupiter's moon",
-    avatar: 'https://s3.amazonaws.com/rainwav-seeds/user_images/callisto_avatar.jpg',
-    cover: 'https://s3.amazonaws.com/rainwav-seeds/user_images/callisto_cover.jpg',
-})
+
+# Demo user
 
 q = User.create({
   username: "Dew",
@@ -22,16 +16,9 @@ q = User.create({
   cover: "https://s3.amazonaws.com/rainwav-seeds/user_images/2015-11-02-amazing-outfits-amazing-class.JPG"
 })
 
-mc = User.create({
-  email: "mr@carmack.com",
-  password: "qwertyuiop",
-  username: "Mr. Carmack",
-  bio: "SF >> LA",
-  avatar: 'https://s3.amazonaws.com/rainwav-seeds/user_images/carmack_avatar.png',
-  cover: 'https://s3.amazonaws.com/rainwav-seeds/user_images/background.jpg',
-})
 
 
+# Genres
 
 #1
 space = Genre.create({
@@ -54,6 +41,18 @@ rnb = Genre.create({
   genre: "RnB"
 })
 
+
+
+#  Users and tracks
+
+j = User.create({
+    email: "jnelks@gmail.com",
+    password: "qwertyuiop",
+    username: "Callisto",
+    bio: "Dj from Jupiter's moon",
+    avatar: 'https://s3.amazonaws.com/rainwav-seeds/user_images/callisto_avatar.jpg',
+    cover: 'https://s3.amazonaws.com/rainwav-seeds/user_images/callisto_cover.jpg',
+})
 
 
 Track.create({
@@ -90,7 +89,14 @@ Track.create({
 
 
 # #######################
-
+mc = User.create({
+  email: "mr@carmack.com",
+  password: "qwertyuiop",
+  username: "Mr. Carmack",
+  bio: "SF >> LA",
+  avatar: 'https://s3.amazonaws.com/rainwav-seeds/user_images/carmack_avatar.png',
+  cover: 'https://s3.amazonaws.com/rainwav-seeds/user_images/background.jpg',
+})
 
 
 Track.create({
@@ -217,7 +223,7 @@ Track.create({
 
 # ################################################
 
-  travis = User.create({
+travis = User.create({
   username: "Travis Scott",
   email: "travis@scott.com",
   password: "qwertyuiop",
@@ -251,7 +257,7 @@ mm = User.create({
     title: "Magnets",
     genre_id: hiphop.id,
     description: "",
-    plays: rand(200000)
+    plays: rand(200000),
     user_id: mm.id,
     image: "https://s3.amazonaws.com/rainwav-seeds/user_images/morizio.png",
     audio: 'https://s3.amazonaws.com/rainwav-seeds/track_audio/Morizio+-+Magnets.mp3',

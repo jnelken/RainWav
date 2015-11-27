@@ -9,7 +9,6 @@ var App = React.createClass({
     CurrentUserStore.addChangeListener(this._setCurrentUser);
     SessionUtil.fetchCurrentUser();
 
-    GenreUtil.fetchGenres();
     FollowUtil.fetchFollows();
   },
 
