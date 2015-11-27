@@ -64,6 +64,21 @@ componentWillUnmount: function () {
     }
     // debugger
 
+    if (this.state.tracks.length === 0) {
+      tracks =  <li className="tracks-index-item group">
+              <div className="track-profile">
+                <h3 className="artist">
+                </h3>
+                <h3 className="artist title">
+                </h3>
+              </div>
+            </li>;
+    } else {
+      tracks = this.state.tracks.map(function (track) {
+        return <TracksIndexItem key={track.id} track={track} />;
+      });
+    }
+
     return (
         <div className="profile-page group">
           <header>
@@ -84,9 +99,7 @@ componentWillUnmount: function () {
             </ul>
 
             <ul>
-              {this.state.tracks.map(function (track) {
-                return <TracksIndexItem key={track.id} track={track} />;
-              })}
+              {tracks}
             </ul>
           </section>
           <Sidebar className="sidebar" />
