@@ -59,7 +59,7 @@ Track.create({
   title: "Eclipse",
   genre_id: space.id,
   description: "Space track!",
-  plays: rand(200000),
+  plays: rand(4)**rand(4),
   user_id: j.id,
   audio: URI.parse('https://s3.amazonaws.com/rainwav-seeds/track_audio/Callisto+-+Eclipse+(Original+Mix).mp3'),
   image: URI.parse('https://s3.amazonaws.com/rainwav-seeds/track_images/callisto_track_eclipse.jpg'),
@@ -69,23 +69,23 @@ Track.create({
   title: "Satellite",
   genre_id: house.id,
   description: "From way out there",
-  plays: rand(200000),
+  plays: rand(4)**rand(4),
   user_id: j.id,
   audio: URI.parse('https://s3.amazonaws.com/rainwav-seeds/track_audio/Satellite.mp3'),
   image: URI.parse('https://s3.amazonaws.com/rainwav-seeds/track_images/callisto_track_satellite.png'),
 
 })
 
-Track.create({
-  title: "Sai Das Trevas (Preview)",
-  genre_id: house.id,
-  description: "new remix I'm working on!",
-  plays: rand(200000),
-  user_id: j.id,
-  audio: URI.parse('https://s3.amazonaws.com/rainwav-seeds/track_audio/Sai.mp3'),
-  image: URI.parse('https://redmp3.me/cover/367419-460x460/a-piece-of-my-heart.jpg'),
-
-})
+# Track.create({
+#   title: "Sai Das Trevas (Preview)",
+#   genre_id: house.id,
+#   description: "new remix I'm working on!",
+#   plays: rand(4)**rand(4),
+#   user_id: j.id,
+#   audio: URI.parse('https://s3.amazonaws.com/rainwav-seeds/track_audio/Sai.mp3'),
+#   image: URI.parse('https://redmp3.me/cover/367419-460x460/a-piece-of-my-heart.jpg'),
+#
+# })
 
 
 # #######################
@@ -103,7 +103,7 @@ Track.create({
   title: "Womp",
   genre_id: trap.id,
   description: "off of the red EP",
-  plays: rand(200000),
+  plays: rand(4)**rand(4),
   user_id: mc.id,
   audio: URI.parse('https://s3.amazonaws.com/rainwav-seeds/track_audio/womp.mp3'),
   image: URI.parse('https://s3.amazonaws.com/rainwav-seeds/user_images/cover.jpg'),
@@ -114,7 +114,7 @@ Track.create({
   title: "Warrior (ft Salva, Oski)",
   genre_id: trap.id,
   description: "off of the red EP",
-  plays: rand(200000),
+  plays: rand(4)**rand(4),
   user_id: mc.id,
   audio: URI.parse('https://s3.amazonaws.com/rainwav-seeds/track_audio/warrior+ft.+salva%2C+oski.mp3'),
   image: URI.parse('https://s3.amazonaws.com/rainwav-seeds/user_images/cover.jpg'),
@@ -125,7 +125,7 @@ Track.create({
   title: "Ugh",
   genre_id: trap.id,
   description: "off of the red EP",
-  plays: rand(200000),
+  plays: rand(4)**rand(4),
   user_id: mc.id,
   audio: URI.parse('https://s3.amazonaws.com/rainwav-seeds/track_audio/ugh.mp3'),
   image: URI.parse('https://s3.amazonaws.com/rainwav-seeds/user_images/cover.jpg'),
@@ -136,7 +136,7 @@ Track.create({
   title: "Solutions (ft. Donnis)",
   genre_id: trap.id,
   description: "off of the red EP",
-  plays: rand(200000),
+  plays: rand(4)**rand(4),
   user_id: mc.id,
   audio: URI.parse('https://s3.amazonaws.com/rainwav-seeds/track_audio/solutions+ft.+Donnis.mp3'),
   image: URI.parse('https://s3.amazonaws.com/rainwav-seeds/user_images/cover.jpg'),
@@ -147,7 +147,7 @@ Track.create({
   title: "Trophies (Remix)",
   genre_id: trap.id,
   description: "off of the red EP",
-  plays: rand(200000),
+  plays: rand(4)**rand(4),
   user_id: mc.id,
   audio: URI.parse('https://s3.amazonaws.com/rainwav-seeds/track_audio/Trophies+(mr.+carmack+remix).mp3'),
   image: URI.parse('https://s3.amazonaws.com/rainwav-seeds/user_images/cover.jpg'),
@@ -158,7 +158,7 @@ Track.create({
   title: "Summer (Remix)",
   genre_id: trap.id,
   description: "off of the red EP",
-  plays: rand(200000),
+  plays: rand(4)**rand(4),
   user_id: mc.id,
   audio: URI.parse('https://s3.amazonaws.com/rainwav-seeds/track_audio/Summer+(mr.+carmack+remix).mp3'),
   image: URI.parse('https://s3.amazonaws.com/rainwav-seeds/user_images/cover.jpg'),
@@ -178,7 +178,7 @@ Track.create({
   title: "Stepps",
   genre_id: space.id,
   description: "Friend's track",
-  plays: rand(200000),
+  plays: rand(4)**rand(4),
   user_id: tm.id,
   audio: URI.parse('https://s3.amazonaws.com/rainwav-seeds/track_audio/Taylor+McFerrin+-+Stepps.mp3'),
 })
@@ -198,7 +198,7 @@ Track.create({
   title: "Dimelo (prod. by Snakehips)",
   genre_id: rnb.id,
   description: "Sing it out loud with me, baby",
-  plays: rand(200000),
+  plays: rand(4)**rand(4),
   user_id: tl.id,
   audio: URI.parse('https://s3.amazonaws.com/rainwav-seeds/track_audio/Dimelo+(Prod+By+Snakehips).mp3'),
 })
@@ -216,7 +216,7 @@ Track.create({
   title: "Cassie - Me and U (3mbr Remix)",
   genre_id: house.id,
   description: "It's just me n U, now, I've been waiting...",
-  plays: rand(200000),
+  plays: rand(4)**rand(4),
   user_id: mbr.id,
   audio: URI.parse('https://s3.amazonaws.com/rainwav-seeds/track_audio/Cassie+-+Me+%26+U+(3MBR+Remix).mp3'),
 })
@@ -236,7 +236,7 @@ Track.create({
   title: "Antidote",
   genre_id: hiphop.id,
   description: "",
-  plays: rand(200000),
+  plays: rand(4)**rand(4),
   user_id: travis.id,
   image: URI.parse("https://upload.wikimedia.org/wikipedia/en/7/74/Rodeoalbumdeluxe.jpg"),
   audio: URI.parse('https://s3.amazonaws.com/rainwav-seeds/track_audio/09+Antidote.mp3'),
@@ -257,7 +257,7 @@ mm = User.create({
     title: "Magnets",
     genre_id: hiphop.id,
     description: "",
-    plays: rand(200000),
+    plays: rand(4)**rand(4),
     user_id: mm.id,
     image: URI.parse("https://s3.amazonaws.com/rainwav-seeds/user_images/morizio.png"),
     audio: URI.parse('https://s3.amazonaws.com/rainwav-seeds/track_audio/Morizio+-+Magnets.mp3'),
