@@ -10,6 +10,7 @@ var App = React.createClass({
     SessionUtil.fetchCurrentUser();
 
     FollowUtil.fetchFollows();
+    GenreUtil.fetchGenres();
   },
 
   componentWillReceiveProps: function (newProps) {
