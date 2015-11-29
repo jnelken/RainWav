@@ -55,6 +55,11 @@ var Sidebar = React.createClass({
             Your Statistics
           </div>
 
+          <p className="plays">
+            {FollowStore.followercount()}
+          </p>
+          <p>Followers</p>
+
           <p className="plays" onClick={this.togglePlayDetails}>
             {this.state.userPlays}
           </p>

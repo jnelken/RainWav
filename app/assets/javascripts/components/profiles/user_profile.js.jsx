@@ -16,6 +16,10 @@ componentDidMount: function () {
   this.fetchUser(this.props.params);
 },
 
+componentWillReceiveProps: function (newProps) {
+  this.fetchUser(newProps.params);
+},
+
 fetchUser: function (params) {
   var u = params;
   if (u.username === undefined) {
@@ -25,19 +29,17 @@ fetchUser: function (params) {
   }
 },
 
-componentWillReceiveProps: function (newProps) {
-  this.fetchUser(newProps.params);
-},
-
 _getUser: function () {
   this.setState({ user: UserStore.show() });
   this._getFollow();
   TracksUtil.fetchUserTracks(this.state.user.id);
 },
+
 _getUserTracks: function () {
   this.setState({ tracks: TrackStore.userTracks() });
 
 },
+
 _getFollow: function () {
   this.setState({ follow: FollowStore.show() });
 },
@@ -62,7 +64,6 @@ render: function () {
   } else {
     status = "Follow";
   }
-  // debugger
 
   if (this.state.tracks.length === 0) {
     tracks =  <li className="tracks-index-item group">

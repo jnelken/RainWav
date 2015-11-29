@@ -13,6 +13,15 @@
     all: function () {
       return _follows.slice(0);
     },
+    followercount: function () {
+      var followcount = 0;
+      _follows.forEach(function (follow) {
+        if (follow.followee_id === CurrentUserStore.currentUser().id) {
+          followcount++;
+        }
+      return followcount;
+      });
+    },
 
     show: function () {
       if (typeof _follows !== "undefined") {

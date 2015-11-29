@@ -16,6 +16,7 @@ var TrackForm = React.createClass({
 
   componentDidMount: function () {
     TrackStore.addChangeListener(this._onChange);
+    GenreUtil.fetchGenres();
   },
 
   _onChange: function () {

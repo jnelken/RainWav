@@ -20,7 +20,7 @@ var TracksIndexItem = React.createClass({
 
     return (
       <li className="tracks-index-item group">
-        <ReactRouter.Link className="artist" to={"/tracks/" + track.id }>
+        <ReactRouter.Link className="artist" to={"/users/" + artist.id }>
           <img src={track.image} />
         </ReactRouter.Link>
 
@@ -34,7 +34,7 @@ var TracksIndexItem = React.createClass({
             </ReactRouter.Link>
           </h3>
           <h3 className="title">
-            <ReactRouter.Link to={"/tracks/" + track.id } className="artist">
+            <ReactRouter.Link to={"/users/" + artist.id } className="artist">
               {track.title}
             </ReactRouter.Link>
           </h3>
