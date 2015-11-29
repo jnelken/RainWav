@@ -23,20 +23,20 @@ var Trackbar = React.createClass({
     // var repost = this.state.repost;
     // var reposted = repost.status ? "Repost" : repost.status;
 
+          // <button className="repost" onClick={this.handleRepost}>
+          //   <img src={assets.repost} />
+          //    {this.state.repoststatus}
+          // </button>
+          // <button className="repost" onClick={this.handleTrash}>
+          //   <img src={assets.trash} />
+          //   {this.success}
+          // </button>
     return (
         <div className="comment-bar flex-container">
           <div className="playcount">
             <img src={assets.plays} />
             {this.props.plays}
           </div>
-          <button className="repost" onClick={this.handleRepost}>
-            <img src={assets.repost} />
-             {this.state.repoststatus}
-          </button>
-          <button className="repost" onClick={this.handleTrash}>
-            <img src={assets.trash} />
-            {this.success}
-          </button>
         </div>
     );
   },
