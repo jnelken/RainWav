@@ -1,4 +1,4 @@
 json.extract! @repost,
   :id,
-  :track,
-  :user
+  :track_id,
+  :user_id

@@ -4,25 +4,22 @@
   var _repost;
   var _reposts = [];
 
-  var setRepost = function (repost) {
-    _repost = repost;
-  };
-
   var setReposts = function (reposts) {
-    _reposts = reposts;
+    _reposts = CurrentUserStore.currentUser().reposts;
   };
 
   root.RepostStore = $.extend({}, EventEmitter.prototype, {
 
-    show: function (track_id) {
-      var match;
-      _reposts.forEach(function (repost) {
-        if (repost.track.id === track_id) {
-          match = repost;
-          return match;
-        }
-      });
-      return match;
+    all: function () {
+      return _reposts.slice(0);
+    },
+
+    show: function (trackId) {
+      if (typeof _reposts !== "undefined") {
+        return _reposts.filter(function (rpst) {
+          return rpst.user_id === CurrentUserStore.currentUser().id && rpst.track_id === trackId;
+        })[0];
+      }
     },
 
     addChangeListener: function (callback) {
@@ -42,7 +39,13 @@
           break;
         case RepostConstants.REPOST_RECEIVED:
 
-          setRepost(payload.repost);
+          _reposts.push(payload.repost);
+          RepostStore.emit(CHANGE_EVENT);
+          break;
+        case RepostConstants.REPOST_REMOVED:
+
+          var i = _reposts.map(function(repost) { return repost.id; }).indexOf(payload.repost.id);
+          _reposts.splice(i,1);
           RepostStore.emit(CHANGE_EVENT);
           break;
       }

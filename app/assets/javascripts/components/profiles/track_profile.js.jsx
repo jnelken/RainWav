@@ -5,7 +5,7 @@ var TracksDetail = React.createClass({
   },
 
   componentDidMount: function () {
-    TrackStore.addChangeListener(this._getTrack);
+    TrackStore.addChangeListener(this._fetchTrack);
       // TracksUtil.fetchTrackUrl(options);
     // } else {
       TracksUtil.fetchTrack(this.props.params.id);
@@ -16,12 +16,12 @@ var TracksDetail = React.createClass({
     TracksUtil.fetchTrack(newProps.params.id);
   },
 
-  _getTrack: function () {
+  _fetchTrack: function () {
     this.setState({ track: TrackStore.show() });
   },
 
   componentWillUnmount: function () {
-    TrackStore.removeChangeListener(this._getTrack);
+    TrackStore.removeChangeListener(this._fetchTrack);
   },
 
   render: function () {

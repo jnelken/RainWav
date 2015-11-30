@@ -1,8 +1,8 @@
 (function (root) {
 
   var CHANGE_EVENT = 'change';
-  var _follows = [];
   var _follow;
+  var _follows = [];
 
   var setFollows = function (follows) {
     _follows = follows;
@@ -13,6 +13,7 @@
     all: function () {
       return _follows.slice(0);
     },
+
     followercount: function () {
       var followcount = 0;
       _follows.forEach(function (follow) {
@@ -54,7 +55,6 @@
         case FollowConstants.FOLLOW_REMOVED:
 
           var i = _follows.map(function(follow) { return follow.id; }).indexOf(payload.follow.id);
-          // debugger
           _follows.splice(i,1);
           FollowStore.emit(CHANGE_EVENT);
           break;

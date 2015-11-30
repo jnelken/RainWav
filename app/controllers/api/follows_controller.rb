@@ -2,7 +2,6 @@ class Api::FollowsController < ApplicationController
 
   def index
     @follows = Follow.all.select { |follow| follow.follower_id == current_user.id }
-    @follows.each { |follow| follow.status = "Following" }
     render :index
   end
 

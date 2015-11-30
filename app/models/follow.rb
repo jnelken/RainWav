@@ -12,5 +12,4 @@ class Follow < ActiveRecord::Base
   primary_key: :id,
   foreign_key: :following_id;
 
-  attr_accessor :status
 end

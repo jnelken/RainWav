@@ -1,38 +1,43 @@
 var Trackbar = React.createClass({
 
   getInitialState: function () {
-    return ({
-      reposted: "false"
-    });
+    return ({ repost: RepostStore.show(this.props.track.id) });
   },
 
   componentDidMount: function () {
-    RepostStore.addChangeListener(this._getRepost);
+    RepostStore.addChangeListener(this._setRepost);
   },
 
-  _getRepost: function () {
-    // debugger
-    this.setState({reposted: RepostStore.show(this.props.track.id)});
+  _setRepost: function () {
+    this.setState({repost: RepostStore.show(this.props.track.id)});
   },
 
   componentWillUnmount: function () {
-    RepostStore.removeChangeListener(this._getRepost);
+    RepostStore.removeChangeListener(this._setRepost);
   },
 
   render: function () {
-    // var repost = this.state.repost;
-    // var reposted = repost.status ? "Repost" : repost.status;
+    var hideMe = "";
+    var reposted = !!this.state.repost;
+    var status = reposted ? "Reposted" : "Repost";
 
-          // <button className="repost" onClick={this.handleRepost}>
-          //   <img src={assets.repost} />
-          //    {this.state.repoststatus}
-          // </button>
+    if (this.props.track.user.id === CurrentUserStore.currentUser().id) {
+      hideMe = "hide";
+    }
+
+
           // <button className="repost" onClick={this.handleTrash}>
           //   <img src={assets.trash} />
           //   {this.success}
           // </button>
+
     return (
         <div className="comment-bar flex-container">
+
+          <button className={"repost " + hideMe} onClick={this.handleRepost}>
+            <img src={assets.repost} />
+            {status}
+          </button>
           <div className="playcount">
             <img src={assets.plays} />
             {this.props.plays}
@@ -42,16 +47,16 @@ var Trackbar = React.createClass({
   },
 
   handleRepost: function () {
-    if (this.state.reposted === "Repost") {
-      RepostUtil.createRepost(CurrentUserStore.currentUser().id, this.props.track.id);
-    } else {
+    if (this.state.repost) {
       RepostUtil.unRepost(this.state.repost.id);
+    } else {
+      RepostUtil.createRepost(CurrentUserStore.currentUser().id, this.props.track.id);
     }
   },
 
-  handleTrash: function () {
-    TracksUtil.deleteTrack(this.props.track.id, this.success);
-  },
+  // handleTrash: function () {
+  //   TracksUtil.deleteTrack(this.props.track.id, this.success);
+  // },
 
   success: function () {
     return <p class="stats">Track deleted!</p>;

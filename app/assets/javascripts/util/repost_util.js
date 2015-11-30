@@ -4,14 +4,14 @@ RepostUtil = {
       url: 'api/reposts',
       type: 'POST',
       dataType: 'json',
-      data: {repost: { user_id: userId, track_id: trackId }},
+      data: {repost: { track_id: trackId, user_id: userId }},
       success: function (data) {
         RepostActions.receiveRepost(data);
       }
     });
   },
 
-  getReposts: function () {
+  fetchReposts: function () {
     $.ajax({
       url: 'api/reposts',
       type: 'GET',
@@ -28,7 +28,7 @@ RepostUtil = {
       type: 'DELETE',
       dataType: 'json',
       success: function (data) {
-        RepostActions.receiveRepost(data);
+        RepostActions.removeRepost(data);
       }
     });
   }
