@@ -26,7 +26,7 @@ var Trackbar = React.createClass({
     }
 
 
-          // <button className="repost" onClick={this.handleTrash}>
+          // <button className="trackbar-button" onClick={this.handleTrash}>
           //   <img src={assets.trash} />
           //   {this.success}
           // </button>
@@ -34,7 +34,7 @@ var Trackbar = React.createClass({
     return (
         <div className="comment-bar flex-container">
 
-          <button className={"repost " + hideMe} onClick={this.handleRepost}>
+          <button className={"trackbar-button " + hideMe} onClick={this.handleRepost}>
             <img src={assets.repost} />
             {status}
           </button>
