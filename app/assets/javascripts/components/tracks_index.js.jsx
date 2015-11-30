@@ -1,17 +1,17 @@
 var TracksIndex = React.createClass({
 
   getInitialState: function () {
-    /// turn into real followee feed
-    return { tracks: TrackStore.all() };
+    return { tracks: []  };
   },
 
   componentDidMount: function () {
-    TrackStore.addChangeListener(this._onChange);
-    TracksUtil.fetchTracks();
+    // TrackStore.addChangeListener(this._onChange);
+    // TracksUtil.fetchTracks();
+    CurrentUserStore.addChangeListener(this._getFeed);
   },
 
-  _onChange: function () {
-    this.setState({ tracks: TrackStore.all() });
+  _getFeed: function () {
+    this.setState({ tracks: CurrentUserStore.currentUser().feed_tracks });
   },
 
   componentWillUnmount: function () {
@@ -19,6 +19,10 @@ var TracksIndex = React.createClass({
   },
 
   render: function () {
+
+    if (typeof this.state.tracks === "undefined") {
+      return <img className="spinner" src={assets.spinner} />;
+    }
     return (
       <div className="group">
       <ul className="tracks-index">

@@ -26,20 +26,4 @@
     waveform: "<%= asset_path("waveform.png") %>",
     lgwaveform: "<%= asset_path("lgwaveform.png") %>",
   };
-
-  
-
-  var wavesurfer = WaveSurfer.create({
-    container: '#wave',
-    waveColor: 'violet',
-    progressColor: 'purple'
-  });
-
-  wavesurfer.on('ready', function () {
-      wavesurfer.play();
-  });
-
-  wavesurfer.load('audio.wav');
-
-
 </script>
