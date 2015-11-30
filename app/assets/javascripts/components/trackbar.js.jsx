@@ -18,22 +18,23 @@ var Trackbar = React.createClass({
 
   render: function () {
     var hideMe = "";
+    var showMe = "hide";
     var reposted = !!this.state.repost;
     var status = reposted ? "Reposted" : "Repost";
 
     if (this.props.track.user.id === CurrentUserStore.currentUser().id) {
       hideMe = "hide";
+      showMe = "";
     }
 
 
-          // <button className="trackbar-button" onClick={this.handleTrash}>
-          //   <img src={assets.trash} />
-          //   {this.success}
-          // </button>
 
     return (
         <div className="comment-bar flex-container">
-
+          <button className={"trackbar-button " + showMe} onClick={this.handleTrash}>
+            <img src={assets.trash} />
+            {this.success}
+          </button>
           <button className={"trackbar-button " + hideMe} onClick={this.handleRepost}>
             <img src={assets.repost} />
             {status}
@@ -54,9 +55,12 @@ var Trackbar = React.createClass({
     }
   },
 
-  // handleTrash: function () {
-  //   TracksUtil.deleteTrack(this.props.track.id, this.success);
-  // },
+  handleTrash: function () {
+    var del = confirm("Are you sure you want to delete " + this.props.track.title + "?");
+    if (del) {
+      TracksUtil.deleteTrack(this.props.track.id, this.success);
+    }
+  },
 
   success: function () {
     return <p class="stats">Track deleted!</p>;
