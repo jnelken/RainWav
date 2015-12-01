@@ -20,6 +20,7 @@ var Login = React.createClass({
         }};
         SessionUtil.login(credentials, function () {
           this.history.pushState(null, "#");
+          FollowUtil.fetchFollows();
         }.bind(this));
     },
 

@@ -46,7 +46,7 @@ TracksUtil = {
     });
   },
 
-  addPlay: function (track) {
+  addPlay: function (track, success) {
     track.plays += 1;
     $.ajax({
       url: 'api/tracks/' + track.id,
@@ -54,13 +54,11 @@ TracksUtil = {
       dataType: 'json',
       data: { track: { plays: track.plays }},
       success: function (data) {
-        console.log("added play:");
-        console.log(track.plays);
+        success && success();
         ApiActions.receiveTrack(data);
       },
       error: function (data) {
-        console.log("addPlay error:");
-        console.log(data);
+        alert("Couldn't add play : (");
       }
     });
   },
@@ -78,8 +76,7 @@ TracksUtil = {
         success && success();
       },
       error: function (data) {
-        console.log("createTrack:");
-        console.log(data);
+        alert("Upload failed :()");
       }
     });
   },
@@ -94,8 +91,7 @@ TracksUtil = {
         success && success();
       },
       error: function (data) {
-        console.log("delete track failed:");
-        console.log(data);
+        alert("Sorry! We can't delete your track right now :(");
       }
     });
   }

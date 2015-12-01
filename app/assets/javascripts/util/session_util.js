@@ -8,7 +8,6 @@ SessionUtil = {
       data: credentials,
       success: function (data) {
         ApiActions.receiveCurrentUser(data);
-        FollowUtil.fetchFollows();
         success && success();
       },
       error: function (data) {

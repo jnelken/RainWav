@@ -73,16 +73,19 @@ var TracksIndexItem = React.createClass({
 
     if (this.state.playing === undefined) {
       this.setState({ plays: this.props.track.plays + 1 });
-      TracksUtil.addPlay(this.props.track);
-
-      if (this.props.track.user.id === CurrentUserStore.currentUser().id) {
-        SessionUtil.fetchCurrentUser();
-      }
+      TracksUtil.addPlay(this.props.track, this._success);
     }
     this.setState({
       playing: this.state.playing ? true : false,
       controls: <img className="pause" src={assets.pause} onClick={this.handlePause} />
     });
+  },
+
+  _success: function () {
+    if (this.props.track.user_id === CurrentUserStore.currentUser().id) {
+      //update Sidebar play count for cUser
+      SessionUtil.fetchCurrentUser();
+    }
   },
 
   handlePause: function () {

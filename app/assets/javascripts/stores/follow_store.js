@@ -41,6 +41,7 @@
     },
 
     dispatcherID: AppDispatcher.register(function (payload) {
+      console.log("follows");
       switch (payload.actionType) {
         case FollowConstants.FOLLOWS_RECEIVED:
 
