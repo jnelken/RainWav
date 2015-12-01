@@ -1,5 +1,5 @@
 class Api::FollowsController < ApplicationController
-  require 'byebug'
+
   def index
     if current_user
       @follows = Follow.all.select { |follow| follow.follower_id == current_user.id }

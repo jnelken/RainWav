@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  require 'byebug'
   validates :email, :session_token, :password_digest, presence: true, uniqueness: true
 
   #raise minimums for production
@@ -29,16 +28,7 @@ class User < ActiveRecord::Base
   source: :tracks
 
   has_many :reposts
-
-  # def feed_tracks
-  #   feed = []
-  #   self.following.each do |follower|
-  #     feed += Track.where("user_id = " + follower.id.to_s)
-  #   end
-  #   byebug
-  #   feed.flatten
-  # end
-
+  
   def plays
     sum = 0
     self.tracks.each do |track|
