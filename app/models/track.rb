@@ -13,8 +13,12 @@ class Track < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
 
-  belongs_to :user
+  belongs_to :user,
+  class_name: "User",
+  primary_key: :id,
+  foreign_key: :user_id
+
   belongs_to :genre
   has_many :reposts
-  
+
 end

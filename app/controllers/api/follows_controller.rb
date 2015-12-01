@@ -1,7 +1,11 @@
 class Api::FollowsController < ApplicationController
-
+  require 'byebug'
   def index
-    @follows = Follow.all.select { |follow| follow.follower_id == current_user.id }
+    if current_user
+      @follows = Follow.all.select { |follow| follow.follower_id == current_user.id }
+    end
+
+    @follows
     render :index
   end
 

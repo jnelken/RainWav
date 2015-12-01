@@ -15,5 +15,3 @@ json.extract! @user,
   :followees,
   :following,
   :feed_tracks
-
-# json.banner asset_path(@user.cover.url(:large))

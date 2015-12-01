@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  require 'byebug'
   validates :email, :session_token, :password_digest, presence: true, uniqueness: true
 
   #raise minimums for production
@@ -9,25 +10,34 @@ class User < ActiveRecord::Base
   has_attached_file :cover, styles: { large: "1250x260>" }
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
-  has_many :tracks, dependent: :destroy
+  has_many :tracks, -> { includes :user, :genre, :reposts }, dependent: :destroy
 
-  has_many :followees,
+  has_many :followees, #Follow
   class_name: "Follow",
   foreign_key: :follower_id
 
-  has_many :followers,
+  has_many :followers, #Follow
   class_name: "Follow",
   foreign_key: :following_id
 
-  has_many :following,
+  has_many :following, #User
   through: :followees,
   source: :followee
 
-  has_many :feed_tracks,
+  has_many :feed_tracks, #Tracks
   through: :following,
   source: :tracks
 
   has_many :reposts
+
+  # def feed_tracks
+  #   feed = []
+  #   self.following.each do |follower|
+  #     feed += Track.where("user_id = " + follower.id.to_s)
+  #   end
+  #   byebug
+  #   feed.flatten
+  # end
 
   def plays
     sum = 0

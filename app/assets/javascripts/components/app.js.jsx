@@ -7,11 +7,11 @@ var App = React.createClass({
 
   componentDidMount: function () {
     CurrentUserStore.addChangeListener(this._setCurrentUser);
-    
+
     SessionUtil.fetchCurrentUser();
-    FollowUtil.fetchFollows();
-    RepostUtil.fetchReposts();
+    UserUtil.fetchUsers();
     GenreUtil.fetchGenres();
+    RepostUtil.fetchReposts();
   },
 
   componentWillReceiveProps: function (newProps) {

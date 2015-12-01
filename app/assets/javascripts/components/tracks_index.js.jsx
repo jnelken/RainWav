@@ -1,13 +1,13 @@
 var TracksIndex = React.createClass({
+  mixins: [ReactRouter.History],
 
   getInitialState: function () {
-    return { tracks: []  };
+    return { tracks: CurrentUserStore.currentUser().feed_tracks  };
   },
 
   componentDidMount: function () {
-    // TrackStore.addChangeListener(this._onChange);
-    // TracksUtil.fetchTracks();
     CurrentUserStore.addChangeListener(this._getFeed);
+    this._checkCUser();
   },
 
   _getFeed: function () {
@@ -15,11 +15,17 @@ var TracksIndex = React.createClass({
   },
 
   componentWillUnmount: function () {
-    TrackStore.removeChangeListener(this._onChange);
+    TrackStore.removeChangeListener(this._getFeed);
+  },
+
+  _checkCUser: function () {
+    var cUser = CurrentUserStore.currentUser();
+    if (typeof cUser === "undefined") {
+      this.history.pushState(null, "/login");
+    }
   },
 
   render: function () {
-
     if (typeof this.state.tracks === "undefined") {
       return <img className="spinner" src={assets.spinner} />;
     }

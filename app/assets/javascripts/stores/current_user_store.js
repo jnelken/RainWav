@@ -24,6 +24,7 @@
 
         case CurrentUserConstants.RECEIVE_CURRENT_USER:
           _currentUser = payload.currentUser;
+
           CurrentUserStore.emit(CHANGE_EVENT);
           break;
 

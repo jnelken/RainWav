@@ -2,25 +2,43 @@ var TracksIndexItem = React.createClass({
 
   getInitialState: function () {
     return ({
-      genre: this.props.track.genre,
-      artist: this.props.track.user,
+      genre: GenreStore.getGenre(this.props.track.genre_id),
+      user: UserStore.getUser(this.props.track.user_id),
       plays: parseInt(this.props.track.plays),
       controls: <img src={assets.play} onClick={this.handlePlay} />
     });
   },
 
-  render: function () {
-    var track = this.props.track;
-    var artist = this.state.artist;
-    var genre = this.state.genre.genre;
+  componentDidMount: function () {
+    GenreStore.addChangeListener(this._setGenre);
+    UserStore.addChangeListener(this._setUser);
+  },
 
-    if (!this.state.artist || !this.state.genre) {
+  _setGenre:function () {
+    this.setState({ genre: GenreStore.getGenre(this.props.track.genre_id)});
+  },
+
+  _setUser:function () {
+    this.setState({ user: UserStore.getUser(this.props.track.user_id) });
+  },
+
+  componentWillUnmount: function () {
+    GenreStore.removeChangeListener(this._setGenre);
+    UserStore.removeChangeListener(this._setUser);
+  },
+
+  render: function () {
+      // debugger
+    if (!this.state.user || !this.state.genre) {
       return <img className="spinner" src={assets.spinner} />;
-    }
+    } else {
+    var track = this.props.track;
+    var user = this.state.user;
+    var genre = this.state.genre.genre;
 
     return (
       <li className="tracks-index-item group">
-        <ReactRouter.Link className="artist" to={"/users/" + artist.id }>
+        <ReactRouter.Link className="artist" to={"/users/" + user.id }>
           <img src={track.image} />
         </ReactRouter.Link>
 
@@ -29,22 +47,24 @@ var TracksIndexItem = React.createClass({
             {this.state.controls}
           </div>
           <h3 className="artist">
-            <ReactRouter.Link to={artist.username}>
-              {artist.username.capitalize()}
+            <ReactRouter.Link to={user.username}>
+              {user.username.capitalize()}
             </ReactRouter.Link>
           </h3>
           <h3 className="title">
-            <ReactRouter.Link to={"/users/" + artist.id } className="artist">
+            <ReactRouter.Link to={"/users/" + user.id } className="artist">
               {track.title}
             </ReactRouter.Link>
           </h3>
-          <button className="genre">#{genre}</button>
+          <button className="genre">#{this.props.track.genre_id}</button>
 
           <Waveform track={track}/>
           <Trackbar plays={this.state.plays} track={track} />
         </div>
       </li>
     );
+
+  }
   },
 
   handlePlay: function () {

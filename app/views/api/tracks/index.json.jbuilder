@@ -4,15 +4,15 @@
       :title,
       :description,
       :plays,
-      # :genre_id,
-      # :user_id,
+      :genre_id,
+      :user_id,
       :created_at,
       :updated_at,
       :audio,
       :image,
 
-      :user,
-      :genre,
+      # :user,
+      # :genre,
       :reposts
 end
 

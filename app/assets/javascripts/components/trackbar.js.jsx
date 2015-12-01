@@ -21,8 +21,9 @@ var Trackbar = React.createClass({
     var showMe = "hide";
     var reposted = !!this.state.repost;
     var status = reposted ? "Reposted" : "Repost";
+    var cUser = CurrentUserStore.currentUser();
 
-    if (this.props.track.user.id === CurrentUserStore.currentUser().id) {
+    if (this.props.track.user_id === CurrentUserStore.currentUser().id) {
       hideMe = "hide";
       showMe = "";
     }
