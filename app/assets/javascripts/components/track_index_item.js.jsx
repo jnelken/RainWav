@@ -10,12 +10,7 @@ var TracksIndexItem = React.createClass({
   },
 
   componentDidMount: function () {
-    GenreStore.addChangeListener(this._setGenre);
     UserStore.addChangeListener(this._setUser);
-  },
-
-  _setGenre:function () {
-    this.setState({ genre: GenreStore.getGenre(this.props.track.genre_id)});
   },
 
   _setUser:function () {
@@ -23,7 +18,6 @@ var TracksIndexItem = React.createClass({
   },
 
   componentWillUnmount: function () {
-    GenreStore.removeChangeListener(this._setGenre);
     UserStore.removeChangeListener(this._setUser);
   },
 
@@ -55,7 +49,7 @@ var TracksIndexItem = React.createClass({
               {track.title}
             </ReactRouter.Link>
           </h3>
-          <button className="genre">#{this.props.track.genre_id}</button>
+          <button className="genre">#{this.state.genre.genre}</button>
 
           <Waveform track={track}/>
           <Trackbar plays={this.state.plays} track={track} />
@@ -83,7 +77,7 @@ var TracksIndexItem = React.createClass({
   _success: function () {
     if (this.props.track.user_id === CUserStore.cUser().id) {
       //update Sidebar play count for cUser
-      SessionUtil.fetchCurrentUser();
+      CUserStore.plays(1);
     }
   },
 

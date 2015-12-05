@@ -9,11 +9,7 @@
       :created_at,
       :updated_at,
       :audio,
-      :image,
-
-      # :user,
-      # :genre,
-      :reposts
+      :image
 end
 
 # make a partial

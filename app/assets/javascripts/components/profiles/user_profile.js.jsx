@@ -11,6 +11,7 @@ getInitialState: function () {
 componentDidMount: function () {
   UserStore.addChangeListener(this._getUser);
   TrackStore.addChangeListener(this._getUserTracks);
+  FollowStore.addChangeListener(this._getFollow);
 
   this.fetchUser(this.props.params);
 },
@@ -40,12 +41,13 @@ _getUserTracks: function () {
 },
 
 _getFollow: function () {
-  this.setState({ follow: CUserStore.userFollow() });
+  this.setState({ follow: FollowStore.show() });
 },
 
 componentWillUnmount: function () {
   UserStore.removeChangeListener(this._getUser);
   TrackStore.removeChangeListener(this._getUserTracks);
+  FollowStore.removeChangeListener(this._getFollow);
 },
 
 render: function () {

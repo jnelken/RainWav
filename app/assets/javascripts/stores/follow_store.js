@@ -2,10 +2,10 @@
 
   var CHANGE_EVENT = 'change';
   var _follow;
-  var _follows = [];
+  var _follows = CUserStore.cUser().followees;
 
-  var setFollows = function (follows) {
-    _follows = follows;
+  var setFollows = function () {
+    _follows = CUserStore.cUser().followees;
   };
 
   root.FollowStore = $.extend({}, EventEmitter.prototype, {
@@ -25,17 +25,17 @@
     },
 
     show: function () {
-      // if (typeof _follows !== "undefined") {
-      //   return _follows.filter(function (fllw) {
-      //     return fllw.follower_id === CUserStore.cUser().id && fllw.following_id === UserStore.show().id;
-      //   })[0];
-      // }
-
-      if (typeof CUserStore.cUser().username !== "undefined") {
-        return CUserStore.cUser().followees.filter(function (follow) {
-          return follow.following_id === UserStore.show().id;
+      if (typeof _follows !== "undefined") {
+        return _follows.filter(function (fllw) {
+          return fllw.follower_id === CUserStore.cUser().id && fllw.following_id === UserStore.show().id;
         })[0];
       }
+
+      // if (typeof CUserStore.cUser().username !== "undefined") {
+      //   return CUserStore.cUser().followees.filter(function (follow) {
+      //     return follow.following_id === UserStore.show().id;
+      //   })[0];
+      // }
     },
 
     addChangeListener: function (callback) {
@@ -48,13 +48,13 @@
 
     dispatcherID: AppDispatcher.register(function (payload) {
       switch (payload.actionType) {
-        case FollowConstants.FOLLOWS_RECEIVED:
-
-          setFollows(payload.follows);
-          FollowStore.emit(CHANGE_EVENT);
-          break;
+        // case FollowConstants.FOLLOWS_RECEIVED:
+        //
+        //   setFollows(payload.follows);
+        //   FollowStore.emit(CHANGE_EVENT);
+        //   break;
         case FollowConstants.FOLLOW_RECEIVED:
-
+          setFollows();
           _follows.push(payload.follow);
           FollowStore.emit(CHANGE_EVENT);
           break;

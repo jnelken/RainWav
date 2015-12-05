@@ -3,7 +3,7 @@ var Sidebar = React.createClass({
   getInitialState: function() {
     return {
       playDetails: "hidden",
-      userPlays: CUserStore.cUser().plays,
+      userPlays: CUserStore.plays(),
       profiles: UserStore.all()
     };
   },
@@ -16,7 +16,7 @@ var Sidebar = React.createClass({
   },
 
   _setPlays: function () {
-    this.setState({ userPlays: CUserStore.cUser().plays });
+    this.setState({ userPlays: CUserStore.plays() });
   },
 
   _setProfiles: function () {

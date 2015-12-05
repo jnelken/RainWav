@@ -1,6 +1,6 @@
 class Api::TracksController < ApplicationController
   def index
-    @tracks = Track.includes(:user, :genre, :reposts)
+    @tracks = Track.all()
 
     if params[:user_id]
       userTracks = []

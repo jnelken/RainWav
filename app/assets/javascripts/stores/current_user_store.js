@@ -1,6 +1,8 @@
 (function (root) {
   var CHANGE_EVENT = "change";
   var _currentUser = {};
+  var _plays = 0;
+
   root.CUserStore = $.extend({}, EventEmitter.prototype, {
 
     addChangeListener: function (callback) {
@@ -13,6 +15,15 @@
 
     cUser: function () {
       return $.extend({}, _currentUser);
+    },
+
+    plays: function (num) {
+      if (num > 0) {
+        _plays += num;
+        CUserStore.emit(CHANGE_EVENT);
+      }
+      
+      return _plays;
     },
 
     userFollow: function () {
@@ -32,6 +43,7 @@
 
         case CurrentUserConstants.RECEIVE_CURRENT_USER:
           _currentUser = payload.currentUser;
+          _plays = _currentUser.plays;
 
           CUserStore.emit(CHANGE_EVENT);
           break;
