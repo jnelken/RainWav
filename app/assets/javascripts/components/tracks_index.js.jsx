@@ -2,33 +2,34 @@ var TracksIndex = React.createClass({
   mixins: [ReactRouter.History],
 
   getInitialState: function () {
-    return { tracks: CurrentUserStore.currentUser().feed_tracks  };
+    return ({tracks: TrackStore.feed()});
   },
 
   componentDidMount: function () {
-    CurrentUserStore.addChangeListener(this._getFeed);
     this._checkCUser();
+    CurrentUserStore.addChangeListener(this._getFeed);
+    TrackStore.addChangeListener(this._getFeed);
+  },
+
+  _checkCUser: function () {
+    if (typeof CurrentUserStore.currentUser().username === "undefined") {
+      this.history.pushState(null, "/login");
+    }
   },
 
   _getFeed: function () {
-    this.setState({ tracks: CurrentUserStore.currentUser().feed_tracks });
+    this.setState({ tracks: TrackStore.feed() });
   },
 
   componentWillUnmount: function () {
     TrackStore.removeChangeListener(this._getFeed);
   },
 
-  _checkCUser: function () {
-    var cUser = CurrentUserStore.currentUser();
-    if (typeof cUser === "undefined") {
-      this.history.pushState(null, "/login");
-    }
-  },
-
   render: function () {
     if (typeof this.state.tracks === "undefined") {
       return <img className="spinner" src={assets.spinner} />;
     }
+
     return (
       <div className="group">
       <ul className="tracks-index">

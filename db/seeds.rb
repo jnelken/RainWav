@@ -92,7 +92,7 @@ Track.create({
 mc = User.create({
   email: "mr@carmack.com",
   password: "qwertyuiop",
-  username: "Mr. Carmack",
+  username: "Mr Carmack",
   bio: "SF >> LA",
   avatar: URI.parse('https://s3.amazonaws.com/rainwav-seeds/user_images/carmack_avatar.png'),
   cover: URI.parse('https://s3.amazonaws.com/rainwav-seeds/user_images/background.jpg'),

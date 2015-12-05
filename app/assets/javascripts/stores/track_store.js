@@ -24,20 +24,24 @@
       return _tracks.slice(0);
     },
 
-    // feed: function () {
-    //   return _tracks.filter(function (track) {
-    //     FollowStore.all().forEach(function (follow) {
-    //     return track.id ==
-    //
-    //   })
-    //   });
-    // },
+    feed: function () {
+      if (_tracks.length > 0) {
+        return _tracks.filter(function (track) {
+          followings = CurrentUserStore.currentUser().followees.map(function (follow) {
+            return follow.following_id;
+          });
+          return followings.indexOf(track.user_id) != -1;
+        });
+        // FollowStore.all().forEach(function (follow) {
+        // })
+      }
+    },
 
     show: function () {
       return _track;
     },
 
-    userTracks: function (id, username) {
+    userTracks: function () {
       return _userTracks;
     },
 

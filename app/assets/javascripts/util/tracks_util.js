@@ -22,18 +22,6 @@ TracksUtil = {
     });
   },
 
-  fetchTrackUrl: function (id, options) {
-    $.ajax({
-      url: 'api/tracks/' + id,
-      type: 'GET',
-      dataType: 'json',
-      data: options,
-      success: function (data) {
-        ApiActions.receiveTrack(data);
-      }
-    });
-  },
-
   fetchUserTracks: function (userId) {
     $.ajax({
       url: 'api/tracks',

@@ -6,10 +6,7 @@ var TracksDetail = React.createClass({
 
   componentDidMount: function () {
     TrackStore.addChangeListener(this._fetchTrack);
-      // TracksUtil.fetchTrackUrl(options);
-    // } else {
-      TracksUtil.fetchTrack(this.props.params.id);
-    // }
+    TracksUtil.fetchTrack(this.props.params.id);
   },
 
   componentWillReceiveProps: function (newProps) {
@@ -29,7 +26,6 @@ var TracksDetail = React.createClass({
 
     var user = this.state.track.user;
     var track = this.state.track;
-    console.log(this.state.track);
 
     return (
         <div className="track-page group">

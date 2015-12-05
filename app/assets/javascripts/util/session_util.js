@@ -11,7 +11,6 @@ SessionUtil = {
         success && success();
       },
       error: function (data) {
-        console.log(data);
       }
 
     });
@@ -36,6 +35,7 @@ SessionUtil = {
       success: function (currentUser) {
         ApiActions.receiveCurrentUser(currentUser);
         FollowUtil.fetchFollows();
+        RepostUtil.fetchReposts();
       }
     });
   }

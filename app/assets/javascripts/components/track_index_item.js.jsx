@@ -28,7 +28,6 @@ var TracksIndexItem = React.createClass({
   },
 
   render: function () {
-      // debugger
     if (!this.state.user || !this.state.genre) {
       return <img className="spinner" src={assets.spinner} />;
     } else {

@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   source: :tracks
 
   has_many :reposts
-  
+
   def plays
     sum = 0
     self.tracks.each do |track|

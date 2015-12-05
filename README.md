@@ -11,10 +11,11 @@ and React.js.
 
 * Listen to tracks of an artist
 * Follow / Unfollow artists
+* View a feed of tracks from people you've followed
 * Repost tracks
 * Upload tracks + cover art to your profile or delete them
-* View a feed of recently uploaded tracks
-* View the number of plays on each track and in total
+* View the number of plays on each track
+* User play count statistics
 
 ### Details
 
@@ -25,12 +26,11 @@ and React.js.
 * Custom URLs for users via React Routes (e.g. "rainwav.co/username")
 
 ### Upcoming Features
-- [ ] Search for tracks/users
-- [ ] View a feed of new tracks from Followees
+- [ ] Search bar
 - [ ] waveform visualization
 - [ ] Track Comments
 - [ ] Infinite Scroll
 - [ ] Likes
 - [ ] Notifications
 - [ ] CSS transitions
-- [ ] Facebook Authentication
+- [ ] OAuth

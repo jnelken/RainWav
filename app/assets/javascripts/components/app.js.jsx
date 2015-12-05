@@ -11,34 +11,34 @@ var App = React.createClass({
     SessionUtil.fetchCurrentUser();
     UserUtil.fetchUsers();
     GenreUtil.fetchGenres();
-    RepostUtil.fetchReposts();
+    TracksUtil.fetchTracks();
   },
 
-  componentWillReceiveProps: function (newProps) {
-    /// logged out redirect
-    var newPath = newProps.location.pathname;
-    var currentPath = this.props.location.pathname;
-
-    if (newPath !== currentPath && newPath !== "/createaccount") {
-      this._ensureLoggedIn();
-    }
-  },
-
-  _ensureLoggedIn: function () {
-    if (!CurrentUserStore.isLoggedIn()) {
-      this.history.pushState(null, "/login");
-    }
-  },
+  // componentWillReceiveProps: function (newProps) {
+  //   /// logged out redirect
+  //   var newPath = newProps.location.pathname;
+  //   var currentPath = this.props.location.pathname;
+  //
+  //   if (newPath !== currentPath && newPath !== "/createaccount") {
+  //     this._ensureLoggedIn();
+  //   }
+  // },
+  //
+  // _ensureLoggedIn: function () {
+  //   if (!CurrentUserStore.isLoggedIn()) {
+  //     this.history.pushState(null, "/login");
+  //   }
+  // },
 
   _setCurrentUser: function () {
     this.setState({currentUser: CurrentUserStore.currentUser() });
   },
 
-  render: function () {
-    // var children = React.Children.map(this.props.children, function(child) {
-    //   return React.cloneElement(child, {...this.state});
-    // }, this);
+  componentWillUnmount: function () {
+    CurrentUserStore.removeChangeListener(this._setCurrentUser);
+  },
 
+  render: function () {
     return (
       <div id="app">
         <Nav cUser={this.state.currentUser} />

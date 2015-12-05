@@ -21,8 +21,6 @@ UserUtil = {
     });
   },
 
-  // credentials/ user forms
-
   createUser: function (credentials, success) {
     $.ajax({
       url: '/api/users',
@@ -34,7 +32,7 @@ UserUtil = {
         success && success();
       },
       error: function (data) {
-        console.log(data);
+        alert(data);
       }
     });
   },
