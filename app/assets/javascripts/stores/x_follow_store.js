@@ -17,7 +17,7 @@
     followercount: function () {
       var followcount = 0;
       _follows.forEach(function (follow) {
-        if (follow.followee_id === CurrentUserStore.currentUser().id) {
+        if (follow.followee_id === CUserStore.cUser().id) {
           followcount++;
         }
       return followcount;
@@ -25,9 +25,15 @@
     },
 
     show: function () {
-      if (typeof _follows !== "undefined") {
-        return _follows.filter(function (fllw) {
-          return fllw.follower_id === CurrentUserStore.currentUser().id && fllw.following_id === UserStore.show().id;
+      // if (typeof _follows !== "undefined") {
+      //   return _follows.filter(function (fllw) {
+      //     return fllw.follower_id === CUserStore.cUser().id && fllw.following_id === UserStore.show().id;
+      //   })[0];
+      // }
+
+      if (typeof CUserStore.cUser().username !== "undefined") {
+        return CUserStore.cUser().followees.filter(function (follow) {
+          return follow.following_id === UserStore.show().id;
         })[0];
       }
     },

@@ -27,14 +27,14 @@ FollowUtil = {
     });
   },
 
-  fetchFollows: function () {
-    $.ajax({
-      url: 'api/follows',
-      type: 'GET',
-      dataType: 'json',
-      success: function (data) {
-        FollowActions.receiveFollows(data);
-      }
-    });
-  },
+  // fetchFollows: function () {
+  //   $.ajax({
+  //     url: 'api/follows',
+  //     type: 'GET',
+  //     dataType: 'json',
+  //     success: function (data) {
+  //       FollowActions.receiveFollows(data);
+  //     }
+  //   });
+  // },
 };

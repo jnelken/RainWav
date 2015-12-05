@@ -34,7 +34,6 @@ SessionUtil = {
       dataType: 'json',
       success: function (currentUser) {
         ApiActions.receiveCurrentUser(currentUser);
-        FollowUtil.fetchFollows();
         RepostUtil.fetchReposts();
       }
     });

@@ -38,7 +38,7 @@ var TrackForm = React.createClass({
     var description = this.state.description;
     var trackFile = this.state.trackFile;
     var imageFile = this.state.imageFile;
-    var userId = CurrentUserStore.currentUser().id;
+    var userId = CUserStore.cUser().id;
 
     var newTrackData = new FormData();
     newTrackData.append("track[title]", title);

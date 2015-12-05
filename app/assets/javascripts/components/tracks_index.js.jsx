@@ -6,15 +6,8 @@ var TracksIndex = React.createClass({
   },
 
   componentDidMount: function () {
-    this._checkCUser();
-    CurrentUserStore.addChangeListener(this._getFeed);
+    CUserStore.addChangeListener(this._getFeed);
     TrackStore.addChangeListener(this._getFeed);
-  },
-
-  _checkCUser: function () {
-    if (typeof CurrentUserStore.currentUser().username === "undefined") {
-      this.history.pushState(null, "/login");
-    }
   },
 
   _getFeed: function () {
@@ -26,6 +19,10 @@ var TracksIndex = React.createClass({
   },
 
   render: function () {
+    if (typeof CUserStore.cUser().username === "undefined") {
+      return <Login />;
+    }
+
     if (typeof this.state.tracks === "undefined") {
       return <img className="spinner" src={assets.spinner} />;
     }

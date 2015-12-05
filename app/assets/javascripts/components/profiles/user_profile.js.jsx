@@ -4,14 +4,13 @@ getInitialState: function () {
   return ({
     user: UserStore.show(),
     tracks: TrackStore.userTracks(),
-    follow: FollowStore.show()
+    follow: CUserStore.userFollow()
   });
 },
 
 componentDidMount: function () {
   UserStore.addChangeListener(this._getUser);
   TrackStore.addChangeListener(this._getUserTracks);
-  FollowStore.addChangeListener(this._getFollow);
 
   this.fetchUser(this.props.params);
 },
@@ -41,13 +40,12 @@ _getUserTracks: function () {
 },
 
 _getFollow: function () {
-  this.setState({ follow: FollowStore.show() });
+  this.setState({ follow: CUserStore.userFollow() });
 },
 
 componentWillUnmount: function () {
   UserStore.removeChangeListener(this._getUser);
   TrackStore.removeChangeListener(this._getUserTracks);
-  FollowStore.removeChangeListener(this._getFollow);
 },
 
 render: function () {
@@ -55,7 +53,7 @@ render: function () {
   var hideMe;
   var status;
 
-  if (this.state.user.id === CurrentUserStore.currentUser().id) {
+  if (this.state.user.id === CUserStore.cUser().id) {
     hideMe = "hide";
   }
 
@@ -110,7 +108,7 @@ render: function () {
 
 follow: function (status) {
   if (typeof this.state.follow === "undefined") {
-    FollowUtil.addFollow(CurrentUserStore.currentUser().id, this.state.user.id);
+    FollowUtil.addFollow(CUserStore.cUser().id, this.state.user.id);
   } else {
     FollowUtil.removeFollow(this.state.follow.id);
   }

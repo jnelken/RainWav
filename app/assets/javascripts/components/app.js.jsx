@@ -2,11 +2,11 @@ var App = React.createClass({
   mixins: [ReactRouter.History],
 
   getInitialState: function () {
-    return ({ currentUser: CurrentUserStore.currentUser() });
+    return ({ currentUser: CUserStore.cUser() });
   },
 
   componentDidMount: function () {
-    CurrentUserStore.addChangeListener(this._setCurrentUser);
+    CUserStore.addChangeListener(this._setCurrentUser);
 
     SessionUtil.fetchCurrentUser();
     UserUtil.fetchUsers();
@@ -25,17 +25,17 @@ var App = React.createClass({
   // },
   //
   // _ensureLoggedIn: function () {
-  //   if (!CurrentUserStore.isLoggedIn()) {
+  //   if (!CUserStore.isLoggedIn()) {
   //     this.history.pushState(null, "/login");
   //   }
   // },
 
   _setCurrentUser: function () {
-    this.setState({currentUser: CurrentUserStore.currentUser() });
+    this.setState({currentUser: CUserStore.cUser() });
   },
 
   componentWillUnmount: function () {
-    CurrentUserStore.removeChangeListener(this._setCurrentUser);
+    CUserStore.removeChangeListener(this._setCurrentUser);
   },
 
   render: function () {

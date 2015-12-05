@@ -21,9 +21,9 @@ var Trackbar = React.createClass({
     var showMe = "hide";
     var reposted = !!this.state.repost;
     var status = reposted ? "Reposted" : "Repost";
-    var cUser = CurrentUserStore.currentUser();
+    var cUser = CUserStore.cUser();
 
-    if (this.props.track.user_id === CurrentUserStore.currentUser().id) {
+    if (this.props.track.user_id === CUserStore.cUser().id) {
       hideMe = "hide";
       showMe = "";
     }
@@ -52,7 +52,7 @@ var Trackbar = React.createClass({
     if (this.state.repost) {
       RepostUtil.unRepost(this.state.repost.id);
     } else {
-      RepostUtil.createRepost(CurrentUserStore.currentUser().id, this.props.track.id);
+      RepostUtil.createRepost(CUserStore.cUser().id, this.props.track.id);
     }
   },
 

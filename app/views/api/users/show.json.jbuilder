@@ -12,6 +12,4 @@ json.extract! @user,
   :tracks,
   :reposts,
   :followers,
-  :followees,
-  :following,
-  :feed_tracks
+  :followees

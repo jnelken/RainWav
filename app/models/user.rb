@@ -19,14 +19,6 @@ class User < ActiveRecord::Base
   class_name: "Follow",
   foreign_key: :following_id
 
-  has_many :following, #User
-  through: :followees,
-  source: :followee
-
-  has_many :feed_tracks, #Tracks
-  through: :following,
-  source: :tracks
-
   has_many :reposts
 
   def plays

@@ -13,7 +13,5 @@ json.array! @users do |user|
   :tracks,
   :reposts,
   :followers,
-  :followees,
-  :following,
-  :feed_tracks
+  :followees
 end

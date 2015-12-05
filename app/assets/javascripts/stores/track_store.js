@@ -27,13 +27,11 @@
     feed: function () {
       if (_tracks.length > 0) {
         return _tracks.filter(function (track) {
-          followings = CurrentUserStore.currentUser().followees.map(function (follow) {
+          followings = CUserStore.cUser().followees.map(function (follow) {
             return follow.following_id;
           });
           return followings.indexOf(track.user_id) != -1;
         });
-        // FollowStore.all().forEach(function (follow) {
-        // })
       }
     },
 

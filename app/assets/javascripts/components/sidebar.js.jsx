@@ -3,20 +3,20 @@ var Sidebar = React.createClass({
   getInitialState: function() {
     return {
       playDetails: "hidden",
-      userPlays: CurrentUserStore.currentUser().plays,
+      userPlays: CUserStore.cUser().plays,
       profiles: UserStore.all()
     };
   },
 
   componentDidMount: function () {
-    CurrentUserStore.addChangeListener(this._setPlays);
+    CUserStore.addChangeListener(this._setPlays);
     UserStore.addChangeListener(this._setProfiles);
 
     UserUtil.fetchUsers();
   },
 
   _setPlays: function () {
-    this.setState({ userPlays: CurrentUserStore.currentUser().plays });
+    this.setState({ userPlays: CUserStore.cUser().plays });
   },
 
   _setProfiles: function () {
@@ -24,19 +24,19 @@ var Sidebar = React.createClass({
   },
 
   componentWillUnmount: function () {
-    CurrentUserStore.removeChangeListener(this._setPlays);
+    CUserStore.removeChangeListener(this._setPlays);
   },
 
 
   render: function () {
-    var currentUser = CurrentUserStore.currentUser();
+    var cUser = CUserStore.cUser();
     var trackStats;
     var trackCount;
     var count;
 
-    if (currentUser.tracks) {
-      trackCount = <p className="tracks">{currentUser.tracks.length}</p>;
-      trackStats = currentUser.tracks.map(function (track) {
+    if (cUser.tracks) {
+      trackCount = <p className="tracks">{cUser.tracks.length}</p>;
+      trackStats = cUser.tracks.map(function (track) {
         return (
           <li key={track.id}>
             <p>{track.plays} in {track.title}</p>
@@ -44,7 +44,7 @@ var Sidebar = React.createClass({
         );
       });
     }
-    if (Object.keys(currentUser).length === 0) {
+    if (Object.keys(cUser).length === 0) {
       return <img className="spinner" src={assets.spinner} />;
     }
     return (
@@ -56,7 +56,7 @@ var Sidebar = React.createClass({
           </div>
 
           <p className="plays">
-            {FollowStore.followercount()}
+            {cUser.followers.length}
           </p>
           <p>Followers</p>
 
@@ -79,7 +79,7 @@ var Sidebar = React.createClass({
           <ul className="profiles group flex-container">
           {
             this.state.profiles.map(function (profile, i) {
-              if (currentUser.followees.indexOf(profile) === -1) {
+              if (cUser.followees.indexOf(profile) === -1) {
                 if (i < 10) {
                   return (
                     <li key={profile.id} className="profile">

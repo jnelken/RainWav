@@ -1,7 +1,7 @@
 (function (root) {
   var CHANGE_EVENT = "change";
   var _currentUser = {};
-  root.CurrentUserStore = $.extend({}, EventEmitter.prototype, {
+  root.CUserStore = $.extend({}, EventEmitter.prototype, {
 
     addChangeListener: function (callback) {
       this.on(CHANGE_EVENT, callback);
@@ -11,8 +11,16 @@
       this.removeListener(CHANGE_EVENT, callback);
     },
 
-    currentUser: function () {
+    cUser: function () {
       return $.extend({}, _currentUser);
+    },
+
+    userFollow: function () {
+      if (typeof CUserStore.cUser().username !== "undefined") {
+        return CUserStore.cUser().followees.filter(function (follow) {
+          return follow.following_id === UserStore.show().id;
+        })[0];
+      }
     },
 
     isLoggedIn: function () {
@@ -25,7 +33,7 @@
         case CurrentUserConstants.RECEIVE_CURRENT_USER:
           _currentUser = payload.currentUser;
 
-          CurrentUserStore.emit(CHANGE_EVENT);
+          CUserStore.emit(CHANGE_EVENT);
           break;
 
       }

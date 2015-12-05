@@ -5,7 +5,7 @@
   var _reposts = [];
 
   var setReposts = function (reposts) {
-    _reposts = CurrentUserStore.currentUser().reposts;
+    _reposts = CUserStore.cUser().reposts;
   };
 
   root.RepostStore = $.extend({}, EventEmitter.prototype, {
@@ -17,7 +17,7 @@
     show: function (trackId) {
       if (typeof _reposts !== "undefined") {
         return _reposts.filter(function (rpst) {
-          return rpst.user_id === CurrentUserStore.currentUser().id && rpst.track_id === trackId;
+          return rpst.user_id === CUserStore.cUser().id && rpst.track_id === trackId;
         })[0];
       }
     },

@@ -81,7 +81,7 @@ var TracksIndexItem = React.createClass({
   },
 
   _success: function () {
-    if (this.props.track.user_id === CurrentUserStore.currentUser().id) {
+    if (this.props.track.user_id === CUserStore.cUser().id) {
       //update Sidebar play count for cUser
       SessionUtil.fetchCurrentUser();
     }
