@@ -22,16 +22,8 @@
         _plays += num;
         CUserStore.emit(CHANGE_EVENT);
       }
-      
-      return _plays;
-    },
 
-    userFollow: function () {
-      if (typeof CUserStore.cUser().username !== "undefined") {
-        return CUserStore.cUser().followees.filter(function (follow) {
-          return follow.following_id === UserStore.show().id;
-        })[0];
-      }
+      return _plays;
     },
 
     isLoggedIn: function () {
@@ -44,6 +36,7 @@
         case CurrentUserConstants.RECEIVE_CURRENT_USER:
           _currentUser = payload.currentUser;
           _plays = _currentUser.plays;
+          FollowStore.setFollows();
 
           CUserStore.emit(CHANGE_EVENT);
           break;

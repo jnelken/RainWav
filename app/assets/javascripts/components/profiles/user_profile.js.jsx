@@ -4,7 +4,7 @@ getInitialState: function () {
   return ({
     user: UserStore.show(),
     tracks: TrackStore.userTracks(),
-    follow: CUserStore.userFollow()
+    follow: FollowStore.show()
   });
 },
 
