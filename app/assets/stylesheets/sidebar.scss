@@ -4,7 +4,7 @@
   // right: 174px;
   padding: 30px 20px;
   width: 319px;
-  min-height: 100vh;
+  // min-height: 100vh;
 
   background: #fff;
   color: #999;
@@ -55,12 +55,15 @@
     }
   }
 }
+
 .hidden {
   opacity: 0;
   transition: opacity .55s;
 }
 
 ul.flex-container {
+  padding-top: 10px;
+  padding-left: 4px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
