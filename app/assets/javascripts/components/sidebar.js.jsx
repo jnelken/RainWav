@@ -55,7 +55,7 @@ var Sidebar = React.createClass({
             Your Statistics
           </div>
 
-          <p className="plays">
+          <p className="followers">
             {cUser.followers.length}
           </p>
           <p>Followers</p>
@@ -64,6 +64,7 @@ var Sidebar = React.createClass({
             {this.state.userPlays}
           </p>
           <p>Plays in total of</p>
+
             <ul className={"play-details " + this.state.playDetails}>
               {trackStats}
             </ul>
