@@ -70,6 +70,10 @@ ul.flex-container {
   min-width: 105px;
   // flex-basis: 90px;
     padding-bottom: 5px;
+    .sidebar-avatar {
+      height: 80px;
+      width: 80px;
+    }
   img {
     max-width: 80px;
   }

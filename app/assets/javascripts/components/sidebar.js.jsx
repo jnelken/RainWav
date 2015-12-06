@@ -81,10 +81,10 @@ var Sidebar = React.createClass({
           {
             this.state.profiles.map(function (profile, i) {
               if (cUser.followees.indexOf(profile) === -1) {
-                if (i < 10) {
+                if (i < 9) {
                   return (
                     <li key={profile.id} className="profile">
-                      <a href={"#/users/" + profile.id}><img src={profile.avatar} /></a>
+                      <a href={"#/users/" + profile.id}><img className="sidebar-avatar" src={profile.avatar} /></a>
                       <div className="followcount">
                         <img className="icon" src={assets.followers} /> {profile.followees.length}
                       </div>
