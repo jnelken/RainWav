@@ -22,6 +22,12 @@
       }
     },
 
+    reposts: function () {
+      return _reposts.filter(function (repost) {
+        return repost.user_ID === UserStore.show().id;
+      });
+    },
+
     addChangeListener: function (callback) {
       this.on(CHANGE_EVENT, callback);
     },

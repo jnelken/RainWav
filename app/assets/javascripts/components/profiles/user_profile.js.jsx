@@ -91,9 +91,9 @@ render: function () {
         </header>
         <section className="tracklist">
           <ul className="profile-tabs group">
-            <li><a href={"#/" + user.username}>All</a></li>
-            <li><a href="#/tracks">Tracks</a></li>
-            <li><a href="#/reposts">Reposts</a></li>
+            <li><a>All</a></li>
+            <li><a>Tracks</a></li>
+            <li><a>Reposts</a></li>
             <li className={"follow-button " + status}>
               <button className={hideMe} onClick={this.follow}>{status}</button>
             </li>
