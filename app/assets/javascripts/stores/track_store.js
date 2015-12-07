@@ -31,6 +31,8 @@
             return follow.following_id;
           });
           return followings.indexOf(track.user_id) != -1;
+        }).sort(function (a, b) {
+          return a.updated_at < b.updated_at;
         });
       }
     },
