@@ -42,13 +42,8 @@
 
     dispatcherID: AppDispatcher.register(function (payload) {
       switch (payload.actionType) {
-        // case FollowConstants.FOLLOWS_RECEIVED:
-        //
-        //   setFollows(payload.follows);
-        //   FollowStore.emit(CHANGE_EVENT);
-        //   break;
         case FollowConstants.FOLLOW_RECEIVED:
-        
+
           _follows.push(payload.follow);
           FollowStore.emit(CHANGE_EVENT);
           break;

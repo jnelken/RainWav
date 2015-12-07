@@ -1,24 +1,19 @@
 $brand-color: #20C1F3;
-
 .tracks-index-item {
   width: 819px;
   height: 163px;
   background: #fff;
-  // border: 5px solid black;
-  padding: 10px 0px;
-
+  padding: 10px 0;
   img {
     display: inline-block;
     float: left;
     width: 120px;
   }
-
   .track-profile {
     padding: 0 15px;
     display: block;
     float: left;
     width: 669px;
-
     h3.title {
       display: inline;
       font-size: 16px;
@@ -28,12 +23,11 @@ $brand-color: #20C1F3;
     h3.artist {
       position: relative;
       display: inline-block;
-      width: 0px;
-      top:-20px;
+      width: 0;
+      top: -20px;
       color: #999;
       font-weight: 100;
       font-size: 13px;
-      /*letter-spacing: 0em;*/
       left: 1px;
     }
     .controls {
@@ -50,7 +44,6 @@ $brand-color: #20C1F3;
       width: 18px;
       padding: 5px 5.5px;
     }
-
     .genre {
       float: right;
       background: lightgrey;
@@ -60,13 +53,11 @@ $brand-color: #20C1F3;
       opacity: 0.7;
       border-radius: 15px;
     }
-
     audio {
-      vertical-align:middle;
+      vertical-align: middle;
       margin: 0 auto;
       display: block;
     }
-
     .waveform {
       width: 100%;
     }

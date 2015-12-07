@@ -1,7 +1,6 @@
 .track-form {
   width: 450px;
   margin: 60px auto;
-
   padding: 15px;
   border: 3px solid #111;
   border-radius: 5px;
@@ -9,68 +8,54 @@
   background-image: -o-linear-gradient(#858383, #5b5b5b);
   background-image: linear-gradient(#858383, #5b5b5b);
   color: #eee;
-
   h1 {
     text-align: center;
     font-size: 24px;
   }
-
   label {
     margin: 20px;
     display: block;
-
-    input, select {
+    input,
+    select {
       float: right;
     }
-
     input[type="text"] {
       min-height: 20px;
     }
   }
-
   button.cancel {
     color: #20C1F3;
     background: #fff;
     margin-right: 10px;
   }
-
   button {
     margin: 10px 20px;
     float: right;
   }
-
-
-
-  p, input {
+  p,
+  input {
     line-height: 2.0;
     color: #000;
   }
-
   p {
     margin-top: 10px;
   }
-
   h2 {
     text-align: center;
     font-size: 14px;
     display: block;
     padding: 10px;
-    // background: #555;
     color: #ccc;
   }
-
-.spinner-track-form {
+  .spinner-track-form {
     display: none;
     margin: 300 auto;
   }
-  img.spinner-track-form {
-  }
+  img.spinner-track-form {}
   .spinner-track-form {
     font-size: 18px;
   }
-
   .uploaded {
     display: block;
   }
-
 }

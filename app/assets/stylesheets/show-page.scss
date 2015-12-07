@@ -1,66 +1,56 @@
-.profile-page, .track-page {
-  // margin: 0 auto;
-  // width: 1120px;
+.profile-page,
+.track-page {
   background: #fff;
-
   header {
     display: block;
     height: 260px;
-
     overflow: hidden;
     position: relative;
     font: "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;
-
-    h2, p {
+    h2,
+    p {
       font-size: 36px;
       text-align: center;
       color: white;
       background: black;
-
       position: absolute;
-      margin: 30px; // wowww
+      margin: 30px;
       padding: 10px;
       top: 0;
       left: 230px;
       z-index: 1;
     }
-
     p {
       font-size: 16px;
-      margin-top: 90px
+      margin-top: 90px;
     }
   }
-
-  .avatar, .track-image {
+  .avatar,
+  .track-image {
     width: 200px;
     max-height: 260px;
     position: absolute;
-    padding: 30px; // wowww
+    padding: 30px;
     top: 0;
     left: 0;
     z-index: 1;
   }
-
   .cover {
     width: 1250px;
     position: relative;
   }
-
   .sidebar {
     margin-top: 40px;
   }
-
   .tracklist {
     float: left;
     padding: 15px 30px;
-
     .profile-tabs {
       font-weight: bold;
       font-size: 16px;
       border-bottom: 1px solid #eee;
       padding-bottom: 20px;
       margin-bottom: 20px;
-
       li {
         float: left;
         a {
@@ -68,7 +58,6 @@
           padding: 10px 20px;
         }
       }
-
       .follow-button {
         position: relative;
         left: 1010px;
@@ -79,21 +68,17 @@
         color: #20C1F3;
         background: #fff;
         border: 1px solid #20C1F3;
-
       }
     }
   }
 }
-
 .banner {
   height: 380px;
   background-color: #47484A;
 }
-
 .lgwaveform {
   width: 820px;
 }
-
 .hide {
   display: none;
 }

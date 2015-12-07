@@ -1,18 +1,16 @@
 .comment-bar {
-
-  .playcount, .trackbar-button {
-    float:right;
+  .playcount,
+  .trackbar-button {
+    float: right;
     margin: 0 10px;
     img {
       width: 16px;
       margin-right: 5px;
     }
   }
-
   .playcount {
     color: #aaa;
   }
-
   .trackbar-button {
     margin-top: 3px;
     float: left;
@@ -23,9 +21,7 @@
     border: 1px solid #eee;
     border-radius: 3px;
   }
-
   .trackbar-button:hover {
     border: 1px solid #ccc;
-
   }
 }

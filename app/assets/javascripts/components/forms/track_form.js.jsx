@@ -14,24 +14,24 @@ var TrackForm = React.createClass({
     };
   },
 
-  componentDidMount: function () {
+  componentDidMount: function() {
     TrackStore.addChangeListener(this._onChange);
     GenreUtil.fetchGenres();
   },
 
-  _onChange: function () {
-    this.setState({ track: TrackStore.show() });
+  _onChange: function() {
+    this.setState({track: TrackStore.show()});
     this.history.pushState(null, "#/tracks/" + this.state.track.id);
   },
 
-  componentWillUnmount: function () {
+  componentWillUnmount: function() {
     TrackStore.removeChangeListener(this._onChange);
   },
 
-  handleSubmit: function (e) {
+  handleSubmit: function(e) {
     e.preventDefault();
 
-    this.setState({ newTrack: "uploaded" });
+    this.setState({newTrack: "uploaded"});
 
     var title = this.state.title;
     var genre_id = this.state.genre_id;
@@ -45,10 +45,12 @@ var TrackForm = React.createClass({
     newTrackData.append("track[genre_id]", genre_id);
     newTrackData.append("track[description]", description);
     newTrackData.append("track[audio]", trackFile);
-    if (imageFile) { newTrackData.append("track[image]", imageFile); }
+    if (imageFile) {
+      newTrackData.append("track[image]", imageFile);
+    }
     newTrackData.append("track[user_id]", userId);
 
-  TracksUtil.createTrack(newTrackData, this._resetForm);
+    TracksUtil.createTrack(newTrackData, this._resetForm);
   },
 
   _resetForm: function() {
@@ -64,34 +66,32 @@ var TrackForm = React.createClass({
     forceUpdate();
   },
 
-/// fix modal class / functionality
-  render: function () {
-
+  render: function() {
     return (
       <section className="track-form modal group is-active">
         <article className="m-odal-content">
-          <img className={"spinner-track-form" + this.state.newTrack} src={assets.spinner} />
-            <h2>Upload</h2>
+          <img className={"spinner-track-form" + this.state.newTrack} src={assets.spinner}/>
+          <h2>Upload</h2>
           <form onSubmit={this.handleSubmit}>
             <label>Update image
-              <input type="file" onChange={this.changeImageFile} />
+              <input type="file" onChange={this.changeImageFile}/>
             </label>
             <label>Choose file to upload
-              <input type="file" onChange={this.changeTrackFile} />
+              <input type="file" onChange={this.changeTrackFile}/>
             </label>
             <label>Title*
-              <input type="text" onChange={this.changeTitle} />
+              <input type="text" onChange={this.changeTitle}/>
             </label>
             <label>Genre*
-              <select onChange={this.changeGenre} >
+              <select onChange={this.changeGenre}>
                 <option>Select a genre:</option>
-                {GenreStore.all().map(function (genre) {
+                {GenreStore.all().map(function(genre) {
                   return <option key={genre.id} value={genre.id}>{genre.genre}</option>;
                 })}
               </select>
             </label>
             <label>Description
-              <input type="textarea" onChange={this.changeDescription} />
+              <input type="textarea" onChange={this.changeDescription}/>
             </label>
 
             <button>Upload</button>
@@ -104,15 +104,15 @@ var TrackForm = React.createClass({
   },
 
   changeTitle: function(e) {
-    this.setState({ title: e.currentTarget.value });
+    this.setState({title: e.currentTarget.value});
   },
 
   changeGenre: function(e) {
-    this.setState({ genre_id: e.currentTarget.value });
+    this.setState({genre_id: e.currentTarget.value});
   },
 
   changeDescription: function(e) {
-    this.setState({ description: e.currentTarget.value });
+    this.setState({description: e.currentTarget.value});
   },
 
   changeTrackFile: function(e) {
@@ -121,13 +121,13 @@ var TrackForm = React.createClass({
     var that = this;
 
     reader.onloadend = function() {
-      that.setState({ trackUrl: reader.result, trackFile: file });
+      that.setState({trackUrl: reader.result, trackFile: file});
     };
 
     if (file) {
       reader.readAsDataURL(file);
     } else {
-      this.setState({ trackUrl: "", trackFile: null });
+      this.setState({trackUrl: "", trackFile: null});
     }
   },
 
@@ -137,14 +137,13 @@ var TrackForm = React.createClass({
     var that = this;
 
     reader.onloadend = function() {
-      that.setState({ imageUrl: reader.result, imageFile: file });
+      that.setState({imageUrl: reader.result, imageFile: file});
     };
 
     if (file) {
       reader.readAsDataURL(file);
     } else {
-      this.setState({ imageUrl: "", imageFile: null });
+      this.setState({imageUrl: "", imageFile: null});
     }
-  },
-
+  }
 });

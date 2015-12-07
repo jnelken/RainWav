@@ -76,17 +76,6 @@ Track.create({
 
 })
 
-# Track.create({
-#   title: "Sai Das Trevas (Preview)",
-#   genre_id: house.id,
-#   description: "new remix I'm working on!",
-#   plays: rand(4)**rand(4),
-#   user_id: j.id,
-#   audio: URI.parse('https://s3.amazonaws.com/rainwav-seeds/track_audio/Sai.mp3'),
-#   image: URI.parse('https://redmp3.me/cover/367419-460x460/a-piece-of-my-heart.jpg'),
-#
-# })
-
 
 # #######################
 mc = User.create({

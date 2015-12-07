@@ -76,7 +76,7 @@ var TracksIndexItem = React.createClass({
 
   _success: function () {
     if (this.props.track.user_id === CUserStore.cUser().id) {
-      //update Sidebar play count for cUser
+      //updates Sidebar play count for cUser
       CUserStore.plays(1);
     }
   },

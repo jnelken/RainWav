@@ -13,23 +13,7 @@ var App = React.createClass({
     GenreUtil.fetchGenres();
     TracksUtil.fetchTracks();
   },
-
-  // componentWillReceiveProps: function (newProps) {
-  //   /// logged out redirect
-  //   var newPath = newProps.location.pathname;
-  //   var currentPath = this.props.location.pathname;
-  //
-  //   if (newPath !== currentPath && newPath !== "/createaccount") {
-  //     this._ensureLoggedIn();
-  //   }
-  // },
-  //
-  // _ensureLoggedIn: function () {
-  //   if (!CUserStore.isLoggedIn()) {
-  //     this.history.pushState(null, "/login");
-  //   }
-  // },
-
+  
   _setCurrentUser: function () {
     this.setState({currentUser: CUserStore.cUser() });
   },

@@ -1,12 +1,9 @@
 .user-form-page {
   width: 400px;
-  margin: 0px auto;
-  // background-image: url();
+  margin: 0 auto;
 }
-
 .form-tabs {
   margin-top: 80px;
-
   h2 {
     text-align: right;
     font-size: 14px;
@@ -19,42 +16,38 @@
     border-top-right-radius: 15px;
   }
 }
-
 .user-form {
   width: 400px;
-  // margin: 0 auto;
   padding: 15px;
   border: 3px solid #111;
   border-radius: 5px;
-  // background: #444;
   background-image: linear-gradient(#696969, #2a2a2a);
   color: #eee;
-
-  p, input {
+  p,
+  input {
     line-height: 2.0;
   }
-
   input {
-    color:#000;
+    color: #000;
   }
-
   p {
     margin-top: 10px;
   }
-
-  .username input, .email input, .long-password input {
+  .username input,
+  .email input,
+  .long-password input {
     width: 400px;
   }
-  .choose-password, .retype-password {
+  .choose-password,
+  .retype-password {
     float: left;
     input {
-    width: 190px;
+      width: 190px;
     }
   }
   .retype-password {
     float: right;
   }
-
   button {
     margin: 20px 0 0 20px;
     float: right;

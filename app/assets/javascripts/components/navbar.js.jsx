@@ -31,11 +31,10 @@ var Nav = React.createClass({
       genres={this.props.genres}
       closeOut={this._closeOut}
       />;
-  } else {
-    trackForm = undefined;
-  }
+    } else {
+      trackForm = undefined;
+    }
 
-/// change ul to div or divs to li
     return (
       <div>
         <div className="navbar-container">
@@ -76,5 +75,3 @@ var Nav = React.createClass({
     );
   },
 });
-            // <a href={'#/' + username}>{username.capitalize()}</a>
-// <img src={assets.logo}/>
