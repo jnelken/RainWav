@@ -49,7 +49,7 @@ var Nav = React.createClass({
             </li>
 
             <div className="flex-container">
-              <input type="search" placeholder="Search"/>
+              <input type="search" placeholder="Search (coming soon)"/>
               <div className="navbar-right group">
                 <li onClick={this.uploadClick}className="nav-tab">
                     <a>Upload</a>
