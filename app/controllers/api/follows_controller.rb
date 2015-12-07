@@ -2,7 +2,7 @@ class Api::FollowsController < ApplicationController
 
   def index
     if current_user
-      @follows = Follow.all.select { |follow| follow.follower_id == current_user.id }
+      @follows = Follow.where(follower_id: current_user.id)
     end
 
     @follows

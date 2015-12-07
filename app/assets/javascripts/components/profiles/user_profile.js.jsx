@@ -91,9 +91,7 @@ render: function () {
         </header>
         <section className="tracklist">
           <ul className="profile-tabs group">
-            <li><a>All</a></li>
             <li><a>Tracks</a></li>
-            <li><a>Reposts</a></li>
             <li className={"follow-button " + status}>
               <button className={hideMe} onClick={this.follow}>{status}</button>
             </li>

@@ -25,7 +25,7 @@
     },
 
     feed: function () {
-      if (_tracks.length > 0) {
+      if (_tracks.length > 0 && typeof CUserStore.cUser().followees !== "undefined") {
         return _tracks.filter(function (track) {
           followings = CUserStore.cUser().followees.map(function (follow) {
             return follow.following_id;

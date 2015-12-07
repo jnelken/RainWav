@@ -1,7 +1,7 @@
 class Api::RepostsController < ApplicationController
 
   def index
-    @reposts = Repost.all
+    @reposts = Repost.where(user_id: current_user.id)
     render :index
   end
 
