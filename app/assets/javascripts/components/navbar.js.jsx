@@ -5,11 +5,6 @@ var Nav = React.createClass({
     return ({ uploadClick: false});
   },
 
-  handleLogout: function () {
-    SessionUtil.logout();
-    this.history.pushState(null, "/login");
-  },
-
   uploadClick: function () {
     var uploadClick = this.state.uploadClick ? false : true;
     this.setState({ uploadClick: uploadClick });
@@ -59,9 +54,8 @@ var Nav = React.createClass({
                     {username.capitalize()}
                   </a>
                 </li>
-                <li className="more" onClick={this.handleLogout}>
-                  <p>log out</p>
-                  <a className="dots" href="#/login" ></a>
+                <li onClick={this.handleLogout} className="more">
+                  <a className="dots" href="#/login">Logout</a>
                 </li>
               </div>
 
@@ -73,5 +67,10 @@ var Nav = React.createClass({
         {trackForm}
       </div>
     );
+  },
+
+  handleLogout: function () {
+    SessionUtil.logout();
+    this.history.pushState(null, "/login");
   },
 });
