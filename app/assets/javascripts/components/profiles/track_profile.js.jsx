@@ -32,7 +32,6 @@ var TracksDetail = React.createClass({
           <header className="cover">
             <h2>{track.title.capitalize()}</h2>
             <p>{track.description}</p>
-            <img className="lgwaveform" src={assets.lgwaveform} />
             <img className="track-image" src={track.image} />
           </header>
               <TracksIndexItem key={track.id} track={track} />;

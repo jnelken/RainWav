@@ -28,8 +28,6 @@ var Trackbar = React.createClass({
       showMe = "";
     }
 
-
-
     return (
         <div className="comment-bar flex-container">
           <button className={"trackbar-button " + showMe} onClick={this.handleTrash}>

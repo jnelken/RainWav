@@ -35,6 +35,8 @@ gem 'figaro'
 gem 'newrelic_rpm', group: :production
 gem 'rails_12factor', group: :production
 
+# Wavesurfer.js
+gem 'wavesurfer-rails'
 
   # Use Unicorn as the app server
   # gem 'unicorn'

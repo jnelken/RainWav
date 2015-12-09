@@ -18,5 +18,5 @@
 //= require flux
 //= require eventemitter
 //= require jquery.serializeJSON
-//= require waveform
+//= require wavesurfer
 //= require_tree .
