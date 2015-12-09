@@ -1,7 +1,7 @@
 # RainWav
 
-RainWav is a social music application inspired by SoundCloud built using Ruby on Rails
-and React.js.
+RainWav is a social music application inspired by SoundCloud built primarily with
+Ruby on Rails and React.js with Flux architecture.
 
 [RainWav][live]
 
@@ -16,6 +16,7 @@ and React.js.
 * Upload tracks + cover art to your profile or delete them
 * View the number of plays on each track
 * User play count statistics
+* Waveform Visualization
 
 ### Details
 
@@ -24,10 +25,10 @@ and React.js.
 * React.js communicating with a RESTful json API
 * React + Rails custom authentication using BCrypt
 * Custom URLs for users via React Routes (e.g. "rainwav.co/username")
+* Waveforms generated with `wavesurfer-rails` gem
 
-### Upcoming Features
+### Future Features
 - [ ] Search bar
-- [ ] waveform visualization
 - [ ] Track Comments
 - [ ] Infinite Scroll
 - [ ] Likes
