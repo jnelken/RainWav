@@ -25,6 +25,7 @@ var Sidebar = React.createClass({
 
   componentWillUnmount: function () {
     CUserStore.removeChangeListener(this._setPlays);
+    UserStore.removeChangeListener(this._setProfiles);
   },
 
 

@@ -10,7 +10,6 @@ var WaveSurferItem = React.createClass({
         cursorWidth: 1,
         pixelRatio: 1,
         fillParent: true
-
     });
     this.props.wavesurfer.load(this.props.track.audio);
   },

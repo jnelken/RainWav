@@ -17,6 +17,8 @@ var TracksIndex = React.createClass({
 
   componentWillUnmount: function () {
     TrackStore.removeChangeListener(this._getFeed);
+    CUserStore.removeChangeListener(this._getFeed);
+
   },
 
   render: function () {

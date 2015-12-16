@@ -8,6 +8,10 @@ var UsersIndex = React.createClass({
     UserStore.addChangeListener(this._onChange);
   },
 
+  componentWillUnmount: function() {
+    UserStore.removeChangeListener(this._onChange);
+  },
+
   _onChange: function () {
     this.setState({ users: UserStore.all() });
   },

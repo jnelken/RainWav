@@ -88,7 +88,6 @@ var TracksIndexItem = React.createClass({
     this.state.wavesurfer.pause();
 
     toggle = this.state.playing ? true : false;
-    this.setState({ playing: toggle });
-    this.setState({ controls: <img src={assets.play} onClick={this.handlePlay} /> });
+    this.setState({ playing: toggle, controls: <img src={assets.play} onClick={this.handlePlay} /> });
   }
 });

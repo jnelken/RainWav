@@ -45,8 +45,10 @@
     },
 
     userTracks: function (userId) {
+      if (!userId) return [];
+
       return _tracks.filter(function (track) {
-        return track.user_id === userId;
+        return track.user_id === parseInt(userId);
       });
     },
 

@@ -1,23 +1,40 @@
 var UsersDetail = React.createClass({
 
 getInitialState: function () {
-  return ({
+  return this.getStateFromStores();
+},
+
+getStateFromStores: function(props) {
+  props = props || this.props;
+
+  return {
     user: UserStore.show(),
-    tracks: [],
+    tracks: TrackStore.userTracks(props.params.id),
     follow: FollowStore.show()
-  });
+  };
+},
+
+_onChange: function() {
+  this.setState(this.getStateFromStores());
 },
 
 componentDidMount: function () {
-  UserStore.addChangeListener(this._getUser);
-  TrackStore.addChangeListener(this._getUserTracks);
-  FollowStore.addChangeListener(this._getFollow);
+  UserStore.addChangeListener(this._onChange);
+  TrackStore.addChangeListener(this._onChange);
+  FollowStore.addChangeListener(this._onChange);
 
   this.fetchUser(this.props.params);
 },
 
+componentWillUnmount: function () {
+  UserStore.removeChangeListener(this._onChange);
+  TrackStore.removeChangeListener(this._onChange);
+  FollowStore.removeChangeListener(this._onChange);
+},
+
 componentWillReceiveProps: function (newProps) {
   this.fetchUser(newProps.params);
+  this.setState(this.getStateFromStores(newProps));
 },
 
 fetchUser: function (params) {
@@ -29,26 +46,18 @@ fetchUser: function (params) {
   }
 },
 
-_getUser: function () {
-  this.setState({ user: UserStore.show() });
-  this._getFollow();
+// _getUser: function () {
+//   this.setState({ user: UserStore.show() });
+// },
+//
+// _getUserTracks: function () {
+//   this.setState({ tracks: TrackStore.userTracks(this.state.user.id) });
+// },
+//
+// _getFollow: function () {
+//   this.setState({ follow: FollowStore.show() });
+// },
 
-  this._getUserTracks();
-},
-
-_getUserTracks: function () {
-  this.setState({ tracks: TrackStore.userTracks(this.state.user.id) });
-},
-
-_getFollow: function () {
-  this.setState({ follow: FollowStore.show() });
-},
-
-componentWillUnmount: function () {
-  UserStore.removeChangeListener(this._getUser);
-  TrackStore.removeChangeListener(this._getUserTracks);
-  FollowStore.removeChangeListener(this._getFollow);
-},
 
 render: function () {
   var user = this.state.user;
