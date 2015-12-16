@@ -23,44 +23,44 @@ var TracksIndexItem = React.createClass({
   },
 
   render: function () {
-    if (!this.state.user || !this.state.genre) {
+    var track = this.props.track;
+    var user = this.state.user;
+    var genre = this.state.genre.genre;
+
+    if (!user || !genre) {
       return <img className="spinner" src={assets.spinner} />;
-    } else {
-      var track = this.props.track;
-      var user = this.state.user;
-      var genre = this.state.genre.genre;
-
-      return (
-        <li className="tracks-index-item group">
-
-          <ReactRouter.Link className="artist" to={"/users/" + user.id }>
-            <img src={track.image} />
-          </ReactRouter.Link>
-
-          <div className="track-profile">
-            <div className="controls">
-              {this.state.controls}
-            </div>
-
-            <h3 className="artist">
-              <ReactRouter.Link to={user.username}>
-                {user.username.capitalize()}
-              </ReactRouter.Link>
-            </h3>
-
-            <h3 className="title">
-              <ReactRouter.Link to={"/users/" + user.id } className="artist">
-                {track.title}
-              </ReactRouter.Link>
-            </h3>
-
-            <button className="genre">#{this.state.genre.genre}</button>
-            <WaveSurferItem track={track} wavesurfer={this.state.wavesurfer}/>
-            <Trackbar plays={this.state.plays} track={track} />
-          </div>
-        </li>
-      );
     }
+
+    return (
+      <li className="tracks-index-item group">
+
+        <ReactRouter.Link className="artist" to={"/users/" + user.id }>
+          <img src={track.image} />
+        </ReactRouter.Link>
+
+        <div className="track-profile">
+          <div className="controls">
+            {this.state.controls}
+          </div>
+
+          <h3 className="artist">
+            <ReactRouter.Link to={user.username}>
+              {user.username.capitalize()}
+            </ReactRouter.Link>
+          </h3>
+
+          <h3 className="title">
+            <ReactRouter.Link to={"/users/" + user.id } className="artist">
+              {track.title}
+            </ReactRouter.Link>
+          </h3>
+
+          <button className="genre">#{this.state.genre.genre}</button>
+          <WaveSurferItem track={track} wavesurfer={this.state.wavesurfer}/>
+          <Trackbar plays={this.state.plays} track={track} />
+        </div>
+      </li>
+    );
   },
 
   handlePlay: function () {

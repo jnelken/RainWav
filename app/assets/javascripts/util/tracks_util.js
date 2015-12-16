@@ -11,17 +11,6 @@ TracksUtil = {
     });
   },
 
-  fetchTrack: function (id) {
-    $.ajax({
-      url: 'api/tracks/' + id,
-      type: 'GET',
-      dataType: 'json',
-      success: function (data) {
-        ApiActions.receiveTrack(data);
-      }
-    });
-  },
-
   fetchUserTracks: function (userId) {
     $.ajax({
       url: 'api/tracks',
@@ -30,6 +19,17 @@ TracksUtil = {
       data: { user_id: userId },
       success: function (data) {
         ApiActions.receiveUserTracks(data);
+      }
+    });
+  },
+
+  fetchTrack: function (id) {
+    $.ajax({
+      url: 'api/tracks/' + id,
+      type: 'GET',
+      dataType: 'json',
+      success: function (data) {
+        ApiActions.receiveTrack(data);
       }
     });
   },

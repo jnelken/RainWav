@@ -1,20 +1,22 @@
 class Api::TracksController < ApplicationController
   def index
-    @tracks = Track.all()
-
-    if params[:user_id]
-      userTracks = []
-      @tracks.each do |track|
-         if track.user_id == params[:user_id].to_i
-           userTracks << track
-         end
-      end
-
-      @tracks = userTracks
-      render :index
+    unless params[:user_id]
+      @tracks = Track.all()
+    else
+      @tracks = Track.where(user_id: params[:user_id])
     end
-
-    @tracks
+      # userTracks = []
+      # @tracks.each do |track|
+      #    if track.user_id == params[:user_id].to_i
+      #      userTracks << track
+      #    end
+      # end
+      #
+      #   @tracks = userTracks
+      #   render :index
+      # end
+      #
+      # @tracks
   end
 
   def create

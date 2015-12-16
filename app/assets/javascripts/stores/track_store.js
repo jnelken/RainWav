@@ -2,23 +2,26 @@
 
   var CHANGE_EVENT = 'change';
   var _tracks = [];
-  var _userTracks = [];
   var _track;
+  var users = {};
 
   var resetTracks = function (tracks) {
+    users = {};
+    tracks.forEach(function (track) {
+      users[track.user_id] = true;
+    });
     _tracks = tracks;
+  };
+
+  var addUserTracks = function (userTracks) {
+    _tracks.concat(userTracks);
   };
 
   var setTrack = function (track) {
     _track = track;
   };
 
-  var setUserTracks = function (userTracks) {
-      _userTracks = userTracks;
-  };
-
   root.TrackStore = $.extend({}, EventEmitter.prototype, {
-
 
     all: function () {
       return _tracks.slice(0);
@@ -41,8 +44,10 @@
       return _track;
     },
 
-    userTracks: function () {
-      return _userTracks;
+    userTracks: function (userId) {
+      return _tracks.filter(function (track) {
+        return track.user_id === userId;
+      });
     },
 
     addChangeListener: function (callback) {
@@ -60,7 +65,7 @@
             TrackStore.emit(CHANGE_EVENT);
             break;
           case TrackConstants.USER_TRACKS_RECEIVED:
-            setUserTracks(payload.userTracks);
+            addUserTracks(payload.userTracks);
             TrackStore.emit(CHANGE_EVENT);
             break;
           case TrackConstants.TRACK_RECEIVED:
@@ -71,4 +76,5 @@
     })
 
   });
+
 })(this);

@@ -3,7 +3,7 @@ var UsersDetail = React.createClass({
 getInitialState: function () {
   return ({
     user: UserStore.show(),
-    tracks: TrackStore.userTracks(),
+    tracks: [],
     follow: FollowStore.show()
   });
 },
@@ -32,12 +32,12 @@ fetchUser: function (params) {
 _getUser: function () {
   this.setState({ user: UserStore.show() });
   this._getFollow();
-  TracksUtil.fetchUserTracks(this.state.user.id);
+
+  this._getUserTracks();
 },
 
 _getUserTracks: function () {
-  this.setState({ tracks: TrackStore.userTracks() });
-
+  this.setState({ tracks: TrackStore.userTracks(this.state.user.id) });
 },
 
 _getFollow: function () {
@@ -52,28 +52,12 @@ componentWillUnmount: function () {
 
 render: function () {
   var user = this.state.user;
-  var hideMe;
-  var status;
-
-  if (this.state.user.id === CUserStore.cUser().id) {
-    hideMe = "hide";
-  }
-
-  if (this.state.follow) {
-    status = "Following";
-  } else {
-    status = "Follow";
-  }
+  var hideFollow = user.id === CUserStore.cUser().id ? "hide" : "";
+  var status = this.state.follow ? "Following" : "Follow";
+  var tracks;
 
   if (this.state.tracks.length === 0) {
-    tracks =  <li className="tracks-index-item group">
-            <div className="track-profile">
-              <h3 className="artist">
-              </h3>
-              <h3 className="artist title">
-              </h3>
-            </div>
-          </li>;
+    tracks = this.dummyTrack;
   } else {
     tracks = this.state.tracks.map(function (track) {
       return <TracksIndexItem key={track.id} track={track} />;
@@ -93,7 +77,7 @@ render: function () {
           <ul className="profile-tabs group">
             <li><a>Tracks</a></li>
             <li className={"follow-button " + status}>
-              <button className={hideMe} onClick={this.follow}>{status}</button>
+              <button className={hideFollow} onClick={this.follow}>{status}</button>
             </li>
           </ul>
 
@@ -112,6 +96,16 @@ follow: function (status) {
   } else {
     FollowUtil.removeFollow(this.state.follow.id);
   }
-}
+},
+
+dummyTrack: (
+  <li className="tracks-index-item group">
+    <div className="track-profile">
+      <h3 className="artist"></h3>
+      <h3 className="artist title"></h3>
+      <h3>This artist has no tracks yet!</h3>
+    </div>
+  </li>
+)
 
 });
