@@ -9,7 +9,6 @@ FollowUtil = {
         following_id: following_id
       }},
       success: function (data) {
-        SessionUtil.fetchCurrentUser();
         FollowActions.receiveFollow(data);
       }
     });
@@ -21,7 +20,6 @@ FollowUtil = {
       type: 'DELETE',
       dataType: 'json',
       success: function (data) {
-        SessionUtil.fetchCurrentUser();
         FollowActions.removeFollow(data);
       }
     });

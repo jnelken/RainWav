@@ -5,15 +5,6 @@ var Nav = React.createClass({
     return ({ uploadClick: false});
   },
 
-  uploadClick: function () {
-    var uploadClick = this.state.uploadClick ? false : true;
-    this.setState({ uploadClick: uploadClick });
-  },
-
-  _closeOut: function () {
-    this.uploadClick();
-  },
-
   render: function () {
     var username = "login";
     if (this.props.cUser.username) {
@@ -22,10 +13,11 @@ var Nav = React.createClass({
 
     var trackForm;
     if (this.state.uploadClick) {
-      trackForm = <TrackForm
-      genres={this.props.genres}
-      closeOut={this._closeOut}
-      />;
+      trackForm =
+        <TrackForm
+          genres={this.props.genres}
+          closeOut={this._closeOut}
+        />;
     } else {
       trackForm = undefined;
     }
@@ -44,20 +36,23 @@ var Nav = React.createClass({
 
             <div className="flex-container">
               <input type="search" placeholder="Search (coming soon)"/>
-              <div className="navbar-right group">
+
+              <ul className="navbar-right group">
                 <li onClick={this.uploadClick}className="nav-tab">
                     <a>Upload</a>
                 </li>
+
                 <li className="nav-tab nav-profile group">
                   <a href={'#/' + username}>
                     <img src={this.props.cUser.avatar} className="avtr" />
                     {username.capitalize()}
                   </a>
                 </li>
+
                 <li onClick={this.handleLogout} className="more">
                   <a className="dots" href="#/login">Logout</a>
                 </li>
-              </div>
+              </ul>
 
             </div>
 
@@ -67,6 +62,15 @@ var Nav = React.createClass({
         {trackForm}
       </div>
     );
+  },
+
+  uploadClick: function () {
+    var uploadClick = this.state.uploadClick ? false : true;
+    this.setState({ uploadClick: uploadClick });
+  },
+
+  _closeOut: function () {
+    this.uploadClick();
   },
 
   handleLogout: function () {

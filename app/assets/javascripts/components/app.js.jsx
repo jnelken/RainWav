@@ -9,11 +9,10 @@ var App = React.createClass({
     CUserStore.addChangeListener(this._setCurrentUser);
 
     SessionUtil.fetchCurrentUser();
-    UserUtil.fetchUsers();
     GenreUtil.fetchGenres();
     TracksUtil.fetchTracks();
   },
-  
+
   _setCurrentUser: function () {
     this.setState({currentUser: CUserStore.cUser() });
   },
