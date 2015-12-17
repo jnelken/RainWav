@@ -24,10 +24,19 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find(params[:user][:id])
+    if @user.update_attributes(user_params)
+      render :show
+    else
+      render json:  @user.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(:username, :email, :password, :avatar)
   end
 
   def passwords_match

@@ -79,3 +79,38 @@
 .hide {
   display: none;
 }
+
+#avatar-file {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.avatar:hover ~ .avatar-input {
+  display: block;
+}
+
+.avatar-input:hover {
+  display: block;
+}
+
+.avatar-input {
+  cursor: pointer;
+  display: none;
+  position: absolute;
+  top: 190px;
+  left: 70px;
+  z-index: 10;
+
+  font-size: 14px;
+  font-weight: 100;
+  padding: 5px 10px;
+  color: white;
+  background: #20C1F3;
+  border-color: #20C1F3;
+  border-radius: 5px;
+  border-style: none;
+}

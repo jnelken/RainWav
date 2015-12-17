@@ -64,11 +64,15 @@ render: function () {
 
   return (
       <div className="profile-page group">
+        <input type="file" name="file" id="avatar-file" onChange={this.changeAvatar}/>
         <header>
         <img className="cover" src={user.cover}>
-            <img className="avatar" src={user.avatar} />
-            <h2>{user.username.capitalize()}</h2>
-            <p>{user.bio}</p>
+          <img className="avatar" src={user.avatar} />
+          <label htmlFor="file" className="avatar-input">
+            Replace image
+          </label>
+          <h2>{user.username.capitalize()}</h2>
+          <p>{user.bio}</p>
         </img>
         </header>
 
@@ -88,6 +92,18 @@ render: function () {
         <Sidebar className="sidebar" />
       </div>
   );
+},
+
+changeAvatar: function (e) {
+  var imageFile = e.currentTarget.files[0];
+
+  if (imageFile) {
+    var newAvatar = new FormData();
+    newAvatar.append("user[avatar]", imageFile);
+    newAvatar.append("user[id]", this.state.user.id);
+
+    SessionUtil.updateCUser(newAvatar);
+  }
 },
 
 follow: function (status) {

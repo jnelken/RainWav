@@ -31,10 +31,7 @@ UserUtil = {
       success: function (data) {
         ApiActions.receiveCurrentUser(data);
         success && success();
-      },
-      error: function (data) {
-        alert(data);
       }
     });
-  },
+  }
 };

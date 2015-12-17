@@ -36,14 +36,20 @@ SessionUtil = {
         ApiActions.receiveCurrentUser(currentUser);
       }
     });
+  },
+
+  updateCUser: function (userData) {
+    $.ajax({
+      url: '/api/users/' + CUserStore.cUser().id,
+      type: 'PATCH',
+      processData: false,
+      contentType: false,
+      dataType: 'json',
+      data: userData,
+      success: function (data) {
+        ApiActions.receiveUser(data);
+        ApiActions.receiveCurrentUser(data);
+      }
+    });
   }
-
-
-
-
-
-
-
-
-
 };
