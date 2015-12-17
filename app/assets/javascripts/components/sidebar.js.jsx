@@ -4,7 +4,8 @@ var Sidebar = React.createClass({
     return {
       playDetails: "hidden",
       userPlays: CUserStore.plays(),
-      profiles: UserStore.all()
+      profiles: UserStore.all(),
+      userPage: 0
     };
   },
 
@@ -34,6 +35,10 @@ var Sidebar = React.createClass({
     var trackStats;
     var trackCount;
     var count;
+    var page = this.state.userPage;
+    console.log(page);
+
+    var profiles = this.state.profiles;
 
     if (cUser.tracks) {
       trackCount = <p className="tracks">{cUser.tracks.length}</p>;
@@ -74,15 +79,17 @@ var Sidebar = React.createClass({
         </article>
 
         <article className="stats">
-            <div className="stats-header">
+          <div className="stats-header">
             <img src={assets.followers} />
-            Who to follow
+             Who to follow
+            <span className="refresh" onClick={this.paginateUsers}> ⟳</span>
           </div>
           <ul className="profiles group flex-container">
           {
-            this.state.profiles.map(function (profile, i) {
+            profiles.slice(page, (9+page)).map(function (profile) {
+
               if (cUser.followees.indexOf(profile) === -1) {
-                if (i < 9) {
+
                   return (
                     <li key={profile.id} className="profile">
                       <a href={"#/users/" + profile.id}><img className="sidebar-avatar" src={profile.avatar} /></a>
@@ -94,7 +101,7 @@ var Sidebar = React.createClass({
                       </div>
                     </li>
                   );
-                }
+
               }
           })}
 
@@ -104,6 +111,14 @@ var Sidebar = React.createClass({
 
       </section>
     );
+  },
+
+  paginateUsers: function () {
+    if (this.state.userPage > this.state.profiles.length-10) {
+      this.setState({ userPage: 0 });
+    } else {
+      this.setState({ userPage: (this.state.userPage + 9) });
+    }
   },
 
   togglePlayDetails: function () {

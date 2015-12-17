@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6, allow_nil: true }
   validates :email, length: { minimum: 6 }
 
-  has_attached_file :avatar, styles: { large: "500x500", medium: "200x200", thumb: "120x120" }
+  has_attached_file :avatar, styles: { large: "500x500!", medium: "200x200!", thumb: "120x120!" }
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   has_attached_file :cover, styles: { large: "1250x260!" }
