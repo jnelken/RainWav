@@ -89,17 +89,17 @@
 	z-index: -1;
 }
 
-.avatar:hover ~ .avatar-input {
-  display: block;
-}
-
-.avatar-input:hover {
-  display: block;
-}
+// .avatar:hover ~ .avatar-input {
+//   display: block;
+// }
+//
+// .avatar-input:hover {
+//   display: block;
+// }
 
 .avatar-input {
   cursor: pointer;
-  display: none;
+  // display: none;
   position: absolute;
   top: 190px;
   left: 70px;

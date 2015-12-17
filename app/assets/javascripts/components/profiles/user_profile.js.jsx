@@ -50,7 +50,7 @@ _userSuccess: function (userId) {
 
 render: function () {
   var user = this.state.user;
-  var hideFollow = user.id === CUserStore.cUser().id ? "hide" : "";
+  var hideFunction = user.id === CUserStore.cUser().id ? "hide" : "";
   var status = this.state.follow ? "Following" : "Follow";
   var tracks;
 
@@ -68,7 +68,7 @@ render: function () {
         <header>
         <img className="cover" src={user.cover}>
           <img className="avatar" src={user.avatar} />
-          <label htmlFor="file" className="avatar-input">
+          <label htmlFor="file" className="avatar-input + hideFunction">
             Replace image
           </label>
           <h2>{user.username.capitalize()}</h2>
@@ -80,7 +80,7 @@ render: function () {
           <ul className="profile-tabs group">
             <li><a>Tracks</a></li>
             <li className={"follow-button " + status}>
-              <button className={hideFollow} onClick={this.follow}>{status}</button>
+              <button className={hideFunction} onClick={this.follow}>{status}</button>
             </li>
           </ul>
 
