@@ -1,17 +1,17 @@
 json.array! @users do |user|
   json.extract! user,
   :id,
-  :email,
+  # :email,
   :username,
-  :bio,
+  # :bio,
   :created_at,
   :updated_at,
-  :avatar,
-  :cover,
 
   :plays,
   :tracks,
-  :reposts,
+  # :reposts,
   :followers,
   :followees
+
+  json.avatar asset_path(user.avatar.url(:thumb))
 end

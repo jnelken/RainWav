@@ -5,11 +5,12 @@ json.extract! @user,
   :bio,
   :created_at,
   :updated_at,
-  :avatar,
-  :cover,
 
   :plays,
   :tracks,
   :reposts,
   :followers,
   :followees
+
+  json.avatar asset_path(@user.avatar.url(:large))
+  json.cover asset_path(@user.cover.url(:large))

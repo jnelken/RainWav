@@ -1,21 +1,23 @@
 class User < ActiveRecord::Base
+
   validates :email, :session_token, :password_digest, presence: true, uniqueness: true
+  validates :password, length: { minimum: 6, allow_nil: true }
+  validates :email, length: { minimum: 6 }
 
-  #raise minimums for production
-  validates :password, length: { minimum: 4, allow_nil: true }
-  validates :email, length: { minimum: 4 }
-  has_attached_file :avatar, styles: { large: "500x500>", medium: "200x200>", thumb: "120x120>" }
-  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
-  has_attached_file :cover, styles: { large: "1250x260>" }
+  has_attached_file :avatar, styles: { large: "500x500", medium: "200x200", thumb: "120x120" }
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
+  has_attached_file :cover, styles: { large: "1250x260" }
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
+  # refactor this
   has_many :tracks, -> { includes :user, :genre, :reposts }, dependent: :destroy
 
-  has_many :followees, #Follow
+  has_many :followees,
   class_name: "Follow",
   foreign_key: :follower_id
 
-  has_many :followers, #Follow
+  has_many :followers,
   class_name: "Follow",
   foreign_key: :following_id
 

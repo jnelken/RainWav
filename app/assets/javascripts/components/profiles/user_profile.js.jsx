@@ -50,7 +50,8 @@ _userSuccess: function (userId) {
 
 render: function () {
   var user = this.state.user;
-  var hideFunction = user.id === CUserStore.cUser().id ? "hide" : "";
+  var hideOption = user.id === CUserStore.cUser().id ? "hide" : "";
+  var showOption = user.id === CUserStore.cUser().id ? "" : "hide";
   var status = this.state.follow ? "Following" : "Follow";
   var tracks;
 
@@ -65,22 +66,21 @@ render: function () {
   return (
       <div className="profile-page group">
         <header>
-        <img className="cover" src={user.cover}>
-          <img className="avatar" src={user.avatar} />
+        <img className="cover" src={user.cover} />
           <input type="file" name="file" id="avatar-file" onChange={this.changeAvatar}/>
-          <label htmlFor="file" className={"avatar-input " + hideFunction}>
+          <img className="avatar" src={user.avatar} />
+          <label htmlFor="avatar-file" className={"avatar-input " + showOption}>
             Replace image
           </label>
           <h2>{user.username.capitalize()}</h2>
           <p>{user.bio}</p>
-        </img>
         </header>
 
         <section className="tracklist">
           <ul className="profile-tabs group">
             <li><a>Tracks</a></li>
             <li className={"follow-button " + status}>
-              <button className={hideFunction} onClick={this.follow}>{status}</button>
+              <button className={hideOption} onClick={this.follow}>{status}</button>
             </li>
           </ul>
 
