@@ -10,13 +10,14 @@ UserUtil = {
     });
   },
 
-  fetchUser: function (userParams) {
+  fetchUser: function (userParams, success) {
     $.ajax({
       url: 'api/users/' + userParams,
       type: 'GET',
       dataType: 'json',
       success: function (data) {
         ApiActions.receiveUser(data);
+        success && success(data.id);
       }
     });
   },

@@ -44,9 +44,6 @@ TracksUtil = {
       success: function (data) {
         success && success();
         ApiActions.receiveTrack(data);
-      },
-      error: function (data) {
-        alert("Couldn't add play : (");
       }
     });
   },
@@ -64,7 +61,7 @@ TracksUtil = {
         success && success();
       },
       error: function (data) {
-        alert("Upload failed :()");
+        alert("Upload failed :( Please try filling out all the required inputs and try again.");
       }
     });
   },
@@ -77,9 +74,6 @@ TracksUtil = {
       success: function (data) {
         ApiActions.receiveTrack(data);
         success && success();
-      },
-      error: function (data) {
-        alert("Sorry! We can't delete your track right now :(");
       }
     });
   }

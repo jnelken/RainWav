@@ -1,21 +1,16 @@
 var UsersDetail = React.createClass({
 
 getInitialState: function () {
-  return this.getStateFromStores();
+  return this.getStateFromStores(this.props.params.id);
 },
 
-getStateFromStores: function(props) {
-  props = props || this.props;
-
+getStateFromStores: function(userId) {
   return {
     user: UserStore.show(),
-    tracks: TrackStore.userTracks(props.params.id),
+    userId: userId,
+    tracks: TrackStore.userTracks(userId),
     follow: FollowStore.show()
   };
-},
-
-_onChange: function() {
-  this.setState(this.getStateFromStores());
 },
 
 componentDidMount: function () {
@@ -32,32 +27,26 @@ componentWillUnmount: function () {
   FollowStore.removeChangeListener(this._onChange);
 },
 
+_onChange: function() {
+  this.setState(this.getStateFromStores(this.state.userId));
+},
+
 componentWillReceiveProps: function (newProps) {
   this.fetchUser(newProps.params);
-  this.setState(this.getStateFromStores(newProps));
 },
 
 fetchUser: function (params) {
   var u = params;
   if (u.username === undefined) {
-    UserUtil.fetchUser(u.id);
+    UserUtil.fetchUser(u.id, this._userSuccess);
   } else {
-    UserUtil.fetchUser(u.username);
+    UserUtil.fetchUser(u.username, this._userSuccess);
   }
 },
 
-// _getUser: function () {
-//   this.setState({ user: UserStore.show() });
-// },
-//
-// _getUserTracks: function () {
-//   this.setState({ tracks: TrackStore.userTracks(this.state.user.id) });
-// },
-//
-// _getFollow: function () {
-//   this.setState({ follow: FollowStore.show() });
-// },
-
+_userSuccess: function (userId) {
+  this.setState(this.getStateFromStores(userId));
+},
 
 render: function () {
   var user = this.state.user;
@@ -66,7 +55,7 @@ render: function () {
   var tracks;
 
   if (this.state.tracks.length === 0) {
-    tracks = this.dummyTrack;
+    tracks = this.zeroTracks;
   } else {
     tracks = this.state.tracks.map(function (track) {
       return <TracksIndexItem key={track.id} track={track} />;
@@ -82,6 +71,7 @@ render: function () {
             <p>{user.bio}</p>
         </img>
         </header>
+
         <section className="tracklist">
           <ul className="profile-tabs group">
             <li><a>Tracks</a></li>
@@ -94,6 +84,7 @@ render: function () {
             {tracks}
           </ul>
         </section>
+
         <Sidebar className="sidebar" />
       </div>
   );
@@ -107,7 +98,7 @@ follow: function (status) {
   }
 },
 
-dummyTrack: (
+zeroTracks: (
   <li className="tracks-index-item group">
     <div className="track-profile">
       <h3 className="artist"></h3>

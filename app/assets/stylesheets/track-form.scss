@@ -51,7 +51,10 @@
     display: none;
     margin: 300 auto;
   }
-  img.spinner-track-form {}
+  img.spinner-track-form {
+    max-width: 50px;
+    max-height: 50px;
+  }
   .spinner-track-form {
     font-size: 18px;
   }

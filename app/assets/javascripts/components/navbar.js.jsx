@@ -2,7 +2,7 @@ var Nav = React.createClass({
   mixins: [ReactRouter.History],
 
   getInitialState: function () {
-    return ({ uploadClick: false});
+    return ({ formDisplayed: false});
   },
 
   render: function () {
@@ -12,7 +12,7 @@ var Nav = React.createClass({
     }
 
     var trackForm;
-    if (this.state.uploadClick) {
+    if (this.state.formDisplayed) {
       trackForm =
         <TrackForm
           genres={this.props.genres}
@@ -38,7 +38,7 @@ var Nav = React.createClass({
               <input type="search" placeholder="Search (coming soon)"/>
 
               <ul className="navbar-right group">
-                <li onClick={this.uploadClick}className="nav-tab">
+                <li onClick={this.formDisplayed}className="nav-tab">
                     <a>Upload</a>
                 </li>
 
@@ -64,13 +64,13 @@ var Nav = React.createClass({
     );
   },
 
-  uploadClick: function () {
-    var uploadClick = this.state.uploadClick ? false : true;
-    this.setState({ uploadClick: uploadClick });
+  formDisplayed: function () {
+    var formDisplayed = this.state.formDisplayed ? false : true;
+    this.setState({ formDisplayed: formDisplayed });
   },
 
   _closeOut: function () {
-    this.uploadClick();
+    this.formDisplayed();
   },
 
   handleLogout: function () {

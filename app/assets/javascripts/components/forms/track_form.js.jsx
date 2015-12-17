@@ -18,13 +18,13 @@ var TrackForm = React.createClass({
     TrackStore.addChangeListener(this._onChange);
   },
 
+  componentWillUnmount: function() {
+    TrackStore.removeChangeListener(this._onChange);
+  },
+
   _onChange: function() {
     this.setState({track: TrackStore.show()});
     this.history.pushState(null, "#/tracks/" + this.state.track.id);
-  },
-
-  componentWillUnmount: function() {
-    TrackStore.removeChangeListener(this._onChange);
   },
 
   handleSubmit: function(e) {
@@ -62,7 +62,6 @@ var TrackForm = React.createClass({
       newTrack: ""
     });
     this.props.closeOut();
-    forceUpdate();
   },
 
   render: function() {
@@ -72,10 +71,10 @@ var TrackForm = React.createClass({
           <img className={"spinner-track-form" + this.state.newTrack} src={assets.spinner}/>
           <h2>Upload</h2>
           <form onSubmit={this.handleSubmit}>
-            <label>Update image
+            <label>Add image
               <input type="file" onChange={this.changeImageFile}/>
             </label>
-            <label>Choose file to upload
+            <label>Add track*
               <input type="file" onChange={this.changeTrackFile}/>
             </label>
             <label>Title*
