@@ -5,7 +5,13 @@ UserUtil = {
       type: 'GET',
       dataType: 'json',
       success: function (data) {
+        var userTracks = [];
+        data.forEach(function (user) {
+          userTracks.concat(user.tracks);
+        });
+
         ApiActions.receiveAllUsers(data);
+        ApiActions.receiveUserTracks(userTracks);
       }
     });
   },

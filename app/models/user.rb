@@ -10,8 +10,7 @@ class User < ActiveRecord::Base
   has_attached_file :cover, styles: { large: "1250x260!" }
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
-  # refactor this
-  has_many :tracks, -> { includes :user, :genre, :reposts }, dependent: :destroy
+  has_many :tracks, dependent: :destroy
 
   has_many :followees,
   class_name: "Follow",

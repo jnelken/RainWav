@@ -14,7 +14,11 @@
   };
 
   var addUserTracks = function (userTracks) {
-    _tracks.concat(userTracks);
+    userTracks.forEach(function (track) {
+      if ( _tracks.indexOf(track) === -1) {
+        _tracks.push(track);
+      }
+    });
   };
 
   var setTrack = function (track) {
@@ -66,10 +70,12 @@
             resetTracks(payload.tracks);
             TrackStore.emit(CHANGE_EVENT);
             break;
+
           case TrackConstants.USER_TRACKS_RECEIVED:
             addUserTracks(payload.userTracks);
             TrackStore.emit(CHANGE_EVENT);
             break;
+
           case TrackConstants.TRACK_RECEIVED:
             setTrack(payload.track);
             TrackStore.emit(CHANGE_EVENT);

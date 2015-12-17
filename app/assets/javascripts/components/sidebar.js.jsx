@@ -97,7 +97,7 @@ var Sidebar = React.createClass({
                         <img className="icon" src={assets.followers} /> {profile.followees.length}
                       </div>
                       <div className="trackcount">
-                        <img className="icon" src={assets.wave} />{profile.tracks.length}
+                        <img className="icon" src={assets.wave} />{TrackStore.userTracks(profile.id).length}
                       </div>
                     </li>
                   );
