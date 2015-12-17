@@ -64,11 +64,11 @@ render: function () {
 
   return (
       <div className="profile-page group">
-        <input type="file" name="file" id="avatar-file" onChange={this.changeAvatar}/>
         <header>
         <img className="cover" src={user.cover}>
           <img className="avatar" src={user.avatar} />
-          <label htmlFor="file" className="avatar-input + hideFunction">
+          <input type="file" name="file" id="avatar-file" onChange={this.changeAvatar}/>
+          <label htmlFor="file" className={"avatar-input " + hideFunction}>
             Replace image
           </label>
           <h2>{user.username.capitalize()}</h2>
