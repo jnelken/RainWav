@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, styles: { large: "500x500", medium: "200x200", thumb: "120x120" }
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
-  has_attached_file :cover, styles: { large: "1250x260" }
+  has_attached_file :cover, styles: { large: "1250x260!" }
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   # refactor this
