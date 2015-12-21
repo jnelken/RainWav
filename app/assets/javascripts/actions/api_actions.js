@@ -22,6 +22,13 @@ ApiActions = {
     });
   },
 
+  removeTrack: function (track) {
+    AppDispatcher.dispatch({
+      actionType: TrackConstants.TRACK_REMOVED,
+      track: track
+    });
+  },
+
 /// Users
   receiveAllUsers: function (users) {
     AppDispatcher.dispatch({

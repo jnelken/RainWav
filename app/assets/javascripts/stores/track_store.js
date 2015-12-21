@@ -22,7 +22,15 @@
   };
 
   var setTrack = function (track) {
+    debugger
     _track = track;
+    _tracks.push(track);
+  };
+
+  var removeTrack = function (track) {
+    _tracks = _tracks.filter(function (t) {
+      return t.id !== track.id;
+    });
   };
 
   root.TrackStore = $.extend({}, EventEmitter.prototype, {
@@ -50,7 +58,6 @@
 
     userTracks: function (userId) {
       if (!userId) return [];
-
       return _tracks.filter(function (track) {
         return track.user_id === parseInt(userId);
       });
@@ -66,21 +73,23 @@
 
     dispatcherID: AppDispatcher.register(function (payload) {
       switch (payload.actionType) {
-          case TrackConstants.TRACKS_RECEIVED:
-            resetTracks(payload.tracks);
-            TrackStore.emit(CHANGE_EVENT);
-            break;
+        case TrackConstants.TRACKS_RECEIVED:
+          resetTracks(payload.tracks);
+          break;
 
-          case TrackConstants.USER_TRACKS_RECEIVED:
-            addUserTracks(payload.userTracks);
-            TrackStore.emit(CHANGE_EVENT);
-            break;
+        case TrackConstants.USER_TRACKS_RECEIVED:
+          addUserTracks(payload.userTracks);
+          break;
 
-          case TrackConstants.TRACK_RECEIVED:
-            setTrack(payload.track);
-            TrackStore.emit(CHANGE_EVENT);
-            break;
+        case TrackConstants.TRACK_RECEIVED:
+          setTrack(payload.track);
+          break;
+
+        case TrackConstants.TRACK_REMOVED:
+          removeTrack(payload.track);
+          break;
       }
+      TrackStore.emit(CHANGE_EVENT);
     })
 
   });

@@ -8,12 +8,12 @@ var Trackbar = React.createClass({
     RepostStore.addChangeListener(this._setRepost);
   },
 
-  _setRepost: function () {
-    this.setState({repost: RepostStore.show(this.props.track.id)});
-  },
-
   componentWillUnmount: function () {
     RepostStore.removeChangeListener(this._setRepost);
+  },
+
+  _setRepost: function () {
+    this.setState({repost: RepostStore.show(this.props.track.id)});
   },
 
   render: function () {
@@ -62,6 +62,6 @@ var Trackbar = React.createClass({
   },
 
   success: function () {
-    return <p class="stats">Track deleted!</p>;
   }
+
 });

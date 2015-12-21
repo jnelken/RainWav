@@ -36,8 +36,6 @@ var Sidebar = React.createClass({
     var trackCount;
     var count;
     var page = this.state.userPage;
-    console.log(page);
-
     var profiles = this.state.profiles;
 
     if (cUser.tracks) {

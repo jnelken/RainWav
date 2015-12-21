@@ -62,6 +62,7 @@ var TrackForm = React.createClass({
       newTrack: ""
     });
     this.props.closeOut();
+    this.setState({track: TrackStore.show()});
   },
 
   render: function() {

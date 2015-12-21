@@ -5,18 +5,6 @@ class Api::TracksController < ApplicationController
     else
       @tracks = Track.where(user_id: params[:user_id])
     end
-      # userTracks = []
-      # @tracks.each do |track|
-      #    if track.user_id == params[:user_id].to_i
-      #      userTracks << track
-      #    end
-      # end
-      #
-      #   @tracks = userTracks
-      #   render :index
-      # end
-      #
-      # @tracks
   end
 
   def create
@@ -44,8 +32,7 @@ class Api::TracksController < ApplicationController
   def destroy
     @track = Track.find(params[:id])
     @track.destroy
-    @user = @track.user
-    render 'api/users/show'
+    render :show
   end
 
   private

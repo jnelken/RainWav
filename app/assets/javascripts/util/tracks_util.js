@@ -72,7 +72,7 @@ TracksUtil = {
       type: 'DELETE',
       dataType: 'json',
       success: function (data) {
-        ApiActions.receiveTrack(data);
+        ApiActions.removeTrack(data);
         success && success();
       }
     });
