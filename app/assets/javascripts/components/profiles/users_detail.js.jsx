@@ -6,8 +6,9 @@ getInitialState: function () {
 
 getStateFromStores: function(userId) {
   return {
-    user: UserStore.show(),
     userId: userId,
+    user: UserStore.show(),
+    username: UserStore.show().username,
     tracks: TrackStore.userTracks(userId),
     follow: FollowStore.show()
   };
@@ -50,6 +51,7 @@ _userSuccess: function (userId) {
 
 render: function () {
   var user = this.state.user;
+  var username = this.state.username ? this.state.username : this.state.user.username;
   var hideOption = user.id === CUserStore.cUser().id ? "hide" : "";
   var showOption = user.id === CUserStore.cUser().id ? "" : "hide";
   var status = this.state.follow ? "Following" : "Follow";
@@ -66,19 +68,27 @@ render: function () {
   return (
       <div className="profile-page group">
         <header>
-          <input type="file" name="file" id="cover-file" onChange={this.changeCover}/>
+          <input type="file" name="file" id="cover-file" onChange={this.updateCover}/>
           <img className="cover" src={user.cover} />
           <label htmlFor="cover-file" className={"cover-input " + showOption}>
             Replace image
           </label>
 
-          <input type="file" name="file" id="avatar-file" onChange={this.changeAvatar}/>
+          <input type="file" name="file" id="avatar-file" onChange={this.updateAvatar}/>
           <img className="avatar" src={user.avatar} />
           <label htmlFor="avatar-file" className={"avatar-input " + showOption}>
             Replace image
           </label>
 
-          <h2>{user.username.capitalize()}</h2>
+          <h2 className="username">{username.capitalize()}</h2>
+          <div className={"username-input " + showOption}>
+            <input
+              type="text"
+              value={username.capitalize()}
+              onChange={this.setUsername}>
+            </input>
+          </div>
+
           <p>{user.bio}</p>
         </header>
 
@@ -100,7 +110,31 @@ render: function () {
   );
 },
 
-changeAvatar: function (e) {
+setUsername: function (e) {
+  this.setState( { username: e.currentTarget.value } );
+},
+
+componentDidUpdate: function (prevProps, prevState) {
+  if (typeof this.state.user.username !== prevState.user.username) {
+    if (this._hasUnsavedChanges()) {
+      this._saveChanges();
+    }
+  }
+},
+
+_hasUnsavedChanges: function () {
+  return this.state.user.username !== this.state.username;
+},
+
+_saveChanges: function () {
+  var newUsername = new FormData();
+  newUsername.append("user[username]", this.state.username);
+  newUsername.append("user[id]", this.state.user.id);
+
+  SessionUtil.updateCUser(newUsername);
+},
+
+updateAvatar: function (e) {
   var imageFile = e.currentTarget.files[0];
 
   if (imageFile) {
@@ -112,7 +146,7 @@ changeAvatar: function (e) {
   }
 },
 
-changeCover: function (e) {
+updateCover: function (e) {
   var imageFile = e.currentTarget.files[0];
 
   if (imageFile) {
@@ -136,7 +170,7 @@ zeroTracks: (
   <li className="tracks-index-item group">
     <div className="track-profile">
       <h3 className="artist"></h3>
-      <h3 className="artist title"></h3>
+      <h3 className="title artist"></h3>
       <h3>This artist has no tracks yet!</h3>
     </div>
   </li>

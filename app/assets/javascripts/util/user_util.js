@@ -39,5 +39,5 @@ UserUtil = {
         success && success();
       }
     });
-  }
+  },
 };
