@@ -34,7 +34,7 @@ var TracksIndexItem = React.createClass({
     return (
       <li className="tracks-index-item group">
 
-        <ReactRouter.Link className="artist" to={"/users/" + user.id }>
+        <ReactRouter.Link to={"/users/" + user.id } className="artist">
           <img src={track.image} />
         </ReactRouter.Link>
 
