@@ -40,14 +40,14 @@ var TrackForm = React.createClass({
     var userId = CUserStore.cUser().id;
 
     var newTrackData = new FormData();
-    newTrackData.append("track[title]", title);
-    newTrackData.append("track[genre_id]", genre_id);
-    newTrackData.append("track[description]", description);
-    newTrackData.append("track[audio]", trackFile);
     if (imageFile) {
       newTrackData.append("track[image]", imageFile);
     }
     newTrackData.append("track[user_id]", userId);
+    newTrackData.append("track[title]", title);
+    newTrackData.append("track[genre_id]", genre_id);
+    newTrackData.append("track[description]", description);
+    newTrackData.append("track[audio]", trackFile);
 
     TracksUtil.createTrack(newTrackData, this._resetForm);
   },
