@@ -17,31 +17,33 @@ var Trackbar = React.createClass({
   },
 
   render: function () {
-    var hideMe = "";
-    var showMe = "hide";
-    var reposted = !!this.state.repost;
-    var status = reposted ? "Reposted" : "Repost";
     var cUser = CUserStore.cUser();
-
-    if (this.props.track.user_id === CUserStore.cUser().id) {
-      hideMe = "hide";
-      showMe = "";
+    var repostButton = "";
+    var trashButton = "hide";
+    
+    if (this.props.track.user_id === cUser.id) {
+      repostButton = "hide";
+      trashButton = "";
     }
 
     return (
         <div className="comment-bar flex-container">
-          <button className={"trackbar-button " + showMe} onClick={this.handleTrash}>
+
+          <button className={"trackbar-button " + trashButton} onClick={this.handleTrash}>
             <img src={assets.trash} />
             {this.success}
           </button>
-          <button className={"trackbar-button " + hideMe} onClick={this.handleRepost}>
+
+          <button className={"trackbar-button " + repostButton} onClick={this.handleRepost}>
             <img src={assets.repost} />
-            {status}
+            {!!this.state.repost ? "Reposted" : "Repost"}
           </button>
+
           <div className="playcount">
             <img src={assets.plays} />
             {this.props.plays}
           </div>
+
         </div>
     );
   },
@@ -55,13 +57,10 @@ var Trackbar = React.createClass({
   },
 
   handleTrash: function () {
-    var del = confirm("Are you sure you want to delete " + this.props.track.title + "?");
-    if (del) {
-      TracksUtil.deleteTrack(this.props.track.id, this.success);
+    var confirmed = confirm("Are you sure you want to delete " + this.props.track.title + "?");
+    if (confirmed) {
+      TracksUtil.deleteTrack(this.props.track.id);
     }
   },
-
-  success: function () {
-  }
 
 });

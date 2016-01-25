@@ -55,7 +55,7 @@ var TracksIndexItem = React.createClass({
             </ReactRouter.Link>
           </h3>
 
-          <button className="genre">#{this.state.genre.genre}</button>
+          <button className="genre">#{genre}</button>
           <WaveSurferItem track={track} wavesurfer={this.state.wavesurfer}/>
           <Trackbar plays={this.state.plays} track={track} />
         </div>

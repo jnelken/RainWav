@@ -68,6 +68,7 @@ render: function () {
   return (
       <div className="profile-page group">
         <header>
+
           <input type="file" name="file" id="cover-file" onChange={this.updateCover}/>
           <img className="cover" src={user.cover} />
           <label htmlFor="cover-file" className={"cover-input " + showOption}>
@@ -90,22 +91,27 @@ render: function () {
           </div>
 
           <p>{user.bio}</p>
+
         </header>
 
         <section className="tracklist">
           <ul className="profile-tabs group">
+
             <li><a>Tracks</a></li>
             <li className={"follow-button " + status}>
               <button className={hideOption} onClick={this.follow}>{status}</button>
             </li>
+
           </ul>
 
           <ul>
             {tracks}
           </ul>
+
         </section>
 
         <Sidebar className="sidebar" />
+        
       </div>
   );
 },
