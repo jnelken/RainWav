@@ -21,8 +21,13 @@
     });
   };
 
-  var setTrack = function (track) { 
+  var setTrack = function (track) {
     _track = track;
+    resetTracks(
+      _tracks.filter(function (t) {
+        return t.id != track.id;
+      })
+    );
     _tracks.push(track);
   };
 
@@ -40,11 +45,14 @@
 
     feed: function () {
       if (_tracks.length > 0 && typeof CUserStore.cUser().followees !== "undefined") {
+
+        var followedUserIds = CUserStore.cUser().followees.map(function (follow) {
+          return follow.following_id;
+        });
+
+        // return a sorted feed
         return _tracks.filter(function (track) {
-          followings = CUserStore.cUser().followees.map(function (follow) {
-            return follow.following_id;
-          });
-          return followings.indexOf(track.user_id) != -1;
+          return followedUserIds.indexOf(track.user_id) != -1;
         }).sort(function (a, b) {
           return a.created_at < b.created_at;
         });

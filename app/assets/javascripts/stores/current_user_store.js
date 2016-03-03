@@ -38,7 +38,6 @@
           _plays = _currentUser.plays;
           FollowStore.setFollows();
           RepostStore.setReposts();
-          // RepostUtil.fetchReposts();
 
           CUserStore.emit(CHANGE_EVENT);
           break;
