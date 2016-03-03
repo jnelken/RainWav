@@ -4,11 +4,11 @@
   var _repost;
   var _reposts = [];
 
-  var setReposts = function (reposts) {
-    _reposts = CUserStore.cUser().reposts;
-  };
-
   root.RepostStore = $.extend({}, EventEmitter.prototype, {
+
+    setReposts: function (reposts) {
+      _reposts = CUserStore.cUser().reposts;
+    },
 
     all: function () {
       return _reposts.slice(0);

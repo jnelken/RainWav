@@ -37,6 +37,8 @@
           _currentUser = payload.currentUser;
           _plays = _currentUser.plays;
           FollowStore.setFollows();
+          RepostStore.setReposts();
+          // RepostUtil.fetchReposts();
 
           CUserStore.emit(CHANGE_EVENT);
           break;

@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
   def index
-    @users = User.includes(:tracks, :followers, :followees)
+    @users = User.includes(:tracks, :followers, :followees, :reposts)
   end
 
   def show

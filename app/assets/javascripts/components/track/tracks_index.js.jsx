@@ -6,9 +6,8 @@ var TracksIndex = React.createClass({
   },
 
   componentDidMount: function () {
-    CUserStore.addChangeListener(this._getFeed);
     TrackStore.addChangeListener(this._getFeed);
-    RepostUtil.fetchReposts();
+    CUserStore.addChangeListener(this._getFeed);
   },
 
   _getFeed: function () {

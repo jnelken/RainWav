@@ -21,8 +21,7 @@
     });
   };
 
-  var setTrack = function (track) {
-    debugger
+  var setTrack = function (track) { 
     _track = track;
     _tracks.push(track);
   };
