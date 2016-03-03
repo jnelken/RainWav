@@ -27,9 +27,13 @@ var TracksIndexItem = React.createClass({
     var user = this.state.user;
     var genre = this.state.genre.genre;
 
-    if (!user || !genre) {
+    if (!user || !genre ) {
       return <img className="spinner" src={assets.spinner} />;
     }
+
+    this.state.wavesurfer.on('ready', function () {
+      // working on waiting for tracks to load before rendering
+    });
 
     return (
       <li className="tracks-index-item group">
