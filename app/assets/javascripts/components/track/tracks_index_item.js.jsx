@@ -38,9 +38,9 @@ var TracksIndexItem = React.createClass({
     return (
       <li className="tracks-index-item group">
 
-        <ReactRouter.Link to={"/users/" + user.id } className="artist">
+        <a href={"#/users/" + user.id } className="artist">
           <img src={track.image} />
-        </ReactRouter.Link>
+        </a>
 
         <div className="track-profile">
           <div className="controls">
@@ -48,15 +48,15 @@ var TracksIndexItem = React.createClass({
           </div>
 
           <h3 className="artist">
-            <ReactRouter.Link to={user.username}>
+            <a href={"#/" + user.username}>
               {user.username.capitalize()}
-            </ReactRouter.Link>
+            </a>
           </h3>
 
           <h3 className="title">
-            <ReactRouter.Link to={"/users/" + user.id } className="artist">
+            <a href={"#/users/" + user.id } className="artist">
               {track.title}
-            </ReactRouter.Link>
+            </a>
           </h3>
 
           <button className="genre">#{genre}</button>

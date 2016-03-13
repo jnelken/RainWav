@@ -2,26 +2,26 @@ var Login = React.createClass({
   mixins: [ReactRouter.History],
 
   handleSubmit: function (e) {
-      e.preventDefault();
+    e.preventDefault();
 
-      var credentials = $(e.currentTarget).serializeJSON();
-        SessionUtil.login(credentials, function () {
-          this.history.pushState(null, "#");
-        }.bind(this));
-    },
+    var credentials = $(e.currentTarget).serializeJSON();
+    SessionUtil.login(credentials, function () {
+      this.history.pushState(null, "#");
+    }.bind(this));
+  },
 
-    handleAutofill: function (e) {
-      e.preventDefault();
+  handleAutofill: function (e) {
+    e.preventDefault();
 
-      var credentials = { user: {
-          username: "Dew",
-          email: "dew@rainwav.com",
-          password: "abc123"
-        }};
-        SessionUtil.login(credentials, function () {
-          this.history.pushState(null, "#");
-        }.bind(this));
-    },
+    var credentials = { user: {
+        username: "Dew",
+        email: "dew@rainwav.com",
+        password: "abc123"
+      }};
+    SessionUtil.login(credentials, function () {
+      this.history.pushState(null, "#");
+    }.bind(this));
+  },
 
   render: function () {
     return (
