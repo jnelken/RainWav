@@ -1,23 +1,24 @@
 var Login = React.createClass({
   mixins: [ReactRouter.History],
 
-  handleSubmit: function (e) {
+  handleLogin: function (e) {
     e.preventDefault();
 
     var credentials = $(e.currentTarget).serializeJSON();
-    SessionUtil.login(credentials, function () {
-      this.history.pushState(null, "#");
-    }.bind(this));
+    this.sendCredentials(credentials);
   },
 
-  handleAutofill: function (e) {
+  handleDemo: function (e) {
     e.preventDefault();
-
     var credentials = { user: {
         username: "Dew",
         email: "dew@rainwav.com",
         password: "abc123"
       }};
+    this.sendCredentials(credentials);
+  },
+
+  sendCredentials: function (credentials) {
     SessionUtil.login(credentials, function () {
       this.history.pushState(null, "#");
     }.bind(this));
@@ -37,7 +38,7 @@ var Login = React.createClass({
           </a>
         </div>
 
-        <form className="user-form group" onSubmit={this.handleSubmit}>
+        <form className="user-form group" onSubmit={this.handleLogin}>
 
           <label className="email">
             <p>Your email address</p>
@@ -51,7 +52,7 @@ var Login = React.createClass({
             </label>
           </div>
 
-          <button onClick={this.handleAutofill}>Demo</button>
+          <button onClick={this.handleDemo}>Demo</button>
           <button>Sign In</button>
         </form>
       </div>

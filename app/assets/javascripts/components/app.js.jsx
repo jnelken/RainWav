@@ -1,5 +1,4 @@
 var App = React.createClass({
-  mixins: [ReactRouter.History],
 
   getInitialState: function () {
     return ({ currentUser: CUserStore.cUser() });

@@ -1,5 +1,4 @@
 var TracksIndex = React.createClass({
-  mixins: [ReactRouter.History],
 
   getInitialState: function () {
     return ({tracks: TrackStore.feed()});
@@ -24,16 +23,18 @@ var TracksIndex = React.createClass({
       return <Login />;
     }
 
-    if (typeof this.state.tracks === "undefined") {
-      return <img className="spinner" src={assets.spinner} />;
-    }
-
     return (
       <div className="group">
       <ul className="tracks-index">
         <li>
           <h1>Stream</h1>
-          <p>Hear the latest posts from the people you're following</p>
+          {(typeof this.state.tracks === "undefined")
+            ? <p className="app-error">
+                Oops! Something went wrong.
+                Please logout, refresh and try again.
+              </p>
+            : <p>Hear the latest posts from the people you're following</p>
+          }
         </li>
         {
           this.state.tracks.map(function (track) {
