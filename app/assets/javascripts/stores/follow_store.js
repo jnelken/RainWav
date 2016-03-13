@@ -56,5 +56,4 @@
       }
     })
   });
-  FollowStore.setMaxListeners(99);
 })(this);

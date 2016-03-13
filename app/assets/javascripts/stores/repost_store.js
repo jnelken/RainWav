@@ -57,5 +57,4 @@
       }
     })
   });
-  RepostStore.setMaxListeners(99);
 })(this);

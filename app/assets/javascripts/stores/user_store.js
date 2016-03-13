@@ -52,5 +52,4 @@
     })
 
   });
-  UserStore.setMaxListeners(99);
 })(this);

@@ -46,16 +46,14 @@
     feed: function () {
       if (_tracks.length > 0 && typeof CUserStore.cUser().followees !== "undefined") {
 
-        var followedUserIds = CUserStore.cUser().followees.map(function (follow) {
+        var followedUsersIds = CUserStore.cUser().followees.map(function (follow) {
           return follow.following_id;
         });
 
-        // return a sorted feed
         return _tracks.filter(function (track) {
-          return followedUserIds.indexOf(track.user_id) != -1;
-        }).sort(function (a, b) {
-          return a.created_at < b.created_at;
-        });
+          // show if the user is following the artist
+          return followedUsersIds.indexOf(track.user_id) != -1;
+        }).sort(function (a, b) {return a.created_at < b.created_at;});
       }
     },
 
@@ -67,7 +65,7 @@
       if (!userId) return [];
       return _tracks.filter(function (track) {
         return track.user_id === parseInt(userId);
-      });
+      }).sort(function (a, b) {return a.created_at < b.created_at;});
     },
 
     addChangeListener: function (callback) {
