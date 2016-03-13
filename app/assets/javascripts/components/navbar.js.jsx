@@ -6,20 +6,26 @@ var Nav = React.createClass({
   },
 
   render: function () {
-    var username = "login";
+    var username = "Login";
+    var logoutItem = <li></li>;
+    var trackForm;
+
     if (this.props.cUser.username) {
       username = this.props.cUser.username;
+      logoutItem =  (
+        <li onClick={this.handleLogout} className="more">
+          <a className="dots" href="#/login">Logout</a>
+        </li>
+      );
     }
 
-    var trackForm;
     if (this.state.formDisplayed) {
-      trackForm =
+      trackForm = (
         <TrackForm
           genres={this.props.genres}
           closeOut={this._closeOut}
-        />;
-    } else {
-      trackForm = undefined;
+        />
+      );
     }
 
     return (
@@ -48,10 +54,7 @@ var Nav = React.createClass({
                     {username.capitalize()}
                   </a>
                 </li>
-
-                <li onClick={this.handleLogout} className="more">
-                  <a className="dots" href="#/login">Logout</a>
-                </li>
+                {logoutItem}
               </ul>
 
             </div>

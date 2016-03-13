@@ -29,11 +29,11 @@ var TracksIndex = React.createClass({
         <li>
           <h1>Stream</h1>
           {(typeof this.state.tracks === "undefined")
-            ? <p className="app-error">
+            ? <p>
                 Oops! Something went wrong.
                 Please logout, refresh and try again.
               </p>
-            : <p>Hear the latest posts from the people you're following</p>
+            : <p>High-quality music from the people you're following:</p>
           }
         </li>
         {
