@@ -1,6 +1,20 @@
 .user-form-page {
   width: 400px;
   margin: 0 auto;
+  -moz-animation-name: fadeIn;
+  -moz-animation-iteration-count: 1;
+  -moz-animation-timing-function: ease;
+  -moz-animation-duration: 2s;
+
+  -webkit-animation-name: fadeIn;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease;
+  -webkit-animation-duration: 2s;
+
+  animation-name: fadeIn;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-duration: 2s;
 }
 .form-tabs {
   margin-top: 80px;

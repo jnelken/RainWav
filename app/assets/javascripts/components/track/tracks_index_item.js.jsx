@@ -31,10 +31,6 @@ var TracksIndexItem = React.createClass({
       return <img className="spinner" src={assets.spinner} />;
     }
 
-    this.state.wavesurfer.on('ready', function () {
-      // working on waiting for tracks to load before rendering
-    });
-
     return (
       <li className="tracks-index-item group">
 
@@ -90,7 +86,6 @@ var TracksIndexItem = React.createClass({
 
   handlePause: function () {
     this.state.wavesurfer.pause();
-
     toggle = this.state.playing ? true : false;
     this.setState({ playing: toggle, controls: <img src={assets.play} onClick={this.handlePlay} /> });
   }

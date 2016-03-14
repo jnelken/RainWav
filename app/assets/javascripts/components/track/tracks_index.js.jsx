@@ -23,18 +23,21 @@ var TracksIndex = React.createClass({
       return <Login />;
     }
 
+    if (typeof this.state.tracks === "undefined") {
+      return (
+        <p>
+          Oops! Something went wrong.
+          Please logout, refresh and try again.
+        </p>
+      );
+    }
+
     return (
       <div className="group">
       <ul className="tracks-index">
         <li>
           <h1>Stream</h1>
-          {(typeof this.state.tracks === "undefined")
-            ? <p>
-                Oops! Something went wrong.
-                Please logout, refresh and try again.
-              </p>
-            : <p>High-quality music from the people you're following:</p>
-          }
+          <p>High-quality music from the people you're following:</p>
         </li>
         {
           this.state.tracks.map(function (track) {
