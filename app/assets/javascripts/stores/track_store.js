@@ -4,6 +4,7 @@
   var _tracks = [];
   var _track;
   var users = {};
+  var _nowPlaying;
 
   var resetTracks = function (tracks) {
     users = {};
@@ -37,6 +38,11 @@
     });
   };
 
+  var setPlaying = function (wave) {
+    _nowPlaying && _nowPlaying.pause();
+    _nowPlaying = wave;
+  };
+
   root.TrackStore = $.extend({}, EventEmitter.prototype, {
 
     all: function () {
@@ -57,15 +63,19 @@
       }
     },
 
-    show: function () {
-      return _track;
-    },
-
     userTracks: function (userId) {
       if (!userId) return [];
       return _tracks.filter(function (track) {
         return track.user_id === parseInt(userId);
       }).sort(function (a, b) {return a.created_at < b.created_at;});
+    },
+
+    show: function () {
+      return _track;
+    },
+
+    nowPlaying: function () {
+      return _nowPlaying;
     },
 
     addChangeListener: function (callback) {
@@ -92,6 +102,10 @@
 
         case TrackConstants.TRACK_REMOVED:
           removeTrack(payload.track);
+          break;
+
+        case "playing":
+          setPlaying(payload.wave);
           break;
       }
       TrackStore.emit(CHANGE_EVENT);

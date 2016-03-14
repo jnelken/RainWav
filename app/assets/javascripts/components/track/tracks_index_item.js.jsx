@@ -3,29 +3,44 @@ var TracksIndexItem = React.createClass({
   getInitialState: function () {
     return ({
       wavesurfer: Object.create(WaveSurfer),
-      genre: GenreStore.getGenre(this.props.track.genre_id),
+      genre: GenreStore.getGenre(this.props.track.genre_id).genre,
       user: UserStore.getUser(this.props.track.user_id),
       plays: parseInt(this.props.track.plays),
-      controls: <img src={assets.play} onClick={this.handlePlay} />
+      controls: <img src={assets.play} onClick={this.handlePlay} />,
     });
   },
 
   componentDidMount: function () {
     UserStore.addChangeListener(this._setUser);
+    TrackStore.addChangeListener(this._setControls);
   },
 
   _setUser:function () {
     this.setState({ user: UserStore.getUser(this.props.track.user_id) });
   },
 
+  _setControls: function () {
+    this.state.wavesurfer.hasOwnProperty("pause") && this.state.wavesurfer.pause();
+
+    if (this.isPlaying()) TrackStore.nowPlaying().play();
+
+    var controls = ((this.isPlaying())
+      ? <img src={assets.pause} onClick={this.handlePause} />
+      : <img src={assets.play} onClick={this.handlePlay} />
+  );
+
+    this.setState({ controls: controls });
+  },
+
   componentWillUnmount: function () {
     UserStore.removeChangeListener(this._setUser);
+    TrackStore.removeChangeListener(this._setControls);
   },
 
   render: function () {
     var track = this.props.track;
     var user = this.state.user;
-    var genre = this.state.genre.genre;
+    var genre = this.state.genre;
 
     if (!user || !genre ) {
       return <img className="spinner" src={assets.spinner} />;
@@ -64,29 +79,31 @@ var TracksIndexItem = React.createClass({
   },
 
   handlePlay: function () {
-    this.state.wavesurfer.play();
+    WaveUtil.setPlaying(this.state.wavesurfer);
+    if (this.state.playing === undefined) {
+      this.setState({ plays: this.props.track.plays + 1 });
+      TracksUtil.addPlay(this.props.track, this._success);
+    }
 
-      if (this.state.playing === undefined) {
-        this.setState({ plays: this.props.track.plays + 1 });
-        TracksUtil.addPlay(this.props.track, this._success);
-      }
-
-      this.setState({
-        playing: this.state.playing ? true : false,
-        controls: <img className="pause" src={assets.pause} onClick={this.handlePause} />
-      });
-    },
+    this.setState({
+      playing: this.state.playing ? true : false,
+      controls: <img className="pause" src={assets.pause} onClick={this.handlePause} />
+    });
+  },
 
   _success: function () {
     if (this.props.track.user_id === CUserStore.cUser().id) {
-      //updates Sidebar play count for cUser
-      CUserStore.plays(1);
+      CUserStore.plays(1);  //updates Sidebar play count for cUser
     }
   },
 
   handlePause: function () {
-    this.state.wavesurfer.pause();
-    toggle = this.state.playing ? true : false;
+    WaveUtil.setPlaying();
+    toggle = this.state.playing ?  true : false;
     this.setState({ playing: toggle, controls: <img src={assets.play} onClick={this.handlePlay} /> });
+  },
+
+  isPlaying: function () {
+    return this.state.wavesurfer === TrackStore.nowPlaying();
   }
 });
