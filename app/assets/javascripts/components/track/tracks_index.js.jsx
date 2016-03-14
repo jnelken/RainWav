@@ -25,10 +25,14 @@ var TracksIndex = React.createClass({
 
     if (typeof this.state.tracks === "undefined") {
       return (
-        <p>
-          Oops! Something went wrong.
-          Please logout, refresh and try again.
-        </p>
+        <ul className="tracks-index">
+          <li>
+            <p>
+              Oops! Something went wrong.
+              Please logout, refresh and try again.
+            </p>
+          </li>
+        </ul>
       );
     }
 
