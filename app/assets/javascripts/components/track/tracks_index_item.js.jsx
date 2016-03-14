@@ -20,15 +20,11 @@ var TracksIndexItem = React.createClass({
   },
 
   _setControls: function () {
-    this.state.wavesurfer.hasOwnProperty("pause") && this.state.wavesurfer.pause();
-
     if (this.isPlaying()) TrackStore.nowPlaying().play();
-
     var controls = ((this.isPlaying())
       ? <img src={assets.pause} onClick={this.handlePause} />
       : <img src={assets.play} onClick={this.handlePlay} />
-  );
-
+    );
     this.setState({ controls: controls });
   },
 
@@ -91,9 +87,9 @@ var TracksIndexItem = React.createClass({
     });
   },
 
-  _success: function () {
+  _success: function () { //updates Sidebar play count for cUser
     if (this.props.track.user_id === CUserStore.cUser().id) {
-      CUserStore.plays(1);  //updates Sidebar play count for cUser
+      CUserStore.plays(1);
     }
   },
 

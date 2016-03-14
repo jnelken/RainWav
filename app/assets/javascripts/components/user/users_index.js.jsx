@@ -23,11 +23,7 @@ var UsersIndex = React.createClass({
         {
           this.state.users.map(function (user) {
             return (
-              <div className="users-index-item">
-                <p>user.username</p>
-                <p>{user.id}</p>
-                <p>{user.email}</p>
-              </div>
+              <UsersIndexItem user={user} key={user.id} />
             );
           })
         }
